@@ -176,54 +176,9 @@
     "title": "Case Studies",
     "subtitle": "Real results from real partnerships",
     "filterAll": "All",
-    "filterManufacturing": "Manufacturing",
-    "filterRetail": "Retail",
-    "filterLogistics": "Logistics",
-    "filterHealthcare": "Healthcare",
-    "filterFinance": "Finance",
     "filterFoodBeverage": "Food & Beverage",
     "readMore": "Read Case Study",
     "case1": {
-      "title": "Real-Time Production Dashboard for Auto Parts Manufacturer",
-      "tag": "Manufacturing",
-      "summary": "Implemented a live OEE dashboard that reduced downtime by 23% and improved production planning accuracy.",
-      "challenge": "The client struggled with delayed production reports and couldn't identify bottlenecks in real-time.",
-      "solution": "We deployed a real-time dashboard connected to their MES system, providing instant visibility into production lines.",
-      "results": "23% reduction in unplanned downtime, 15% improvement in OEE, and faster response to quality issues."
-    },
-    "case2": {
-      "title": "Executive Infographic Reports for Retail Chain",
-      "tag": "Retail",
-      "summary": "Created automated weekly sales reports that reduced report preparation time by 85% while improving insights.",
-      "challenge": "Manual report creation took 2 days each week and often contained inconsistent data formatting.",
-      "solution": "Automated infographic report generation with real-time data integration from POS and inventory systems.",
-      "results": "85% reduction in report preparation time, consistent formatting, and actionable insights for store managers."
-    },
-    "case3": {
-      "title": "Fleet Performance Analytics Platform",
-      "tag": "Logistics",
-      "summary": "Built a comprehensive logistics platform that improved delivery performance and reduced fuel costs.",
-      "challenge": "Lack of visibility into fleet operations led to inefficient routing and missed delivery windows.",
-      "solution": "Custom platform integrating GPS tracking, route optimization, and driver performance analytics.",
-      "results": "18% reduction in fuel costs, 95% on-time delivery rate, and improved driver accountability."
-    },
-    "case4": {
-      "title": "Healthcare Resource Utilization Dashboard",
-      "tag": "Healthcare",
-      "summary": "Developed a patient flow analytics system that optimized bed utilization and reduced wait times.",
-      "challenge": "Hospital faced challenges with bed management and patient flow, leading to overcrowding.",
-      "solution": "Real-time bed management dashboard with predictive analytics for patient admission patterns.",
-      "results": "30% improvement in bed utilization, 40% reduction in patient wait times, better staff allocation."
-    },
-    "case5": {
-      "title": "Investment Portfolio Analytics for Asset Manager",
-      "tag": "Finance",
-      "summary": "Created a risk analytics dashboard that enhanced portfolio monitoring and client reporting.",
-      "challenge": "Legacy reporting systems couldn't provide timely risk metrics or customized client reports.",
-      "solution": "Modern web platform with real-time risk calculations and automated client report generation.",
-      "results": "Real-time risk monitoring, 90% faster client report generation, improved regulatory compliance."
-    },
-    "case6": {
       "title": "ESG Tracking & Dashboard for SET100 Food Company",
       "tag": "Food & Beverage",
       "summary": "Implemented a comprehensive ESG tracking system and executive dashboard for a leading SET100 food and beverage company to monitor sustainability activities under global standards.",
@@ -231,7 +186,7 @@
       "solution": "We developed a user-friendly web platform with intuitive UX/UI that enables staff to easily input ESG data across all sustainability metrics. The system includes real-time dashboards designed specifically for executive committees and board members to monitor progress and make informed decisions.",
       "results": "Streamlined ESG data collection across the organization, real-time visibility into sustainability KPIs, board-ready reports aligned with global ESG standards, and improved governance transparency for stakeholders."
     },
-    "case7": {
+    "case2": {
       "title": "R&D Performance Executive Dashboard for Food Manufacturer",
       "tag": "Food & Beverage",
       "summary": "Developed a real-time executive dashboard to monitor R&D activities, track project milestones, and optimize research investments for a SET100 food and beverage company.",

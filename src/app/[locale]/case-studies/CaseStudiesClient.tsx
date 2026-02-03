@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Factory, ShoppingBag, Truck, Heart, Landmark, UtensilsCrossed, FlaskConical, ArrowRight } from 'lucide-react';
+import { UtensilsCrossed, FlaskConical, ArrowRight } from 'lucide-react';
 import Badge from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 
-type FilterType = 'all' | 'Manufacturing' | 'Retail' | 'Logistics' | 'Healthcare' | 'Finance' | 'Food & Beverage';
+type FilterType = 'all' | 'Food & Beverage';
 
 export default function CaseStudiesClient() {
   const t = useTranslations('caseStudies');
@@ -14,59 +14,19 @@ export default function CaseStudiesClient() {
 
   const filters: { key: FilterType; label: string }[] = [
     { key: 'all', label: t('filterAll') },
-    { key: 'Manufacturing', label: t('filterManufacturing') },
-    { key: 'Retail', label: t('filterRetail') },
-    { key: 'Logistics', label: t('filterLogistics') },
-    { key: 'Healthcare', label: t('filterHealthcare') },
-    { key: 'Finance', label: t('filterFinance') },
     { key: 'Food & Beverage', label: t('filterFoodBeverage') },
   ];
 
   const caseStudies = [
     {
       id: 'case1',
-      tag: 'Manufacturing',
-      icon: Factory,
-      color: 'from-orange-500 to-amber-500',
-      badgeVariant: 'warning' as const,
-    },
-    {
-      id: 'case2',
-      tag: 'Retail',
-      icon: ShoppingBag,
-      color: 'from-pink-500 to-rose-500',
-      badgeVariant: 'primary' as const,
-    },
-    {
-      id: 'case3',
-      tag: 'Logistics',
-      icon: Truck,
-      color: 'from-blue-500 to-indigo-500',
-      badgeVariant: 'default' as const,
-    },
-    {
-      id: 'case4',
-      tag: 'Healthcare',
-      icon: Heart,
-      color: 'from-emerald-500 to-teal-500',
-      badgeVariant: 'success' as const,
-    },
-    {
-      id: 'case5',
-      tag: 'Finance',
-      icon: Landmark,
-      color: 'from-violet-500 to-purple-500',
-      badgeVariant: 'primary' as const,
-    },
-    {
-      id: 'case6',
       tag: 'Food & Beverage',
       icon: UtensilsCrossed,
       color: 'from-lime-500 to-green-500',
       badgeVariant: 'success' as const,
     },
     {
-      id: 'case7',
+      id: 'case2',
       tag: 'Food & Beverage',
       icon: FlaskConical,
       color: 'from-cyan-500 to-teal-500',
@@ -126,9 +86,7 @@ export default function CaseStudiesClient() {
                 <div className="space-y-4 mb-6">
                   <div className="bg-slate-50 rounded-lg p-4">
                     <h4 className="text-sm font-semibold text-slate-900 mb-1">
-                      {t(`${caseStudy.id}.tag`) === 'Manufacturing' ||
-                       t(`${caseStudy.id}.tag`) === 'การผลิต'
-                        ? 'Challenge' : 'Challenge'}
+                      Challenge
                     </h4>
                     <p className="text-sm text-slate-600">{t(`${caseStudy.id}.challenge`)}</p>
                   </div>
