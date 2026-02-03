@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { Menu, X, ChevronDown, Globe } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Navbar() {
   const t = useTranslations('nav');
@@ -47,11 +48,16 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-              <span className="text-white font-bold text-lg">D2</span>
-            </div>
-            <span className="font-bold text-xl text-slate-900">
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/logo-mark.svg"
+              alt="D2Infinite"
+              width={44}
+              height={44}
+              className="group-hover:scale-105 transition-transform"
+              priority
+            />
+            <span className="font-bold text-xl text-slate-900 ml-1">
               D2Infinite
             </span>
           </Link>
