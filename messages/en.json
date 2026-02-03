@@ -230,6 +230,14 @@
       "challenge": "NSL Foods PLC needed a centralized platform to track ESG (Environmental, Social, Governance) activities across operations, ensure compliance with global sustainability standards, and provide clear reporting for committee and board-level decision making.",
       "solution": "We developed a user-friendly web platform with intuitive UX/UI that enables staff to easily input ESG data across all sustainability metrics. The system includes real-time dashboards designed specifically for executive committees and board members to monitor progress and make informed decisions.",
       "results": "Streamlined ESG data collection across the organization, real-time visibility into sustainability KPIs, board-ready reports aligned with global ESG standards, and improved governance transparency for stakeholders."
+    },
+    "case7": {
+      "title": "R&D Performance Executive Dashboard for Food Manufacturer",
+      "tag": "Food & Beverage",
+      "summary": "Developed a real-time executive dashboard to monitor R&D activities, track project milestones, and optimize research investments for a SET100 food and beverage company.",
+      "challenge": "NSL Foods PLC faced challenges in monitoring their substantial R&D expenditures, which represent a significant cost center in the food and beverage industry. Executives needed better visibility into R&D team workloads, project progress, milestone achievements, and overall research performance to make informed investment decisions.",
+      "solution": "We created an intuitive real-time dashboard with user-friendly infographics that executives can easily interpret. The system tracks R&D workload distribution, goal accomplishment rates, milestone progress, and resource utilization across all research projects, enabling data-driven oversight of R&D operations.",
+      "results": "Enhanced executive visibility into R&D performance, improved milestone tracking and accountability, better resource allocation decisions, real-time monitoring of research investments, and clearer communication between R&D teams and executive leadership."
     }
   },
   "about": {
