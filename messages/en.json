@@ -1,0 +1,319 @@
+{
+  "metadata": {
+    "title": "D2Infinite - Decision Support, Delivered",
+    "description": "Infographic reports and real-time dashboards that turn data into executive actions. Data analytics tools through web-application platform development.",
+    "ogTitle": "D2Infinite - Decision Support, Delivered",
+    "ogDescription": "Infographic reports and real-time dashboards that turn data into executive actions."
+  },
+  "nav": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "caseStudies": "Case Studies",
+    "about": "About",
+    "contact": "Contact",
+    "requestDemo": "Request Demo"
+  },
+  "hero": {
+    "headline": "Decision Support, Delivered.",
+    "subheadline": "Infographic reports and real-time dashboards that turn data into executive actions.",
+    "requestDemo": "Request a Demo",
+    "viewSolutions": "View Solutions"
+  },
+  "tagline": "Infinity in Data. Clarity in Decisions.",
+  "socialProof": {
+    "title": "Trusted by Leading Organizations"
+  },
+  "whatWeDo": {
+    "title": "What We Do",
+    "subtitle": "We deliver data analytics tools through custom web-application platforms",
+    "item1": {
+      "title": "Decision-Support Reports",
+      "description": "Executive summaries presented as infographic-style reports that communicate insights at a glance."
+    },
+    "item2": {
+      "title": "Real-Time Dashboards",
+      "description": "One-page live dashboards designed for executives and operations managers to monitor KPIs instantly."
+    },
+    "item3": {
+      "title": "Custom Data Platforms",
+      "description": "End-to-end web application development tailored to your organization's data infrastructure needs."
+    }
+  },
+  "solutions": {
+    "title": "Solutions",
+    "subtitle": "Comprehensive data solutions designed for executive decision-making",
+    "viewAll": "View All Solutions",
+    "infographicReport": {
+      "title": "Infographic Decision Report",
+      "description": "Transform complex data into visually compelling executive summaries that drive action.",
+      "outcomes": "Key Outcomes",
+      "outcome1": "90% faster insight consumption",
+      "outcome2": "Clear visual hierarchy for quick decisions",
+      "outcome3": "Stakeholder-ready presentations",
+      "kpis": "Example KPIs",
+      "kpi1": "Revenue trends & forecasts",
+      "kpi2": "Operational efficiency metrics",
+      "kpi3": "Market share analysis",
+      "deliverables": "Deliverables",
+      "deliverable1": "Weekly/Monthly PDF reports",
+      "deliverable2": "Interactive web dashboards",
+      "deliverable3": "Automated email distribution"
+    },
+    "realtimeDashboard": {
+      "title": "Realtime One-Page Dashboard",
+      "description": "Live monitoring dashboards that give executives instant visibility into operations.",
+      "outcomes": "Key Outcomes",
+      "outcome1": "Real-time operational visibility",
+      "outcome2": "Instant anomaly detection",
+      "outcome3": "Mobile-responsive access",
+      "kpis": "Example KPIs",
+      "kpi1": "Production line status",
+      "kpi2": "Sales pipeline metrics",
+      "kpi3": "Customer service SLAs",
+      "deliverables": "Deliverables",
+      "deliverable1": "Cloud-hosted dashboard",
+      "deliverable2": "Role-based access control",
+      "deliverable3": "Alert notifications"
+    },
+    "dataPlatform": {
+      "title": "Data Platform Development",
+      "description": "Custom web applications that integrate, process, and visualize your organization's data.",
+      "outcomes": "Key Outcomes",
+      "outcome1": "Unified data infrastructure",
+      "outcome2": "Automated data pipelines",
+      "outcome3": "Scalable architecture",
+      "kpis": "Example KPIs",
+      "kpi1": "Data processing throughput",
+      "kpi2": "System uptime metrics",
+      "kpi3": "User adoption rates",
+      "deliverables": "Deliverables",
+      "deliverable1": "Full-stack web application",
+      "deliverable2": "API integrations",
+      "deliverable3": "Documentation & training"
+    },
+    "executiveSupport": {
+      "title": "Executive Decision Support",
+      "description": "Strategic consulting and analytics support for C-level decision-making processes.",
+      "outcomes": "Key Outcomes",
+      "outcome1": "Data-driven strategy alignment",
+      "outcome2": "Reduced decision latency",
+      "outcome3": "Competitive intelligence",
+      "kpis": "Example KPIs",
+      "kpi1": "Strategic initiative tracking",
+      "kpi2": "Board reporting metrics",
+      "kpi3": "Risk assessment scores",
+      "deliverables": "Deliverables",
+      "deliverable1": "Executive briefing sessions",
+      "deliverable2": "Strategic recommendations",
+      "deliverable3": "Quarterly business reviews"
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Our proven process delivers results in four focused phases",
+    "discover": {
+      "title": "Discover",
+      "description": "We analyze your data landscape, understand your decision-making needs, and identify key opportunities."
+    },
+    "build": {
+      "title": "Build",
+      "description": "Our team designs and develops custom solutions tailored to your specific requirements and workflows."
+    },
+    "deploy": {
+      "title": "Deploy",
+      "description": "We launch your solution with comprehensive training and seamless integration into your operations."
+    },
+    "improve": {
+      "title": "Improve",
+      "description": "Continuous optimization based on feedback and evolving business needs ensures lasting value."
+    }
+  },
+  "useCases": {
+    "title": "Featured Use Cases",
+    "subtitle": "See how organizations leverage our solutions",
+    "manufacturing": {
+      "title": "Manufacturing Operations",
+      "description": "Real-time production monitoring with OEE dashboards and quality control analytics."
+    },
+    "retail": {
+      "title": "Retail Analytics",
+      "description": "Sales performance tracking, inventory optimization, and customer behavior insights."
+    },
+    "logistics": {
+      "title": "Logistics & Supply Chain",
+      "description": "Fleet tracking, delivery performance metrics, and supply chain visibility dashboards."
+    },
+    "healthcare": {
+      "title": "Healthcare Management",
+      "description": "Patient flow analytics, resource utilization reports, and compliance monitoring."
+    }
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "subtitle": "Trusted by decision-makers across industries",
+    "testimonial1": {
+      "quote": "D2Infinite transformed how our executive team consumes data. The infographic reports are now our go-to for board presentations.",
+      "author": "Chief Operating Officer",
+      "company": "Manufacturing Enterprise"
+    },
+    "testimonial2": {
+      "quote": "The real-time dashboard gives us visibility we never had before. We can now respond to issues within minutes, not hours.",
+      "author": "Operations Director",
+      "company": "Logistics Company"
+    },
+    "testimonial3": {
+      "quote": "Their team understood our complex data requirements and delivered a platform that exceeded our expectations.",
+      "author": "Head of Analytics",
+      "company": "Financial Services Firm"
+    }
+  },
+  "cta": {
+    "title": "Ready to Transform Your Data into Decisions?",
+    "subtitle": "Let's discuss how we can help your organization make better, faster decisions.",
+    "button": "Get Started Today"
+  },
+  "caseStudies": {
+    "title": "Case Studies",
+    "subtitle": "Real results from real partnerships",
+    "filterAll": "All",
+    "filterManufacturing": "Manufacturing",
+    "filterRetail": "Retail",
+    "filterLogistics": "Logistics",
+    "filterHealthcare": "Healthcare",
+    "filterFinance": "Finance",
+    "readMore": "Read Case Study",
+    "case1": {
+      "title": "Real-Time Production Dashboard for Auto Parts Manufacturer",
+      "tag": "Manufacturing",
+      "summary": "Implemented a live OEE dashboard that reduced downtime by 23% and improved production planning accuracy.",
+      "challenge": "The client struggled with delayed production reports and couldn't identify bottlenecks in real-time.",
+      "solution": "We deployed a real-time dashboard connected to their MES system, providing instant visibility into production lines.",
+      "results": "23% reduction in unplanned downtime, 15% improvement in OEE, and faster response to quality issues."
+    },
+    "case2": {
+      "title": "Executive Infographic Reports for Retail Chain",
+      "tag": "Retail",
+      "summary": "Created automated weekly sales reports that reduced report preparation time by 85% while improving insights.",
+      "challenge": "Manual report creation took 2 days each week and often contained inconsistent data formatting.",
+      "solution": "Automated infographic report generation with real-time data integration from POS and inventory systems.",
+      "results": "85% reduction in report preparation time, consistent formatting, and actionable insights for store managers."
+    },
+    "case3": {
+      "title": "Fleet Performance Analytics Platform",
+      "tag": "Logistics",
+      "summary": "Built a comprehensive logistics platform that improved delivery performance and reduced fuel costs.",
+      "challenge": "Lack of visibility into fleet operations led to inefficient routing and missed delivery windows.",
+      "solution": "Custom platform integrating GPS tracking, route optimization, and driver performance analytics.",
+      "results": "18% reduction in fuel costs, 95% on-time delivery rate, and improved driver accountability."
+    },
+    "case4": {
+      "title": "Healthcare Resource Utilization Dashboard",
+      "tag": "Healthcare",
+      "summary": "Developed a patient flow analytics system that optimized bed utilization and reduced wait times.",
+      "challenge": "Hospital faced challenges with bed management and patient flow, leading to overcrowding.",
+      "solution": "Real-time bed management dashboard with predictive analytics for patient admission patterns.",
+      "results": "30% improvement in bed utilization, 40% reduction in patient wait times, better staff allocation."
+    },
+    "case5": {
+      "title": "Investment Portfolio Analytics for Asset Manager",
+      "tag": "Finance",
+      "summary": "Created a risk analytics dashboard that enhanced portfolio monitoring and client reporting.",
+      "challenge": "Legacy reporting systems couldn't provide timely risk metrics or customized client reports.",
+      "solution": "Modern web platform with real-time risk calculations and automated client report generation.",
+      "results": "Real-time risk monitoring, 90% faster client report generation, improved regulatory compliance."
+    }
+  },
+  "about": {
+    "title": "About D2Infinite",
+    "subtitle": "Empowering organizations with data-driven decision support",
+    "story": {
+      "title": "Our Story",
+      "p1": "D2Infinite was founded with a clear mission: to bridge the gap between complex data and executive decision-making. We recognized that organizations possess vast amounts of data, but often struggle to transform it into actionable insights.",
+      "p2": "Our team combines deep expertise in data analytics, web development, and business intelligence to create solutions that speak the language of decision-makers. We don't just build dashboards; we craft decision support systems that drive real business outcomes.",
+      "p3": "Today, we partner with organizations across manufacturing, retail, logistics, healthcare, and financial services to deliver infographic reports and real-time dashboards that turn data into competitive advantage."
+    },
+    "values": {
+      "title": "Our Values",
+      "clarity": {
+        "title": "Clarity",
+        "description": "We believe in making complex data simple and actionable. Every solution we build prioritizes clear communication."
+      },
+      "precision": {
+        "title": "Precision",
+        "description": "Accuracy is non-negotiable. Our solutions are built on rigorous data validation and quality assurance."
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "We work alongside your team, understanding your challenges and co-creating solutions that fit your needs."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We continuously evolve our approaches to leverage the latest technologies and best practices."
+      }
+    },
+    "team": {
+      "title": "Our Team",
+      "subtitle": "Experts dedicated to your success",
+      "member1": {
+        "name": "Leadership Team",
+        "role": "Strategy & Vision",
+        "bio": "Experienced executives with backgrounds in data analytics, enterprise software, and business consulting."
+      },
+      "member2": {
+        "name": "Development Team",
+        "role": "Engineering & Architecture",
+        "bio": "Full-stack developers and data engineers specializing in modern web technologies and data platforms."
+      },
+      "member3": {
+        "name": "Design Team",
+        "role": "UX & Visual Design",
+        "bio": "Designers focused on creating intuitive interfaces and compelling data visualizations."
+      },
+      "member4": {
+        "name": "Analytics Team",
+        "role": "Data Science & BI",
+        "bio": "Analysts and data scientists who transform raw data into meaningful business insights."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Let's discuss how we can help transform your data into decisions",
+    "info": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "openMaps": "Open in Google Maps"
+    },
+    "form": {
+      "title": "Send us a Message",
+      "name": "Full Name",
+      "namePlaceholder": "Your name",
+      "email": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "company": "Company",
+      "companyPlaceholder": "Your company name",
+      "role": "Role",
+      "rolePlaceholder": "Your role or title",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project or inquiry...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you — we'll contact you shortly.",
+      "errors": {
+        "nameRequired": "Name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "messageRequired": "Message is required"
+      }
+    }
+  },
+  "footer": {
+    "description": "Data analytics tools through web-application platform development. Infographic reports and real-time dashboards for executive decision-making.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "copyright": "© {year} D2Infinite Co.,Ltd. All rights reserved.",
+    "address": "422/147 Panya Indra Rd., Samwa-Tawantok, Khet Klong Samwa, Bangkok 10510, Thailand"
+  }
+}
