@@ -305,7 +305,8 @@
         "nameRequired": "กรุณากรอกชื่อ",
         "emailRequired": "กรุณากรอกอีเมล",
         "emailInvalid": "กรุณากรอกอีเมลที่ถูกต้อง",
-        "messageRequired": "กรุณากรอกข้อความ"
+        "messageRequired": "กรุณากรอกข้อความ",
+        "submitFailed": "ไม่สามารถส่งข้อความได้ กรุณาลองใหม่อีกครั้ง"
       }
     }
   },
