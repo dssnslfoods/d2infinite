@@ -181,6 +181,7 @@
     "filterLogistics": "Logistics",
     "filterHealthcare": "Healthcare",
     "filterFinance": "Finance",
+    "filterFoodBeverage": "Food & Beverage",
     "readMore": "Read Case Study",
     "case1": {
       "title": "Real-Time Production Dashboard for Auto Parts Manufacturer",
@@ -221,6 +222,14 @@
       "challenge": "Legacy reporting systems couldn't provide timely risk metrics or customized client reports.",
       "solution": "Modern web platform with real-time risk calculations and automated client report generation.",
       "results": "Real-time risk monitoring, 90% faster client report generation, improved regulatory compliance."
+    },
+    "case6": {
+      "title": "ESG Tracking & Dashboard for SET100 Food Company",
+      "tag": "Food & Beverage",
+      "summary": "Implemented a comprehensive ESG tracking system and executive dashboard for a leading SET100 food and beverage company to monitor sustainability activities under global standards.",
+      "challenge": "NSL Foods PLC needed a centralized platform to track ESG (Environmental, Social, Governance) activities across operations, ensure compliance with global sustainability standards, and provide clear reporting for committee and board-level decision making.",
+      "solution": "We developed a user-friendly web platform with intuitive UX/UI that enables staff to easily input ESG data across all sustainability metrics. The system includes real-time dashboards designed specifically for executive committees and board members to monitor progress and make informed decisions.",
+      "results": "Streamlined ESG data collection across the organization, real-time visibility into sustainability KPIs, board-ready reports aligned with global ESG standards, and improved governance transparency for stakeholders."
     }
   },
   "about": {
