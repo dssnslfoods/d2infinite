@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Factory, ShoppingBag, Truck, Heart, Landmark, ArrowRight } from 'lucide-react';
+import { Factory, ShoppingBag, Truck, Heart, Landmark, UtensilsCrossed, FlaskConical, ArrowRight } from 'lucide-react';
 import Badge from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 
-type FilterType = 'all' | 'Manufacturing' | 'Retail' | 'Logistics' | 'Healthcare' | 'Finance';
+type FilterType = 'all' | 'Manufacturing' | 'Retail' | 'Logistics' | 'Healthcare' | 'Finance' | 'Food & Beverage';
 
 export default function CaseStudiesClient() {
   const t = useTranslations('caseStudies');
@@ -19,6 +19,7 @@ export default function CaseStudiesClient() {
     { key: 'Logistics', label: t('filterLogistics') },
     { key: 'Healthcare', label: t('filterHealthcare') },
     { key: 'Finance', label: t('filterFinance') },
+    { key: 'Food & Beverage', label: t('filterFoodBeverage') },
   ];
 
   const caseStudies = [
@@ -56,6 +57,20 @@ export default function CaseStudiesClient() {
       icon: Landmark,
       color: 'from-violet-500 to-purple-500',
       badgeVariant: 'primary' as const,
+    },
+    {
+      id: 'case6',
+      tag: 'Food & Beverage',
+      icon: UtensilsCrossed,
+      color: 'from-lime-500 to-green-500',
+      badgeVariant: 'success' as const,
+    },
+    {
+      id: 'case7',
+      tag: 'Food & Beverage',
+      icon: FlaskConical,
+      color: 'from-cyan-500 to-teal-500',
+      badgeVariant: 'default' as const,
     },
   ];
 

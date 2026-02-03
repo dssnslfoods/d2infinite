@@ -34,6 +34,7 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -66,21 +67,36 @@ export default function ContactForm() {
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate form submission (no backend)
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      role: '',
-      message: '',
-    });
+      setIsSuccess(true);
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        role: '',
+        message: '',
+      });
+    } catch {
+      setSubmitError(tErrors('submitFailed'));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -233,6 +249,14 @@ export default function ContactForm() {
             </p>
           )}
         </div>
+
+        {/* Submit Error */}
+        {submitError && (
+          <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700">
+            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+            <span>{submitError}</span>
+          </div>
+        )}
 
         {/* Submit */}
         <Button
