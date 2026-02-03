@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <!-- D2 Text with gradient -->
+  <defs>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="50%" style="stop-color:#0891b2"/>
+      <stop offset="100%" style="stop-color:#0e7490"/>
+    </linearGradient>
+    <linearGradient id="swooshGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="swooshGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#cbd5e1"/>
+      <stop offset="100%" style="stop-color:#94a3b8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer swoosh (silver/gray) -->
+  <path d="M45 5 C70 5, 85 20, 85 35 C85 15, 65 0, 40 5 C20 10, 8 25, 10 45"
+        stroke="url(#swooshGradient2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Inner swoosh (cyan) -->
+  <path d="M15 55 C-5 40, 0 15, 25 8 C45 2, 70 10, 75 30 C80 50, 60 60, 35 55 C15 50, 5 35, 15 20"
+        stroke="url(#swooshGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- D2 Text -->
+  <text x="18" y="42" font-family="Arial Black, Arial, sans-serif" font-size="28" font-weight="900" fill="url(#textGradient)">D2</text>
+
+  <!-- INFINITE Text -->
+  <text x="95" y="28" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2" fill="url(#textGradient)">INFINITE</text>
+
+  <!-- Tagline -->
+  <text x="95" y="45" font-family="Arial, sans-serif" font-size="8" fill="#64748b">Infinity in Data. Clarity in Decisions.</text>
+</svg>
