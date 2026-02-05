@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Factory, ShoppingBag, Truck, Heart } from 'lucide-react';
+import { Leaf, FlaskConical, Gauge, Wallet } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function UseCasesSection() {
@@ -9,28 +9,28 @@ export default function UseCasesSection() {
 
   const useCases = [
     {
-      icon: Factory,
-      key: 'manufacturing',
-      gradient: 'from-orange-500 to-amber-500',
-      bg: 'bg-orange-50',
+      icon: Leaf,
+      key: 'esgPlatform',
+      gradient: 'from-emerald-500 to-teal-500',
+      bg: 'bg-emerald-50',
     },
     {
-      icon: ShoppingBag,
-      key: 'retail',
-      gradient: 'from-pink-500 to-rose-500',
-      bg: 'bg-pink-50',
-    },
-    {
-      icon: Truck,
-      key: 'logistics',
+      icon: FlaskConical,
+      key: 'oneRd',
       gradient: 'from-blue-500 to-indigo-500',
       bg: 'bg-blue-50',
     },
     {
-      icon: Heart,
-      key: 'healthcare',
-      gradient: 'from-emerald-500 to-teal-500',
-      bg: 'bg-emerald-50',
+      icon: Gauge,
+      key: 'oeeFnb',
+      gradient: 'from-orange-500 to-amber-500',
+      bg: 'bg-orange-50',
+    },
+    {
+      icon: Wallet,
+      key: 'payrollth',
+      gradient: 'from-violet-500 to-purple-500',
+      bg: 'bg-violet-50',
     },
   ];
 

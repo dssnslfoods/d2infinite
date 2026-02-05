@@ -133,23 +133,23 @@
     }
   },
   "useCases": {
-    "title": "Featured Use Cases",
-    "subtitle": "See how organizations leverage our solutions",
-    "manufacturing": {
-      "title": "Manufacturing Operations",
-      "description": "Real-time production monitoring with OEE dashboards and quality control analytics."
+    "title": "Our Products",
+    "subtitle": "Purpose-built platforms that turn operational data into executive decisions",
+    "esgPlatform": {
+      "title": "ESG Platform",
+      "description": "A centralized web platform for tracking Environmental, Social, and Governance activities across your organization. Collect sustainability data, monitor KPIs in real time, and generate board-ready reports aligned with global ESG standards."
     },
-    "retail": {
-      "title": "Retail Analytics",
-      "description": "Sales performance tracking, inventory optimization, and customer behavior insights."
+    "oneRd": {
+      "title": "ONE RD — R&D Platform",
+      "description": "An executive dashboard that gives leadership full visibility into R&D operations. Track project milestones, workload distribution, goal accomplishment rates, and research investment — all through intuitive real-time infographics."
     },
-    "logistics": {
-      "title": "Logistics & Supply Chain",
-      "description": "Fleet tracking, delivery performance metrics, and supply chain visibility dashboards."
+    "oeeFnb": {
+      "title": "OEE for Food & Beverage Industry",
+      "description": "A real-time Overall Equipment Effectiveness dashboard tailored for food and beverage manufacturers. Monitor production line performance, identify bottlenecks, reduce unplanned downtime, and improve quality control across your plants."
     },
-    "healthcare": {
-      "title": "Healthcare Management",
-      "description": "Patient flow analytics, resource utilization reports, and compliance monitoring."
+    "payrollth": {
+      "title": "PayrollTH Software",
+      "description": "A secure, fast web-based payroll system built for Thai SMEs. An affordable alternative to expensive accounting software and OEM systems — with built-in confidentiality to keep payroll data separated from other business units."
     }
   },
   "testimonials": {
