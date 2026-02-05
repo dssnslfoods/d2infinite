@@ -4,5 +4,4 @@ export { default as WhatWeDoSection } from './WhatWeDoSection';
 export { default as SolutionsPreviewSection } from './SolutionsPreviewSection';
 export { default as HowItWorksSection } from './HowItWorksSection';
 export { default as UseCasesSection } from './UseCasesSection';
-export { default as TestimonialsSection } from './TestimonialsSection';
 export { default as CTASection } from './CTASection';

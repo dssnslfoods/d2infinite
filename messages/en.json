@@ -152,25 +152,6 @@
       "description": "A secure, fast web-based payroll system built for Thai SMEs. An affordable alternative to expensive accounting software and OEM systems — with built-in confidentiality to keep payroll data separated from other business units."
     }
   },
-  "testimonials": {
-    "title": "What Our Clients Say",
-    "subtitle": "Trusted by decision-makers across industries",
-    "testimonial1": {
-      "quote": "D2Infinite transformed how our executive team consumes data. The infographic reports are now our go-to for board presentations.",
-      "author": "Chief Operating Officer",
-      "company": "Manufacturing Enterprise"
-    },
-    "testimonial2": {
-      "quote": "The real-time dashboard gives us visibility we never had before. We can now respond to issues within minutes, not hours.",
-      "author": "Operations Director",
-      "company": "Logistics Company"
-    },
-    "testimonial3": {
-      "quote": "Their team understood our complex data requirements and delivered a platform that exceeded our expectations.",
-      "author": "Head of Analytics",
-      "company": "Financial Services Firm"
-    }
-  },
   "cta": {
     "title": "Ready to Transform Your Data into Decisions?",
     "subtitle": "Let's discuss how we can help your organization make better, faster decisions.",

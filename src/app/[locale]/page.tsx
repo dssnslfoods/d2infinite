@@ -6,7 +6,6 @@ import {
   SolutionsPreviewSection,
   HowItWorksSection,
   UseCasesSection,
-  TestimonialsSection,
   CTASection,
 } from '@/components/home';
 
@@ -26,7 +25,6 @@ export default async function HomePage({
       <SolutionsPreviewSection />
       <HowItWorksSection />
       <UseCasesSection />
-      <TestimonialsSection />
       <CTASection />
     </>
   );
