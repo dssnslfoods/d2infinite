@@ -43,6 +43,10 @@
     "title": "Solutions",
     "subtitle": "Comprehensive data solutions designed for executive decision-making",
     "viewAll": "View All Solutions",
+    "heroHighlight1": "Real-Time Dashboards",
+    "heroHighlight2": "Infographic Reports",
+    "heroHighlight3": "Custom Data Platforms",
+    "heroHighlight4": "Executive Decision Support",
     "infographicReport": {
       "title": "Infographic Decision Report",
       "description": "Transform complex data into visually compelling executive summaries that drive action.",
@@ -129,23 +133,23 @@
     }
   },
   "useCases": {
-    "title": "Featured Use Cases",
-    "subtitle": "See how organizations leverage our solutions",
-    "manufacturing": {
-      "title": "Manufacturing Operations",
-      "description": "Real-time production monitoring with OEE dashboards and quality control analytics."
+    "title": "Our Products",
+    "subtitle": "Purpose-built platforms that turn operational data into executive decisions",
+    "esgPlatform": {
+      "title": "ESG Platform",
+      "description": "A centralized web platform for tracking Environmental, Social, and Governance activities across your organization. Collect sustainability data, monitor KPIs in real time, and generate board-ready reports aligned with global ESG standards."
     },
-    "retail": {
-      "title": "Retail Analytics",
-      "description": "Sales performance tracking, inventory optimization, and customer behavior insights."
+    "oneRd": {
+      "title": "ONE RD — R&D Platform",
+      "description": "An executive dashboard that gives leadership full visibility into R&D operations. Track project milestones, workload distribution, goal accomplishment rates, and research investment — all through intuitive real-time infographics."
     },
-    "logistics": {
-      "title": "Logistics & Supply Chain",
-      "description": "Fleet tracking, delivery performance metrics, and supply chain visibility dashboards."
+    "oeeFnb": {
+      "title": "OEE for Food & Beverage Industry",
+      "description": "A real-time Overall Equipment Effectiveness dashboard tailored for food and beverage manufacturers. Monitor production line performance, identify bottlenecks, reduce unplanned downtime, and improve quality control across your plants."
     },
-    "healthcare": {
-      "title": "Healthcare Management",
-      "description": "Patient flow analytics, resource utilization reports, and compliance monitoring."
+    "payrollth": {
+      "title": "PayrollTH Software",
+      "description": "A secure, fast web-based payroll system built for Thai SMEs. An affordable alternative to expensive accounting software and OEM systems — with built-in confidentiality to keep payroll data separated from other business units."
     }
   },
   "testimonials": {
@@ -176,6 +180,7 @@
     "title": "Case Studies",
     "subtitle": "Real results from real partnerships",
     "readMore": "Read Case Study",
+    "contactUs": "Contact Us for Details",
     "case1": {
       "title": "ESG Tracking & Dashboard for SET100 Food Company",
       "tag": "Food & Beverage",
@@ -191,6 +196,14 @@
       "challenge": "NSL Foods PLC faced challenges in monitoring their substantial R&D expenditures, which represent a significant cost center in the food and beverage industry. Executives needed better visibility into R&D team workloads, project progress, milestone achievements, and overall research performance to make informed investment decisions.",
       "solution": "We created an intuitive real-time dashboard with user-friendly infographics that executives can easily interpret. The system tracks R&D workload distribution, goal accomplishment rates, milestone progress, and resource utilization across all research projects, enabling data-driven oversight of R&D operations.",
       "results": "Enhanced executive visibility into R&D performance, improved milestone tracking and accountability, better resource allocation decisions, real-time monitoring of research investments, and clearer communication between R&D teams and executive leadership."
+    },
+    "case3": {
+      "title": "PayrollTH — Payroll System for SMEs",
+      "tag": "Software Product",
+      "summary": "A secure, fast web-based payroll system built for Thai SMEs who need an affordable alternative to expensive accounting software — or who need to keep payroll separate and confidential from other business units.",
+      "challenge": "Many SMEs in Thailand face a tough choice: pay for expensive accounting software or OEM systems that are over-engineered and costly to scale, or manage payroll manually with all its risks. Businesses that need payroll confidentiality — separating sensitive salary data from other departments — have even fewer options at a reasonable price.",
+      "solution": "PayrollTH is a purpose-built web application developed using full-stack programming technologies well-known for security and fast response times. It gives SMEs a lightweight, affordable payroll platform without the overhead of a full accounting suite. Payroll data stays isolated and confidential, accessible only to authorized personnel.",
+      "results": "Affordable payroll management without expensive OEM licenses, confidential payroll data separated from other business systems, fast and secure web-based access from anywhere, and a scalable solution that grows with your business. Contact us to learn more."
     }
   },
   "about": {

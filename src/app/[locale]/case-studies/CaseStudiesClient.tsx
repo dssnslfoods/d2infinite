@@ -1,7 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { UtensilsCrossed, FlaskConical, ArrowRight } from 'lucide-react';
+import { UtensilsCrossed, FlaskConical, Wallet, ArrowRight } from 'lucide-react';
+import { Link } from '@/i18n/routing';
 import Badge from '@/components/ui/Badge';
 import { Card } from '@/components/ui/Card';
 
@@ -20,6 +21,13 @@ export default function CaseStudiesClient() {
       icon: FlaskConical,
       color: 'from-cyan-500 to-teal-500',
       badgeVariant: 'default' as const,
+    },
+    {
+      id: 'case3',
+      icon: Wallet,
+      color: 'from-violet-500 to-purple-500',
+      badgeVariant: 'primary' as const,
+      contactLink: true,
     },
   ];
 
@@ -66,10 +74,20 @@ export default function CaseStudiesClient() {
                   </div>
                 </div>
 
-                <button className="inline-flex items-center text-cyan-600 font-medium text-sm hover:text-cyan-700 transition-colors group/btn">
-                  {t('readMore')}
-                  <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                {'contactLink' in caseStudy && caseStudy.contactLink ? (
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center text-cyan-600 font-medium text-sm hover:text-cyan-700 transition-colors group/btn"
+                  >
+                    {t('contactUs')}
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                ) : (
+                  <button className="inline-flex items-center text-cyan-600 font-medium text-sm hover:text-cyan-700 transition-colors group/btn">
+                    {t('readMore')}
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover/btn:translate-x-1 transition-transform" />
+                  </button>
+                )}
               </Card>
             );
           })}
