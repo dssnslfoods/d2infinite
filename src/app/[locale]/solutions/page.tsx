@@ -1,6 +1,5 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { FileBarChart2, LayoutDashboard, Server, Users, CheckCircle2, Target, Package } from 'lucide-react';
-import SectionHeader from '@/components/ui/SectionHeader';
+import { FileBarChart2, LayoutDashboard, Server, Users, CheckCircle2, Target, Package, BarChart3, PieChart, TrendingUp, Activity } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { CTASection } from '@/components/home';
 
@@ -43,10 +42,117 @@ export default async function SolutionsPage({
 async function SolutionsHero({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: 'solutions' });
 
+  const highlights = [
+    { icon: LayoutDashboard, label: t('heroHighlight1'), color: 'text-cyan-500' },
+    { icon: FileBarChart2, label: t('heroHighlight2'), color: 'text-blue-500' },
+    { icon: Server, label: t('heroHighlight3'), color: 'text-indigo-500' },
+    { icon: Users, label: t('heroHighlight4'), color: 'text-violet-500' },
+  ];
+
   return (
-    <section className="pt-20 pb-16 lg:pt-28 lg:pb-20 bg-gradient-to-b from-slate-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title={t('title')} subtitle={t('subtitle')} />
+    <section className="pt-20 pb-8 lg:pt-24 lg:pb-12 bg-gradient-to-br from-slate-50 via-white to-cyan-50/30 overflow-hidden relative">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 grid-pattern opacity-30" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          {/* Left: Text content */}
+          <div className="flex-1 text-center lg:text-left">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-5">
+              {t('title')}
+            </h1>
+            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+              {t('subtitle')}
+            </p>
+
+            {/* Feature highlights */}
+            <div className="grid grid-cols-2 gap-3 max-w-md mx-auto lg:mx-0">
+              {highlights.map((h) => {
+                const Icon = h.icon;
+                return (
+                  <div
+                    key={h.label}
+                    className="flex items-center gap-2.5 bg-white rounded-lg px-3 py-2.5 shadow-soft border border-slate-100"
+                  >
+                    <Icon className={`w-5 h-5 ${h.color} flex-shrink-0`} />
+                    <span className="text-sm font-medium text-slate-700">{h.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right: Dashboard illustration */}
+          <div className="flex-shrink-0 w-full max-w-md lg:max-w-lg">
+            <div className="relative">
+              {/* Main dashboard card */}
+              <div className="bg-white rounded-2xl shadow-soft-lg border border-slate-200/80 p-5 relative z-10">
+                {/* Browser chrome */}
+                <div className="flex items-center gap-1.5 mb-4">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                  <div className="ml-3 h-5 bg-slate-100 rounded-full flex-1 max-w-[180px]" />
+                </div>
+
+                {/* Stats row */}
+                <div className="grid grid-cols-3 gap-3 mb-4">
+                  <div className="bg-gradient-to-br from-cyan-50 to-cyan-100/50 rounded-lg p-3">
+                    <TrendingUp className="w-4 h-4 text-cyan-500 mb-1" />
+                    <div className="text-lg font-bold text-slate-800">94%</div>
+                    <div className="text-[10px] text-slate-500 leading-tight">Efficiency</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-lg p-3">
+                    <Activity className="w-4 h-4 text-blue-500 mb-1" />
+                    <div className="text-lg font-bold text-slate-800">2.4k</div>
+                    <div className="text-[10px] text-slate-500 leading-tight">Data Points</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-indigo-50 to-indigo-100/50 rounded-lg p-3">
+                    <PieChart className="w-4 h-4 text-indigo-500 mb-1" />
+                    <div className="text-lg font-bold text-slate-800">12</div>
+                    <div className="text-[10px] text-slate-500 leading-tight">KPIs</div>
+                  </div>
+                </div>
+
+                {/* Chart area */}
+                <div className="bg-slate-50 rounded-lg p-4 mb-3">
+                  <div className="flex items-end justify-between gap-1.5 h-20">
+                    {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((h, i) => (
+                      <div
+                        key={i}
+                        className="flex-1 rounded-t bg-gradient-to-t from-cyan-500 to-blue-400 opacity-70"
+                        style={{ height: `${h}%` }}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Table rows */}
+                <div className="space-y-2">
+                  {[
+                    { w: '60%', accent: 'bg-cyan-200' },
+                    { w: '80%', accent: 'bg-blue-200' },
+                    { w: '45%', accent: 'bg-indigo-200' },
+                  ].map((row, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div className={`w-2 h-2 rounded-full ${row.accent}`} />
+                      <div className="h-2 bg-slate-100 rounded flex-1" style={{ maxWidth: row.w }} />
+                      <div className="h-2 w-10 bg-slate-100 rounded" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Floating accent card - top right */}
+              <div className="absolute -top-3 -right-3 bg-white rounded-xl shadow-soft border border-slate-100 p-3 z-20">
+                <BarChart3 className="w-6 h-6 text-cyan-500" />
+              </div>
+
+              {/* Background glow */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-cyan-200/20 to-blue-200/20 rounded-3xl -z-10 blur-xl" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

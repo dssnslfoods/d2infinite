@@ -43,6 +43,10 @@
     "title": "Solutions",
     "subtitle": "Comprehensive data solutions designed for executive decision-making",
     "viewAll": "View All Solutions",
+    "heroHighlight1": "Real-Time Dashboards",
+    "heroHighlight2": "Infographic Reports",
+    "heroHighlight3": "Custom Data Platforms",
+    "heroHighlight4": "Executive Decision Support",
     "infographicReport": {
       "title": "Infographic Decision Report",
       "description": "Transform complex data into visually compelling executive summaries that drive action.",
