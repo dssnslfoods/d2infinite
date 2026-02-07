@@ -44,18 +44,13 @@ export default function HeroSection() {
               <Button href="/contact" size="lg" icon={ArrowRight}>
                 {t('requestDemo')}
               </Button>
-             <Button
-  href="/solutions"
-  variant="outline"
-  size="lg"
-  className="
-    bg-transparent
-    !border-white/30
-    !text-white
-    hover:!bg-white/10
-    hover:!border-white/50
-  "
->
+
+              <Button
+                href="/solutions"
+                variant="outline"
+                size="lg"
+                className="!bg-transparent !border-white/30 !text-white hover:!bg-white/10 hover:!border-white/50"
+              >
                 <Play className="w-5 h-5 mr-2" />
                 {t('viewSolutions')}
               </Button>
@@ -78,12 +73,14 @@ export default function HeroSection() {
                 {/* Glass overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent rounded-2xl" />
               </div>
+
               {/* Floating card */}
               <div className="absolute -bottom-8 left-4 w-48 bg-white rounded-xl p-4 shadow-2xl animate-float-delayed">
                 <div className="text-xs text-slate-500 mb-1">Real-time KPI</div>
                 <div className="text-2xl font-bold text-slate-900">+16.8%</div>
                 <div className="text-xs text-emerald-600 font-medium">Efficiency</div>
               </div>
+
               {/* Floating photo accent */}
               <div className="absolute -top-6 -right-6 w-28 h-28 rounded-xl border border-white/20 shadow-xl overflow-hidden animate-float-delayed">
                 <Image
