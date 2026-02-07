@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { FileBarChart, Activity, Database } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { CardWithIcon } from '@/components/ui/Card';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function WhatWeDoSection() {
   const t = useTranslations('whatWeDo');
@@ -29,16 +30,19 @@ export default function WhatWeDoSection() {
   return (
     <section className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title={t('title')} subtitle={t('subtitle')} />
+        <ScrollReveal>
+          <SectionHeader title={t('title')} subtitle={t('subtitle')} />
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {items.map((item, index) => (
-            <CardWithIcon
-              key={index}
-              icon={item.icon}
-              title={item.title}
-              description={item.description}
-            />
+            <ScrollReveal key={index} delay={index * 150}>
+              <CardWithIcon
+                icon={item.icon}
+                title={item.title}
+                description={item.description}
+              />
+            </ScrollReveal>
           ))}
         </div>
       </div>

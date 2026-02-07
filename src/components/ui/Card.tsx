@@ -17,7 +17,7 @@ export function Card({ children, className = '', hover = true, padding = 'md' }:
   return (
     <div
       className={`bg-white rounded-xl border border-slate-100 shadow-soft ${
-        hover ? 'hover:shadow-soft-lg hover:border-slate-200 transition-all duration-300' : ''
+        hover ? 'card-lift hover:shadow-soft-lg hover:border-slate-200' : ''
       } ${paddings[padding]} ${className}`}
     >
       {children}
