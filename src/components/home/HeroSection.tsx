@@ -21,66 +21,69 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-4xl">
-          {/* Tagline badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-8">
-            <span className="text-cyan-300 text-sm font-medium">{tagline}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Text content */}
+          <div>
+            {/* Tagline badge */}
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 mb-8">
+              <span className="text-cyan-300 text-sm font-medium">{tagline}</span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight">
+              {t('headline')}
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-lg sm:text-xl lg:text-xl text-slate-300 mb-10 leading-relaxed">
+              {t('subheadline')}
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button href="/contact" size="lg" icon={ArrowRight}>
+                {t('requestDemo')}
+              </Button>
+              <Button href="/solutions" variant="outline" size="lg" className="!border-white/30 !text-white hover:!bg-white/10 hover:!border-white/50">
+                <Play className="w-5 h-5 mr-2" />
+                {t('viewSolutions')}
+              </Button>
+            </div>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-            {t('headline')}
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-lg sm:text-xl lg:text-2xl text-slate-300 mb-10 max-w-2xl leading-relaxed">
-            {t('subheadline')}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button href="/contact" size="lg" icon={ArrowRight}>
-              {t('requestDemo')}
-            </Button>
-            <Button href="/solutions" variant="outline" size="lg" className="!border-white/30 !text-white hover:!bg-white/10 hover:!border-white/50">
-              <Play className="w-5 h-5 mr-2" />
-              {t('viewSolutions')}
-            </Button>
-          </div>
-        </div>
-
-        {/* Stats or visual element */}
-        <div className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2">
-          <div className="relative">
-            {/* Dashboard photo */}
-            <div className="w-[500px] h-[350px] rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
-              <Image
-                src="/images/hero-data-analytics.jpg"
-                alt="Data analytics dashboard"
-                width={500}
-                height={350}
-                className="object-cover w-full h-full"
-                priority
-              />
-              {/* Glass overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent rounded-2xl" />
-            </div>
-            {/* Floating card */}
-            <div className="absolute -bottom-8 -left-12 w-48 bg-white rounded-xl p-4 shadow-2xl">
-              <div className="text-xs text-slate-500 mb-1">Real-time KPI</div>
-              <div className="text-2xl font-bold text-slate-900">+23.5%</div>
-              <div className="text-xs text-emerald-600 font-medium">Efficiency</div>
-            </div>
-            {/* Floating photo accent */}
-            <div className="absolute -top-6 -right-6 w-28 h-28 rounded-xl border border-white/20 shadow-xl overflow-hidden">
-              <Image
-                src="/images/data-visualization.jpg"
-                alt="Data visualization"
-                width={112}
-                height={112}
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-cyan-500/20" />
+          {/* Right: Dashboard photo */}
+          <div className="hidden lg:block">
+            <div className="relative">
+              {/* Dashboard photo */}
+              <div className="w-full aspect-[4/3] rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
+                <Image
+                  src="/images/hero-data-analytics.jpg"
+                  alt="Data analytics dashboard"
+                  width={600}
+                  height={450}
+                  className="object-cover w-full h-full"
+                  priority
+                />
+                {/* Glass overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent rounded-2xl" />
+              </div>
+              {/* Floating card */}
+              <div className="absolute -bottom-6 -left-6 w-48 bg-white rounded-xl p-4 shadow-2xl">
+                <div className="text-xs text-slate-500 mb-1">Real-time KPI</div>
+                <div className="text-2xl font-bold text-slate-900">+23.5%</div>
+                <div className="text-xs text-emerald-600 font-medium">Efficiency</div>
+              </div>
+              {/* Floating photo accent */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 rounded-xl border border-white/20 shadow-xl overflow-hidden">
+                <Image
+                  src="/images/data-visualization.jpg"
+                  alt="Data visualization"
+                  width={96}
+                  height={96}
+                  className="object-cover w-full h-full"
+                />
+                <div className="absolute inset-0 bg-cyan-500/20" />
+              </div>
             </div>
           </div>
         </div>
