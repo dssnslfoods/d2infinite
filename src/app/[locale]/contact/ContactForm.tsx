@@ -78,8 +78,10 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        throw new Error(data.error || 'Failed to send message');
       }
 
       setIsSuccess(true);
@@ -92,8 +94,9 @@ export default function ContactForm() {
         role: '',
         message: '',
       });
-    } catch {
-      setSubmitError(tErrors('submitFailed'));
+    } catch (err) {
+      const message = err instanceof Error ? err.message : tErrors('submitFailed');
+      setSubmitError(message);
     } finally {
       setIsSubmitting(false);
     }
