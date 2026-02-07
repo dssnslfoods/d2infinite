@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const { error } = await resend.emails.send({
       from: 'D2Infinite Contact Form <onboarding@resend.dev>',
-      to: ['arnon@def2design.com'],
+      to: ['arpaket@gmail.com'],
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `
