@@ -44,7 +44,18 @@ export default function HeroSection() {
               <Button href="/contact" size="lg" icon={ArrowRight}>
                 {t('requestDemo')}
               </Button>
-              <Button href="/solutions" variant="outline" size="lg" className="!border-white/30 !text-white hover:!bg-white/10 hover:!border-white/50">
+             <Button
+  href="/solutions"
+  variant="outline"
+  size="lg"
+  className="
+    bg-transparent
+    !border-white/30
+    !text-white
+    hover:!bg-white/10
+    hover:!border-white/50
+  "
+>
                 <Play className="w-5 h-5 mr-2" />
                 {t('viewSolutions')}
               </Button>
@@ -70,7 +81,7 @@ export default function HeroSection() {
               {/* Floating card */}
               <div className="absolute -bottom-8 left-4 w-48 bg-white rounded-xl p-4 shadow-2xl animate-float-delayed">
                 <div className="text-xs text-slate-500 mb-1">Real-time KPI</div>
-                <div className="text-2xl font-bold text-slate-900">+23.5%</div>
+                <div className="text-2xl font-bold text-slate-900">+16.8%</div>
                 <div className="text-xs text-emerald-600 font-medium">Efficiency</div>
               </div>
               {/* Floating photo accent */}
