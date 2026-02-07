@@ -74,7 +74,7 @@ ${message}
     if (error) {
       console.error('Resend error:', error);
       return NextResponse.json(
-        { error: 'Failed to send email' },
+        { error: error.message || 'Failed to send email' },
         { status: 500 }
       );
     }
@@ -82,8 +82,9 @@ ${message}
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Contact form error:', error);
+    const message = error instanceof Error ? error.message : 'Internal server error';
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: message },
       { status: 500 }
     );
   }
