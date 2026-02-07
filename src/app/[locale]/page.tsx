@@ -4,6 +4,8 @@ import {
   SocialProofSection,
   WhatWeDoSection,
   SolutionsPreviewSection,
+  PhotoShowcase,
+  PhotoBanner,
   HowItWorksSection,
   UseCasesSection,
   TestimonialsSection,
@@ -24,6 +26,8 @@ export default async function HomePage({
       <SocialProofSection />
       <WhatWeDoSection />
       <SolutionsPreviewSection />
+      <PhotoShowcase />
+      <PhotoBanner />
       <HowItWorksSection />
       <UseCasesSection />
       <TestimonialsSection />

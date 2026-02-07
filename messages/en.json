@@ -112,6 +112,22 @@
       "deliverable3": "Quarterly business reviews"
     }
   },
+  "photoShowcase": {
+    "title": "Our Work in Action",
+    "subtitle": "See how we transform data into powerful visual insights for leading organizations",
+    "photo1Alt": "Data analytics dashboard with charts and KPIs",
+    "photo1Label": "Executive Analytics Dashboard",
+    "photo2Alt": "Multi-screen data visualization workstation",
+    "photo2Label": "Real-Time Data Monitoring",
+    "photo3Alt": "Business strategy meeting with data presentation",
+    "photo3Label": "Executive Decision Support",
+    "photo4Alt": "Team collaborating on data solutions",
+    "photo4Label": "Collaborative Data Platform Development"
+  },
+  "photoBanner": {
+    "title": "Technology That Drives Decisions",
+    "subtitle": "Our platforms process millions of data points in real time, delivering clarity to executives who need it most."
+  },
   "howItWorks": {
     "title": "How It Works",
     "subtitle": "Our proven process delivers results in four focused phases",

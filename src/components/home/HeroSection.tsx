@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Play } from 'lucide-react';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 
 export default function HeroSection() {
@@ -51,33 +52,35 @@ export default function HeroSection() {
         {/* Stats or visual element */}
         <div className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2">
           <div className="relative">
-            {/* Dashboard preview mockup */}
-            <div className="w-[500px] h-[350px] bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 shadow-2xl">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-3 h-3 rounded-full bg-red-400" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                <div className="w-3 h-3 rounded-full bg-green-400" />
-              </div>
-              <div className="space-y-4">
-                <div className="h-8 bg-white/10 rounded-lg w-3/4" />
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="h-24 bg-gradient-to-br from-cyan-500/30 to-cyan-600/30 rounded-lg" />
-                  <div className="h-24 bg-white/10 rounded-lg" />
-                  <div className="h-24 bg-white/10 rounded-lg" />
-                </div>
-                <div className="h-32 bg-white/10 rounded-lg" />
-                <div className="flex gap-3">
-                  <div className="h-4 bg-cyan-400/40 rounded w-1/4" />
-                  <div className="h-4 bg-white/10 rounded w-1/3" />
-                  <div className="h-4 bg-white/10 rounded w-1/5" />
-                </div>
-              </div>
+            {/* Dashboard photo */}
+            <div className="w-[500px] h-[350px] rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
+              <Image
+                src="/images/hero-data-analytics.jpg"
+                alt="Data analytics dashboard"
+                width={500}
+                height={350}
+                className="object-cover w-full h-full"
+                priority
+              />
+              {/* Glass overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent rounded-2xl" />
             </div>
             {/* Floating card */}
             <div className="absolute -bottom-8 -left-12 w-48 bg-white rounded-xl p-4 shadow-2xl">
               <div className="text-xs text-slate-500 mb-1">Real-time KPI</div>
               <div className="text-2xl font-bold text-slate-900">+23.5%</div>
               <div className="text-xs text-emerald-600 font-medium">Efficiency</div>
+            </div>
+            {/* Floating photo accent */}
+            <div className="absolute -top-6 -right-6 w-28 h-28 rounded-xl border border-white/20 shadow-xl overflow-hidden">
+              <Image
+                src="/images/data-visualization.jpg"
+                alt="Data visualization"
+                width={112}
+                height={112}
+                className="object-cover w-full h-full"
+              />
+              <div className="absolute inset-0 bg-cyan-500/20" />
             </div>
           </div>
         </div>
