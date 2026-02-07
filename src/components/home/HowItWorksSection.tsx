@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Search, Wrench, Rocket, TrendingUp } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export default function HowItWorksSection() {
   const t = useTranslations('howItWorks');
@@ -33,7 +34,9 @@ export default function HowItWorksSection() {
   return (
     <section className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader title={t('title')} subtitle={t('subtitle')} />
+        <ScrollReveal>
+          <SectionHeader title={t('title')} subtitle={t('subtitle')} />
+        </ScrollReveal>
 
         <div className="relative">
           {/* Connecting line (desktop) */}
@@ -43,35 +46,37 @@ export default function HowItWorksSection() {
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <div key={step.key} className="relative">
-                  {/* Step card */}
-                  <div className="text-center lg:text-center">
-                    {/* Icon with number */}
-                    <div className="relative inline-flex mb-6">
-                      <div className="w-20 h-20 bg-white rounded-2xl shadow-soft-lg flex items-center justify-center relative z-10">
-                        <Icon className="w-9 h-9 text-cyan-600" />
+                <ScrollReveal key={step.key} delay={index * 200}>
+                  <div className="relative">
+                    {/* Step card */}
+                    <div className="text-center lg:text-center">
+                      {/* Icon with number */}
+                      <div className="relative inline-flex mb-6">
+                        <div className="w-20 h-20 bg-white rounded-2xl shadow-soft-lg flex items-center justify-center relative z-10 hover:scale-105 transition-transform duration-300">
+                          <Icon className="w-9 h-9 text-cyan-600" />
+                        </div>
+                        <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center text-white text-sm font-bold shadow-md z-20">
+                          {step.number}
+                        </div>
                       </div>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center text-white text-sm font-bold shadow-md z-20">
-                        {step.number}
-                      </div>
+
+                      {/* Content */}
+                      <h3 className="text-xl font-bold text-slate-900 mb-3">
+                        {t(`${step.key}.title`)}
+                      </h3>
+                      <p className="text-slate-600 leading-relaxed">
+                        {t(`${step.key}.description`)}
+                      </p>
                     </div>
 
-                    {/* Content */}
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">
-                      {t(`${step.key}.title`)}
-                    </h3>
-                    <p className="text-slate-600 leading-relaxed">
-                      {t(`${step.key}.description`)}
-                    </p>
+                    {/* Arrow connector (mobile/tablet) */}
+                    {index < steps.length - 1 && (
+                      <div className="lg:hidden flex justify-center my-4">
+                        <div className="w-0.5 h-8 bg-cyan-200" />
+                      </div>
+                    )}
                   </div>
-
-                  {/* Arrow connector (mobile/tablet) */}
-                  {index < steps.length - 1 && (
-                    <div className="lg:hidden flex justify-center my-4">
-                      <div className="w-0.5 h-8 bg-cyan-200" />
-                    </div>
-                  )}
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
