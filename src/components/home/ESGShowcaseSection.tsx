@@ -12,17 +12,17 @@ const tabs = [
   {
     key: 'dashboard',
     icon: BarChart3,
-    image: '/images/products/esg-dashboard.png',
+    image: '/images/products/esg-performance-dashboard.png',
   },
   {
     key: 'reports',
     icon: FileText,
-    image: '/images/products/esg-reports.png',
+    image: '/images/products/trend-chart-analytics.png',
   },
   {
     key: 'platform',
     icon: LogIn,
-    image: '/images/products/esg-login.png',
+    image: '/images/products/esg-smart-performance-login.png',
   },
 ];
 
