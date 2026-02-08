@@ -8,6 +8,7 @@ import {
   PhotoBanner,
   HowItWorksSection,
   UseCasesSection,
+  ESGShowcaseSection,
   TestimonialsSection,
   CTASection,
 } from '@/components/home';
@@ -30,6 +31,7 @@ export default async function HomePage({
       <PhotoBanner />
       <HowItWorksSection />
       <UseCasesSection />
+      <ESGShowcaseSection />
       <TestimonialsSection />
       <CTASection />
     </>
