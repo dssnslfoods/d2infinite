@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Leaf, BarChart3, FileText, LogIn, CheckCircle2, ArrowRight } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ScrollReveal from '@/components/ui/ScrollReveal';
@@ -102,12 +103,13 @@ export default function ESGShowcaseSection() {
                       activeTab === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={tab.image}
                       alt={t(`tabs.${tab.key}Alt`)}
+                      fill
                       className="w-full h-full object-cover object-top"
-                      loading={index === 0 ? 'eager' : 'lazy'}
+                      priority={index === 0}
+                      sizes="(max-width: 1024px) 100vw, 60vw"
                     />
                   </div>
                 ))}
