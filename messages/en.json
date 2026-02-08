@@ -168,6 +168,37 @@
       "description": "A secure, fast web-based payroll system built for Thai SMEs. An affordable alternative to expensive accounting software and OEM systems — with built-in confidentiality to keep payroll data separated from other business units."
     }
   },
+  "esgShowcase": {
+    "badge": "Featured Product",
+    "title": "ESG Smart Performance",
+    "subtitle": "A comprehensive sustainability platform that helps organizations track, measure, and report on Environmental, Social, and Governance performance in real time.",
+    "tabs": {
+      "dashboard": "Dashboard",
+      "dashboardAlt": "ESG Platform admin dashboard showing total entries, hourly activity chart, and daily trend analytics",
+      "dashboardCaption": "Executive dashboard with real-time KPIs, activity trends, and submission tracking",
+      "reports": "ESG Reports",
+      "reportsAlt": "ESG dimensions overview showing Environment, Social, and Governance completion scores",
+      "reportsCaption": "ESG Dimensions overview with completion tracking across all sustainability pillars",
+      "platform": "Platform",
+      "platformAlt": "ESG Smart Performance login page with sustainability branding",
+      "platformCaption": "Branded platform experience with secure authentication and role-based access"
+    },
+    "features": {
+      "title": "Key Capabilities",
+      "subtitle": "Built for enterprise sustainability teams",
+      "feature1": "Track Environmental, Social, and Governance metrics across all business units in one centralized platform",
+      "feature2": "Real-time dashboards with hourly activity monitoring and daily trend analytics for executives",
+      "feature3": "Automated ESG dimension scoring with completion tracking (Environment, Social, Governance)",
+      "feature4": "Board-ready reports aligned with global sustainability standards (GRI, SASB, TCFD)",
+      "feature5": "Role-based access control with audit logging for full data governance compliance"
+    },
+    "client": {
+      "label": "Deployed for",
+      "name": "NSL Foods Public Company Limited",
+      "description": "SET100-listed food & beverage company"
+    },
+    "cta": "View Case Study"
+  },
   "testimonials": {
     "title": "What Our Clients Say",
     "subtitle": "Trusted by decision-makers across industries",
