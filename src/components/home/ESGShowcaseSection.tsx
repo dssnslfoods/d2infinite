@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { Leaf, BarChart3, FileText, LogIn, CheckCircle2, ArrowRight } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import SmartImage from '@/components/ui/SmartImage';
 import { Link } from '@/i18n/routing';
 
 const tabs = [
@@ -103,7 +103,7 @@ export default function ESGShowcaseSection() {
                       activeTab === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
                   >
-                    <Image
+                    <SmartImage
                       src={tab.image}
                       alt={t(`tabs.${tab.key}Alt`)}
                       fill

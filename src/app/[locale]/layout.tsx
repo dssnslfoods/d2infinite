@@ -80,9 +80,15 @@ export default async function LocaleLayout({
       </head>
       <body className={`font-sans antialiased bg-white text-slate-900 ${locale === 'th' ? 'font-thai' : ''}`}>
         <NextIntlClientProvider messages={messages}>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+          >
+            Skip to main content
+          </a>
           <div className="flex flex-col min-h-screen">
             <Navbar />
-            <main className="flex-grow">{children}</main>
+            <main id="main-content" className="flex-grow">{children}</main>
             <Footer />
           </div>
           <OrganizationSchema locale={locale} />

@@ -2,8 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Play } from 'lucide-react';
-import Image from 'next/image';
 import Button from '@/components/ui/Button';
+import SmartImage from '@/components/ui/SmartImage';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
@@ -62,7 +62,7 @@ export default function HeroSection() {
             <div className="relative animate-float">
               {/* Dashboard photo */}
               <div className="w-full h-[350px] rounded-2xl border border-white/10 shadow-2xl overflow-hidden animate-pulse-glow">
-                <Image
+                <SmartImage
                   src="/images/hero-data-analytics.jpg"
                   alt="Data analytics dashboard"
                   width={500}
@@ -83,7 +83,7 @@ export default function HeroSection() {
 
               {/* Floating photo accent */}
               <div className="absolute -top-6 -right-6 w-28 h-28 rounded-xl border border-white/20 shadow-xl overflow-hidden animate-float-delayed">
-                <Image
+                <SmartImage
                   src="/images/data-visualization.jpg"
                   alt="Data visualization"
                   width={112}

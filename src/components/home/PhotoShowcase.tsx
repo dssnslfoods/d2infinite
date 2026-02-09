@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import SectionHeader from '@/components/ui/SectionHeader';
+import SmartImage from '@/components/ui/SmartImage';
 
 export default function PhotoShowcase() {
   const t = useTranslations('photoShowcase');
@@ -46,7 +46,7 @@ export default function PhotoShowcase() {
               className={`group relative overflow-hidden rounded-2xl ${photo.span}`}
             >
               <div className={`relative w-full ${index === 0 ? 'h-64 md:h-full min-h-[300px] md:min-h-[400px]' : 'h-48 md:h-52'}`}>
-                <Image
+                <SmartImage
                   src={photo.src}
                   alt={photo.alt}
                   fill

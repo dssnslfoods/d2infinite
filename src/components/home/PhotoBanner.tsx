@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
+import SmartImage from '@/components/ui/SmartImage';
 
 export default function PhotoBanner() {
   const t = useTranslations('photoBanner');
@@ -9,7 +9,7 @@ export default function PhotoBanner() {
   return (
     <section className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
       {/* Background photo */}
-      <Image
+      <SmartImage
         src="/images/tech-abstract.jpg"
         alt=""
         fill
