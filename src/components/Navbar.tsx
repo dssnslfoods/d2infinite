@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { Menu, X, ChevronDown, Globe } from 'lucide-react';
@@ -14,6 +14,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const langMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,29 @@ export default function Navbar() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
+        setLangMenuOpen(false);
+      }
+    };
+
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setLangMenuOpen(false);
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEsc);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEsc);
+    };
   }, []);
 
   const switchLocale = (newLocale: 'en' | 'th') => {
@@ -68,6 +92,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={pathname === link.href ? 'page' : undefined}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   pathname === link.href
                     ? 'text-cyan-600 bg-cyan-50'
@@ -82,20 +107,27 @@ export default function Navbar() {
           {/* Right side: Language switcher + CTA */}
           <div className="hidden lg:flex items-center space-x-4">
             {/* Language Switcher */}
-            <div className="relative">
+            <div className="relative" ref={langMenuRef}>
               <button
+                type="button"
                 onClick={() => setLangMenuOpen(!langMenuOpen)}
                 className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
                 aria-label="Switch language"
+                aria-expanded={langMenuOpen}
+                aria-controls="language-menu"
+                aria-haspopup="menu"
               >
                 <Globe className="w-4 h-4" />
                 <span>{locale.toUpperCase()}</span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${langMenuOpen ? 'rotate-180' : ''}`} />
               </button>
               {langMenuOpen && (
-                <div className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-soft-lg border border-slate-100 py-1 z-50">
+                <div id="language-menu" role="menu" className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-soft-lg border border-slate-100 py-1 z-50">
                   <button
+                    type="button"
                     onClick={() => switchLocale('en')}
+                    role="menuitemradio"
+                    aria-checked={locale === 'en'}
                     className={`w-full px-4 py-2 text-left text-sm hover:bg-slate-50 transition-colors ${
                       locale === 'en' ? 'text-cyan-600 font-medium' : 'text-slate-600'
                     }`}
@@ -103,7 +135,10 @@ export default function Navbar() {
                     English
                   </button>
                   <button
+                    type="button"
                     onClick={() => switchLocale('th')}
+                    role="menuitemradio"
+                    aria-checked={locale === 'th'}
                     className={`w-full px-4 py-2 text-left text-sm hover:bg-slate-50 transition-colors ${
                       locale === 'th' ? 'text-cyan-600 font-medium' : 'text-slate-600'
                     }`}
@@ -125,9 +160,12 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <button
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -135,13 +173,14 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden py-4 border-t border-slate-100">
+          <div id="mobile-navigation" className="lg:hidden py-4 border-t border-slate-100">
             <div className="flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
+                  aria-current={pathname === link.href ? 'page' : undefined}
                   className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
                     pathname === link.href
                       ? 'text-cyan-600 bg-cyan-50'
@@ -155,6 +194,7 @@ export default function Navbar() {
               <div className="flex items-center space-x-2 px-4 py-2">
                 <span className="text-sm text-slate-500">{locale === 'en' ? 'Language:' : 'ภาษา:'}</span>
                 <button
+                  type="button"
                   onClick={() => switchLocale('en')}
                   className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
                     locale === 'en'
@@ -165,6 +205,7 @@ export default function Navbar() {
                   EN
                 </button>
                 <button
+                  type="button"
                   onClick={() => switchLocale('th')}
                   className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
                     locale === 'th'
