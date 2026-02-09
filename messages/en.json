@@ -197,7 +197,26 @@
       "name": "NSL Foods Public Company Limited",
       "description": "SET100-listed food & beverage company"
     },
-    "cta": "View Case Study"
+    "cta": "See Snapshot",
+    "snapshot": {
+      "tagline": "Sustainability Management Platform",
+      "description": "ESG Smart Performance is a comprehensive web-based platform designed for organizations to centralize their Environmental, Social, and Governance data. The system enables staff to input ESG activities while providing real-time executive dashboards and board-ready reports aligned with global sustainability standards such as GRI, SASB, and TCFD.",
+      "tab1": "Dashboard",
+      "tab2": "ESG Reports",
+      "tab3": "Platform",
+      "alt1": "ESG executive dashboard with real-time KPIs, activity trends, and submission tracking",
+      "alt2": "ESG dimensions overview showing Environment, Social, and Governance completion scores",
+      "alt3": "ESG Smart Performance login page with branded sustainability interface",
+      "caption1": "Executive dashboard with real-time KPIs, hourly activity monitoring, and daily trend analytics",
+      "caption2": "ESG Dimensions overview with automated scoring and completion tracking across all pillars",
+      "caption3": "Branded platform with secure authentication and role-based access for enterprise teams",
+      "highlight1Title": "Real-Time Analytics",
+      "highlight1Desc": "Live dashboards with hourly activity monitoring and daily trend analytics for executive decision-making.",
+      "highlight2Title": "ESG Compliance",
+      "highlight2Desc": "Automated ESG dimension scoring aligned with global standards — GRI, SASB, and TCFD frameworks.",
+      "highlight3Title": "Enterprise Ready",
+      "highlight3Desc": "Role-based access control, audit logging, and board-ready reports for full governance compliance."
+    }
   },
   "testimonials": {
     "title": "What Our Clients Say",

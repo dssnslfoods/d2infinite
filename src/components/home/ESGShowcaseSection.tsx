@@ -1,12 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Leaf, BarChart3, FileText, LogIn, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Leaf, BarChart3, FileText, LogIn, CheckCircle2, Eye, X } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import { Link } from '@/i18n/routing';
 
 const tabs = [
   {
@@ -26,9 +25,43 @@ const tabs = [
   },
 ];
 
+const snapshotImages = [
+  {
+    key: 'dashboard',
+    image: '/images/products/esg-performance-dashboard.png',
+  },
+  {
+    key: 'reports',
+    image: '/images/products/trend-chart-analytics.png',
+  },
+  {
+    key: 'platform',
+    image: '/images/products/esg-smart-performance-login.png',
+  },
+];
+
 export default function ESGShowcaseSection() {
   const t = useTranslations('esgShowcase');
   const [activeTab, setActiveTab] = useState(0);
+  const [showSnapshot, setShowSnapshot] = useState(false);
+  const [snapshotIndex, setSnapshotIndex] = useState(0);
+
+  const closeSnapshot = useCallback(() => {
+    setShowSnapshot(false);
+  }, []);
+
+  useEffect(() => {
+    if (!showSnapshot) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeSnapshot();
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showSnapshot, closeSnapshot]);
 
   return (
     <section className="py-20 lg:py-28 bg-slate-900 relative overflow-hidden">
@@ -157,17 +190,141 @@ export default function ESGShowcaseSection() {
               </div>
 
               {/* CTA */}
-              <Link
-                href="/case-studies"
-                className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold py-3 px-6 rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
+              <button
+                onClick={() => { setSnapshotIndex(0); setShowSnapshot(true); }}
+                className="mt-6 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold py-3 px-6 rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 cursor-pointer"
               >
+                <Eye className="w-4 h-4" />
                 {t('cta')}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              </button>
             </div>
           </ScrollReveal>
         </div>
       </div>
+
+      {/* Snapshot Modal */}
+      {showSnapshot && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+          onClick={closeSnapshot}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+
+          {/* Modal content */}
+          <div
+            className="relative bg-slate-900 border border-slate-700/50 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={closeSnapshot}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 hover:text-white transition-colors cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Header */}
+            <div className="p-6 sm:p-8 pb-0">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center">
+                  <Leaf className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white">{t('title')}</h3>
+                  <p className="text-emerald-400 text-sm font-medium">{t('snapshot.tagline')}</p>
+                </div>
+              </div>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mt-4">
+                {t('snapshot.description')}
+              </p>
+            </div>
+
+            {/* Screenshot tabs */}
+            <div className="p-6 sm:p-8">
+              <div className="flex gap-2 mb-4">
+                {snapshotImages.map((img, index) => (
+                  <button
+                    key={img.key}
+                    onClick={() => setSnapshotIndex(index)}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer ${
+                      snapshotIndex === index
+                        ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
+                        : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200'
+                    }`}
+                  >
+                    {t(`snapshot.tab${index + 1}`)}
+                  </button>
+                ))}
+              </div>
+
+              {/* Screenshot display */}
+              <div className="rounded-xl overflow-hidden border border-slate-700/50 shadow-xl">
+                <div className="bg-slate-800 px-4 py-3 flex items-center gap-3">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                  </div>
+                  <div className="flex-1 bg-slate-700 rounded-md px-3 py-1 text-xs text-slate-400 font-mono">
+                    esg-performance.d2infinite.com
+                  </div>
+                </div>
+                <div className="relative aspect-[16/9] bg-slate-900">
+                  {snapshotImages.map((img, index) => (
+                    <div
+                      key={img.key}
+                      className={`absolute inset-0 transition-opacity duration-500 ${
+                        snapshotIndex === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                      }`}
+                    >
+                      <Image
+                        src={img.image}
+                        alt={t(`snapshot.alt${index + 1}`)}
+                        fill
+                        className="w-full h-full object-cover object-top"
+                        sizes="(max-width: 1024px) 100vw, 80vw"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Caption for current screenshot */}
+              <p className="text-slate-400 text-sm mt-3 text-center">
+                {t(`snapshot.caption${snapshotIndex + 1}`)}
+              </p>
+            </div>
+
+            {/* Highlights */}
+            <div className="px-6 sm:px-8 pb-6 sm:pb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-400 mb-2" />
+                    <h4 className="text-white font-semibold text-sm mb-1">
+                      {t(`snapshot.highlight${i}Title`)}
+                    </h4>
+                    <p className="text-slate-400 text-xs leading-relaxed">
+                      {t(`snapshot.highlight${i}Desc`)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Client info */}
+              <div className="mt-6 flex items-center gap-3 bg-slate-800/30 border border-slate-700/30 rounded-xl p-4">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+                <p className="text-slate-400 text-sm">
+                  <span className="text-slate-500">{t('client.label')}:</span>{' '}
+                  <span className="text-white font-medium">{t('client.name')}</span>{' '}
+                  <span className="text-slate-500">— {t('client.description')}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
