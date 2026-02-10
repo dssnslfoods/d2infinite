@@ -73,14 +73,15 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <Image
-              src="/logo-mark.svg"
-              alt="D2Infinite"
-              width={44}
-              height={44}
-              className="group-hover:scale-105 transition-transform"
-              priority
-            />
+            <div className="relative w-10 h-10 lg:w-12 lg:h-12 group-hover:scale-105 transition-transform">
+              <Image
+                src="/logo-mark.svg"
+                alt="D2Infinite"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
             <span className="font-bold text-xl text-slate-900 ml-1">
               D2Infinite
             </span>
