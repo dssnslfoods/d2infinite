@@ -31,8 +31,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if API key is configured
-    if (!process.env.RESEND_API_KEY) {
+    const apiKey = process.env.RESEND_API_KEY;
+    const fromAddress = process.env.CONTACT_FROM_EMAIL ?? 'D2Infinite Contact Form <no-reply@d2infinite.com>';
+    const toAddress = process.env.CONTACT_TO_EMAIL ?? 'contact@d2infinite.com';
+
+    if (!apiKey) {
       console.error('RESEND_API_KEY is not configured');
       return NextResponse.json(
         { error: 'Email service not configured' },
@@ -40,13 +43,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Initialize Resend with API key
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(apiKey);
 
-    // Send email using Resend
     const { error } = await resend.emails.send({
-      from: 'D2Infinite Contact Form <onboarding@resend.dev>',
-      to: ['arpaket@gmail.com'],
+      from: fromAddress,
+      to: toAddress.split(',').map((s) => s.trim()).filter(Boolean),
       replyTo: email,
       subject: `New Contact Form Submission from ${name}`,
       html: `
