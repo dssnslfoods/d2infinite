@@ -1,16 +1,12 @@
 import { setRequestLocale } from 'next-intl/server';
 import {
   HeroSection,
-  SocialProofSection,
-  WhatWeDoSection,
-  SolutionsPreviewSection,
-  PhotoShowcase,
-  PhotoBanner,
-  HowItWorksSection,
-  UseCasesSection,
-  ESGShowcaseSection,
-  TestimonialsSection,
-  CTASection,
+  TrustedBy,
+  Capabilities,
+  HowItWorks,
+  ESGFeatured,
+  Testimonials,
+  CTABand,
 } from '@/components/home';
 
 export default async function HomePage({
@@ -22,18 +18,14 @@ export default async function HomePage({
   setRequestLocale(locale);
 
   return (
-    <>
+    <div className="page-enter">
       <HeroSection />
-      <SocialProofSection />
-      <WhatWeDoSection />
-      <SolutionsPreviewSection />
-      <PhotoShowcase />
-      <PhotoBanner />
-      <HowItWorksSection />
-      <UseCasesSection />
-      <ESGShowcaseSection />
-      <TestimonialsSection />
-      <CTASection />
-    </>
+      <TrustedBy />
+      <Capabilities />
+      <HowItWorks />
+      <ESGFeatured />
+      <Testimonials />
+      <CTABand />
+    </div>
   );
 }

@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "D2Infinite - Decision Support, Delivered",
-    "description": "Infographic reports and real-time dashboards that turn data into executive actions. Data analytics tools through web-application platform development.",
-    "ogTitle": "D2Infinite - Decision Support, Delivered",
-    "ogDescription": "Infographic reports and real-time dashboards that turn data into executive actions."
+    "title": "D2Infinite — Clarity at executive velocity",
+    "description": "D2Infinite engineers bespoke data platforms and infographic intelligence for leaders who refuse to wait for answers. Decisions move at the speed of thought.",
+    "ogTitle": "D2Infinite — Decision intelligence for modern leadership",
+    "ogDescription": "Bespoke data platforms, infographic intelligence, and realtime executive dashboards."
   },
   "nav": {
     "home": "Home",
@@ -13,338 +13,335 @@
     "contact": "Contact",
     "requestDemo": "Request Demo"
   },
-  "hero": {
-    "headline": "Decision Support, Delivered.",
-    "subheadline": "Infographic reports and real-time dashboards that turn data into executive actions.",
-    "requestDemo": "Request a Demo",
-    "viewSolutions": "View Solutions"
-  },
   "tagline": "Infinity in Data. Clarity in Decisions.",
-  "socialProof": {
-    "title": "Trusted by Leading Organizations"
+  "common": {
+    "live": "LIVE",
+    "watch": "Watch the Platform",
+    "requestDemo": "Request a Demo",
+    "bookBriefing": "Book an Executive Briefing",
+    "exploreSolutions": "Explore the Platform",
+    "viewCase": "View Case Study",
+    "readCase": "Read Case Study",
+    "contactUs": "Contact Us for Details"
   },
-  "whatWeDo": {
-    "title": "What We Do",
-    "subtitle": "We deliver data analytics tools through custom web-application platforms",
-    "item1": {
-      "title": "Decision-Support Reports",
-      "description": "Executive summaries presented as infographic-style reports that communicate insights at a glance."
+  "home": {
+    "hero": {
+      "eyebrow": "Decision Intelligence Platform",
+      "headlinePre": "Clarity at",
+      "headlineEm": "executive",
+      "headlinePost": "velocity.",
+      "lead": "D2Infinite engineers bespoke data platforms and infographic intelligence for leaders who refuse to wait for answers. Decisions move at the speed of thought.",
+      "trust1": "SOC 2 · ISO 27001",
+      "trust2": "100+ executive deployments"
     },
-    "item2": {
-      "title": "Real-Time Dashboards",
-      "description": "One-page live dashboards designed for executives and operations managers to monitor KPIs instantly."
+    "trustedBy": "Trusted by leadership at",
+    "capabilities": {
+      "eyebrow": "Capabilities",
+      "titlePre": "One platform.",
+      "titleEm": "Three modes of clarity.",
+      "subtitle": "We deliver decision intelligence in the forms executives actually use — ready when the boardroom asks, accurate when the stakes are highest.",
+      "items": {
+        "infographic": {
+          "title": "Infographic Decision Reports",
+          "desc": "Executive briefs that say what matters and skip what doesn't. PDF, web, or boardroom deck — automated weekly or on demand.",
+          "stat1": "90% faster insight consumption",
+          "stat2": "Stakeholder-ready format"
+        },
+        "realtime": {
+          "title": "Realtime Executive Dashboards",
+          "desc": "One-page command centers wired into your data sources. Live KPIs, anomaly alerts, drill-downs — all under your brand.",
+          "stat1": "Sub-minute refresh",
+          "stat2": "Mobile-first executive UX"
+        },
+        "platform": {
+          "title": "Custom Data Platforms",
+          "desc": "Full-stack web applications that integrate, process, and visualize your organization's data — engineered to scale.",
+          "stat1": "Cloud-native architecture",
+          "stat2": "Built around your workflow"
+        }
+      }
     },
-    "item3": {
-      "title": "Custom Data Platforms",
-      "description": "End-to-end web application development tailored to your organization's data infrastructure needs."
+    "howItWorks": {
+      "eyebrow": "The Engagement",
+      "titlePre": "From",
+      "titleEm": "scattered data",
+      "titlePost": "to standing decisions — in four phases.",
+      "phases": {
+        "p1": { "n": "01", "title": "Discover", "desc": "We map your decision landscape — who decides, what they ask, where data lives, and where it breaks." },
+        "p2": { "n": "02", "title": "Architect", "desc": "We design the platform: data model, pipelines, dashboards, and the visual language your executives respond to." },
+        "p3": { "n": "03", "title": "Deploy", "desc": "We ship in weeks, not quarters. Phased rollouts with executive onboarding, integrations, and governance baked in." },
+        "p4": { "n": "04", "title": "Compound", "desc": "Continuous optimization based on real usage. Every release sharpens the decisions your organization makes." }
+      }
+    },
+    "esg": {
+      "badge": "FEATURED PRODUCT",
+      "title": "ESG Smart Performance",
+      "desc": "The sustainability command center for SET-listed leadership. Track, audit, and report Environmental, Social, and Governance metrics in real time — board-ready, framework-aligned, auditor-approved.",
+      "features": {
+        "f1": "Unified ESG data lake with one-click attestation",
+        "f2": "GRI, SASB, TCFD frameworks pre-wired",
+        "f3": "Real-time committee reporting and audit trails",
+        "f4": "Board-grade infographic exports"
+      },
+      "mockTitle": "ESG Smart Performance",
+      "quarter": "Q3 2026",
+      "envLabel": "Environmental",
+      "socLabel": "Social",
+      "govLabel": "Governance",
+      "carbonLabel": "Carbon Intensity (tCO₂e / $M)",
+      "carbonDelta": "↓ 18% YoY",
+      "socialLabel": "Social Index",
+      "socialDelta": "↑ on track"
+    },
+    "testimonials": {
+      "eyebrow": "Voice of Leadership",
+      "title": "What executives say after six weeks.",
+      "items": {
+        "t1": {
+          "quote": "D2Infinite turned a fragmented data org into a single decision surface. Our weekly executive review now takes 22 minutes — down from a two-hour scramble.",
+          "role": "Chief Operating Officer",
+          "context": "Manufacturing · 8,400 employees"
+        },
+        "t2": {
+          "quote": "The dashboards aren't dashboards — they're decisions waiting to be made. We act faster, with more conviction, and we no longer argue about whose number is right.",
+          "role": "Operations Director",
+          "context": "Logistics · Pan-ASEAN"
+        },
+        "t3": {
+          "quote": "I've worked with the global vendors. D2Infinite ships in weeks what they quote in years — and the result actually fits the way our board thinks.",
+          "role": "Head of Analytics",
+          "context": "Financial Services"
+        }
+      }
+    },
+    "cta": {
+      "eyebrow": "Let's talk",
+      "titlePre": "Ready to make",
+      "titleEm": "faster, sharper decisions?",
+      "lead": "30 minutes with our team and you'll know exactly how the platform fits your organization. No deck. No slides. Real product, real data."
+    },
+    "dashboard": {
+      "label": "Executive Overview · Live",
+      "kpi1": "Revenue YTD",
+      "kpi2": "Active Markets",
+      "kpi3": "Decision Velocity",
+      "trajectory": "Revenue Trajectory",
+      "channelMix": "Channel Mix",
+      "sla": "SLA",
+      "slaNote": "↑ ahead of target",
+      "q3Title": "Q3 Forecast",
+      "q3Updated": "Updated 14s ago",
+      "q3Note": "Above plan · 92% confidence",
+      "sourcesTitle": "Data sources synced"
     }
   },
   "solutions": {
-    "title": "Solutions",
-    "subtitle": "Comprehensive data solutions designed for executive decision-making",
-    "viewAll": "View All Solutions",
-    "heroHighlight1": "Real-Time Dashboards",
-    "heroHighlight2": "Infographic Reports",
-    "heroHighlight3": "Custom Data Platforms",
-    "heroHighlight4": "Executive Decision Support",
-    "infographicReport": {
-      "title": "Infographic Decision Report",
-      "description": "Transform complex data into visually compelling executive summaries that drive action.",
+    "eyebrow": "Solutions",
+    "headlinePre": "Four products.",
+    "headlineEm": "One decision intelligence stack.",
+    "lead": "Each solution stands alone or composes with the others. Mix the layers your leadership needs today — extend the stack as your organization scales.",
+    "labels": {
       "outcomes": "Key Outcomes",
-      "outcome1": "90% faster insight consumption",
-      "outcome2": "Clear visual hierarchy for quick decisions",
-      "outcome3": "Stakeholder-ready presentations",
       "kpis": "Example KPIs",
-      "kpi1": "Revenue trends & forecasts",
-      "kpi2": "Operational efficiency metrics",
-      "kpi3": "Market share analysis",
-      "deliverables": "Deliverables",
-      "deliverable1": "Weekly/Monthly PDF reports",
-      "deliverable2": "Interactive web dashboards",
-      "deliverable3": "Automated email distribution"
+      "deliverables": "Deliverables"
     },
-    "realtimeDashboard": {
-      "title": "Realtime One-Page Dashboard",
-      "description": "Live monitoring dashboards that give executives instant visibility into operations.",
-      "outcomes": "Key Outcomes",
-      "outcome1": "Real-time operational visibility",
-      "outcome2": "Instant anomaly detection",
-      "outcome3": "Mobile-responsive access",
-      "kpis": "Example KPIs",
-      "kpi1": "Production line status",
-      "kpi2": "Sales pipeline metrics",
-      "kpi3": "Customer service SLAs",
-      "deliverables": "Deliverables",
-      "deliverable1": "Cloud-hosted dashboard",
-      "deliverable2": "Role-based access control",
-      "deliverable3": "Alert notifications"
-    },
-    "dataPlatform": {
-      "title": "Data Platform Development",
-      "description": "Custom web applications that integrate, process, and visualize your organization's data.",
-      "outcomes": "Key Outcomes",
-      "outcome1": "Unified data infrastructure",
-      "outcome2": "Automated data pipelines",
-      "outcome3": "Scalable architecture",
-      "kpis": "Example KPIs",
-      "kpi1": "Data processing throughput",
-      "kpi2": "System uptime metrics",
-      "kpi3": "User adoption rates",
-      "deliverables": "Deliverables",
-      "deliverable1": "Full-stack web application",
-      "deliverable2": "API integrations",
-      "deliverable3": "Documentation & training"
-    },
-    "executiveSupport": {
-      "title": "Executive Decision Support",
-      "description": "Strategic consulting and analytics support for C-level decision-making processes.",
-      "outcomes": "Key Outcomes",
-      "outcome1": "Data-driven strategy alignment",
-      "outcome2": "Reduced decision latency",
-      "outcome3": "Competitive intelligence",
-      "kpis": "Example KPIs",
-      "kpi1": "Strategic initiative tracking",
-      "kpi2": "Board reporting metrics",
-      "kpi3": "Risk assessment scores",
-      "deliverables": "Deliverables",
-      "deliverable1": "Executive briefing sessions",
-      "deliverable2": "Strategic recommendations",
-      "deliverable3": "Quarterly business reviews"
+    "items": {
+      "infographic": {
+        "title": "Infographic Decision Reports",
+        "tagline": "Boardroom-ready briefs in your brand language",
+        "desc": "We turn complex operational, financial, and ESG data into visually compelling executive summaries — formats that say everything that matters in 90 seconds.",
+        "outcomes": ["90% faster insight consumption", "Clear visual hierarchy for quick decisions", "Stakeholder-ready presentations"],
+        "kpis": ["Revenue trends & forecasts", "Operational efficiency metrics", "Market share & competitive positioning"],
+        "deliverables": ["Weekly / monthly PDF reports", "Interactive web dashboards", "Automated email distribution"]
+      },
+      "realtime": {
+        "title": "Realtime One-Page Dashboards",
+        "tagline": "A single command center your CEO actually opens",
+        "desc": "Live monitoring dashboards engineered for executives — one page, one glance, total visibility. Mobile-first, anomaly-aware, role-gated.",
+        "outcomes": ["Real-time operational visibility", "Instant anomaly detection & alerts", "Mobile-responsive executive UX"],
+        "kpis": ["Production line status", "Sales pipeline & conversion", "Customer service SLAs"],
+        "deliverables": ["Cloud-hosted dashboard", "Role-based access control", "Push & email alert notifications"]
+      },
+      "platform": {
+        "title": "Custom Data Platforms",
+        "tagline": "Full-stack web applications, built around your decisions",
+        "desc": "Bespoke web applications that integrate, process, and visualize your organization's data — engineered to scale with your business and govern itself.",
+        "outcomes": ["Unified data infrastructure", "Automated ETL & data pipelines", "Scalable cloud-native architecture"],
+        "kpis": ["Data processing throughput", "System uptime & SLA metrics", "User adoption & engagement"],
+        "deliverables": ["Full-stack web application", "API integrations & SSO", "Documentation, training, runbooks"]
+      },
+      "support": {
+        "title": "Executive Decision Support",
+        "tagline": "Analytics consulting, embedded in your leadership cadence",
+        "desc": "Strategic consulting and analytics support for C-level decision-making. We sit alongside your leadership team and translate complexity into clarity.",
+        "outcomes": ["Data-driven strategy alignment", "Reduced decision latency", "Competitive intelligence rituals"],
+        "kpis": ["Strategic initiative tracking", "Board reporting metrics", "Risk assessment scores"],
+        "deliverables": ["Executive briefing sessions", "Strategic recommendations", "Quarterly business reviews"]
+      }
     }
   },
-  "photoShowcase": {
-    "title": "Our Work in Action",
-    "subtitle": "See how we transform data into powerful visual insights for leading organizations",
-    "photo1Alt": "Data analytics dashboard with charts and KPIs",
-    "photo1Label": "Executive Analytics Dashboard",
-    "photo2Alt": "Multi-screen data visualization workstation",
-    "photo2Label": "Real-Time Data Monitoring",
-    "photo3Alt": "Business strategy meeting with data presentation",
-    "photo3Label": "Executive Decision Support",
-    "photo4Alt": "Team collaborating on data solutions",
-    "photo4Label": "Collaborative Data Platform Development"
-  },
-  "photoBanner": {
-    "title": "Technology That Drives Decisions",
-    "subtitle": "Our platforms process millions of data points in real time, delivering clarity to executives who need it most."
-  },
-  "howItWorks": {
-    "title": "How It Works",
-    "subtitle": "Our proven process delivers results in four focused phases",
-    "discover": {
-      "title": "Discover",
-      "description": "We analyze your data landscape, understand your decision-making needs, and identify key opportunities."
+  "cases": {
+    "eyebrow": "Case Studies",
+    "headlinePre": "Real partnerships.",
+    "headlineEm": "Standing decisions.",
+    "lead": "Selected engagements with executives across manufacturing, financial services, retail, and ESG. Each one shipped in weeks. Each one is still in production.",
+    "labels": {
+      "challenge": "Challenge",
+      "solution": "Solution",
+      "result": "Result"
     },
-    "build": {
-      "title": "Build",
-      "description": "Our team designs and develops custom solutions tailored to your specific requirements and workflows."
+    "stats": {
+      "projects": "Projects Delivered",
+      "teams": "Executive Teams",
+      "industries": "Industries Served",
+      "faster": "Faster Decisions"
     },
-    "deploy": {
-      "title": "Deploy",
-      "description": "We launch your solution with comprehensive training and seamless integration into your operations."
-    },
-    "improve": {
-      "title": "Improve",
-      "description": "Continuous optimization based on feedback and evolving business needs ensures lasting value."
-    }
-  },
-  "useCases": {
-    "title": "Our Products",
-    "subtitle": "Purpose-built platforms that turn operational data into executive decisions",
-    "esgPlatform": {
-      "title": "ESG Platform",
-      "description": "A centralized web platform for tracking Environmental, Social, and Governance activities across your organization. Collect sustainability data, monitor KPIs in real time, and generate board-ready reports aligned with global ESG standards."
-    },
-    "oneRd": {
-      "title": "ONE RD — R&D Platform",
-      "description": "An executive dashboard that gives leadership full visibility into R&D operations. Track project milestones, workload distribution, goal accomplishment rates, and research investment — all through intuitive real-time infographics."
-    },
-    "oeeFnb": {
-      "title": "OEE for Food & Beverage Industry",
-      "description": "A real-time Overall Equipment Effectiveness dashboard tailored for food and beverage manufacturers. Monitor production line performance, identify bottlenecks, reduce unplanned downtime, and improve quality control across your plants."
-    },
-    "payrollth": {
-      "title": "PayrollTH Software",
-      "description": "A secure, fast web-based payroll system built for Thai SMEs. An affordable alternative to expensive accounting software and OEM systems — with built-in confidentiality to keep payroll data separated from other business units."
-    }
-  },
-  "esgShowcase": {
-    "badge": "Featured Product",
-    "title": "ESG Smart Performance",
-    "subtitle": "A comprehensive sustainability platform that helps organizations track, measure, and report on Environmental, Social, and Governance performance in real time.",
-    "tabs": {
-      "dashboard": "Dashboard",
-      "dashboardAlt": "ESG Platform admin dashboard showing total entries, hourly activity chart, and daily trend analytics",
-      "dashboardCaption": "Executive dashboard with real-time KPIs, activity trends, and submission tracking",
-      "reports": "ESG Reports",
-      "reportsAlt": "ESG dimensions overview showing Environment, Social, and Governance completion scores",
-      "reportsCaption": "ESG Dimensions overview with completion tracking across all sustainability pillars",
-      "platform": "Platform",
-      "platformAlt": "ESG Smart Performance login page with sustainability branding",
-      "platformCaption": "Branded platform experience with secure authentication and role-based access"
-    },
-    "features": {
-      "title": "Key Capabilities",
-      "subtitle": "Built for enterprise sustainability teams",
-      "feature1": "Track Environmental, Social, and Governance metrics across all business units in one centralized platform",
-      "feature2": "Real-time dashboards with hourly activity monitoring and daily trend analytics for executives",
-      "feature3": "Automated ESG dimension scoring with completion tracking (Environment, Social, Governance)",
-      "feature4": "Board-ready reports aligned with global sustainability standards (GRI, SASB, TCFD)",
-      "feature5": "Role-based access control with audit logging for full data governance compliance"
-    },
-    "client": {
-      "label": "Deployed for",
-      "name": "NSL Foods Public Company Limited",
-      "description": "SET100-listed food & beverage company"
-    },
-    "cta": "View Case Study"
-  },
-  "testimonials": {
-    "title": "What Our Clients Say",
-    "subtitle": "Trusted by decision-makers across industries",
-    "testimonial1": {
-      "quote": "D2Infinite transformed how our executive team consumes data. The infographic reports are now our go-to for board presentations.",
-      "author": "Chief Operating Officer",
-      "company": "Manufacturing Enterprise"
-    },
-    "testimonial2": {
-      "quote": "The real-time dashboard gives us visibility we never had before. We can now respond to issues within minutes, not hours.",
-      "author": "Operations Director",
-      "company": "Logistics Company"
-    },
-    "testimonial3": {
-      "quote": "Their team understood our complex data requirements and delivered a platform that exceeded our expectations.",
-      "author": "Head of Analytics",
-      "company": "Financial Services Firm"
-    }
-  },
-  "cta": {
-    "title": "Ready to Transform Your Data into Decisions?",
-    "subtitle": "Let's discuss how we can help your organization make better, faster decisions.",
-    "button": "Get Started Today"
-  },
-  "caseStudies": {
-    "title": "Case Studies",
-    "subtitle": "Real results from real partnerships",
-    "readMore": "Read Case Study",
-    "contactUs": "Contact Us for Details",
-    "case1": {
-      "title": "ESG Tracking & Dashboard for SET100 Food Company",
-      "tag": "Food & Beverage",
-      "summary": "Implemented a comprehensive ESG tracking system and executive dashboard for a leading SET100 food and beverage company to monitor sustainability activities under global standards.",
-      "challenge": "NSL Foods PLC needed a centralized platform to track ESG (Environmental, Social, Governance) activities across operations, ensure compliance with global sustainability standards, and provide clear reporting for committee and board-level decision making.",
-      "solution": "We developed a user-friendly web platform with intuitive UX/UI that enables staff to easily input ESG data across all sustainability metrics. The system includes real-time dashboards designed specifically for executive committees and board members to monitor progress and make informed decisions.",
-      "results": "Streamlined ESG data collection across the organization, real-time visibility into sustainability KPIs, board-ready reports aligned with global ESG standards, and improved governance transparency for stakeholders."
-    },
-    "case2": {
-      "title": "R&D Performance Executive Dashboard for Food Manufacturer",
-      "tag": "Food & Beverage",
-      "summary": "Developed a real-time executive dashboard to monitor R&D activities, track project milestones, and optimize research investments for a SET100 food and beverage company.",
-      "challenge": "NSL Foods PLC faced challenges in monitoring their substantial R&D expenditures, which represent a significant cost center in the food and beverage industry. Executives needed better visibility into R&D team workloads, project progress, milestone achievements, and overall research performance to make informed investment decisions.",
-      "solution": "We created an intuitive real-time dashboard with user-friendly infographics that executives can easily interpret. The system tracks R&D workload distribution, goal accomplishment rates, milestone progress, and resource utilization across all research projects, enabling data-driven oversight of R&D operations.",
-      "results": "Enhanced executive visibility into R&D performance, improved milestone tracking and accountability, better resource allocation decisions, real-time monitoring of research investments, and clearer communication between R&D teams and executive leadership."
-    },
-    "case3": {
-      "title": "PayrollTH — Payroll System for SMEs",
-      "tag": "Software Product",
-      "summary": "A secure, fast web-based payroll system built for Thai SMEs who need an affordable alternative to expensive accounting software — or who need to keep payroll separate and confidential from other business units.",
-      "challenge": "Many SMEs in Thailand face a tough choice: pay for expensive accounting software or OEM systems that are over-engineered and costly to scale, or manage payroll manually with all its risks. Businesses that need payroll confidentiality — separating sensitive salary data from other departments — have even fewer options at a reasonable price.",
-      "solution": "PayrollTH is a purpose-built web application developed using full-stack programming technologies well-known for security and fast response times. It gives SMEs a lightweight, affordable payroll platform without the overhead of a full accounting suite. Payroll data stays isolated and confidential, accessible only to authorized personnel.",
-      "results": "Affordable payroll management without expensive OEM licenses, confidential payroll data separated from other business systems, fast and secure web-based access from anywhere, and a scalable solution that grows with your business. Contact us to learn more."
+    "items": {
+      "esg": {
+        "industry": "Food & Beverage · SET100",
+        "title": "ESG Tracking & Board Dashboard for NSL Foods",
+        "summary": "A unified ESG operating system for a publicly-listed food manufacturer — sustainability reporting that meets global frameworks and board scrutiny.",
+        "m1v": "100%",
+        "m1l": "ESG data coverage",
+        "m2v": "−72%",
+        "m2l": "Report cycle time",
+        "m3v": "GRI · SASB · TCFD",
+        "m3l": "Frameworks aligned",
+        "challenge": "NSL Foods PLC needed one centralized platform to track Environmental, Social, and Governance activities across all operations, ensure compliance with global sustainability standards, and produce board-grade reporting on demand.",
+        "solution": "We delivered a user-friendly web platform with intuitive UX, real-time data ingestion across the supply chain, and an executive dashboard designed specifically for board committees and audit reviewers.",
+        "result": "Streamlined ESG data collection, real-time visibility into sustainability KPIs, board-ready reports aligned with global standards, and dramatically improved governance transparency."
+      },
+      "rd": {
+        "industry": "Food & Beverage · SET100",
+        "title": "R&D Performance Executive Dashboard",
+        "summary": "A real-time executive view into R&D spend, milestone progress, and research velocity — built for a major food and beverage manufacturer.",
+        "m1v": "+38%",
+        "m1l": "R&D throughput",
+        "m2v": "<30s",
+        "m2l": "Insight latency",
+        "m3v": "11",
+        "m3l": "Workstreams unified",
+        "challenge": "Executives needed visibility into R&D workloads, project milestone progress, and overall research performance to make informed investment decisions — across a portfolio that had previously lived in spreadsheets.",
+        "solution": "We built an intuitive realtime dashboard with executive-grade infographics. The system tracks R&D workload distribution, goal accomplishment, milestone progress, and resource utilization across every active research project.",
+        "result": "Enhanced executive visibility into R&D performance, sharper milestone tracking, better resource allocation, and a clearer line of communication between R&D teams and the leadership team."
+      },
+      "payroll": {
+        "industry": "Software Product · SME",
+        "title": "PayrollITH — Confidential Payroll for Thai SMEs",
+        "summary": "A secure, fast, web-based payroll platform built for Thai SMEs that need an affordable alternative to enterprise accounting suites — and absolute payroll confidentiality.",
+        "m1v": "−83%",
+        "m1l": "Cost vs. enterprise suite",
+        "m2v": "Air-gapped",
+        "m2l": "Payroll confidentiality",
+        "m3v": "<2s",
+        "m3l": "Page response",
+        "challenge": "SMEs in Thailand face a tough choice: pay for expensive accounting software or OEM systems that are over-engineered and costly to scale, or manage payroll manually with all the risks that entails. Businesses needing payroll confidentiality have even fewer options at a reasonable price.",
+        "solution": "PayrollITH is a purpose-built web application developed using full-stack technologies known for security and fast response times. It gives SMEs a lightweight, affordable payroll platform without the overhead of a full accounting suite — payroll data stays isolated and confidential, accessible only to authorized personnel.",
+        "result": "Affordable payroll management without enterprise licensing, confidential payroll separated from other business systems, fast secure web-based access from anywhere, and a solution that scales with the business."
+      }
     }
   },
   "about": {
-    "title": "About D2Infinite",
-    "subtitle": "Empowering organizations with data-driven decision support",
+    "eyebrow": "About D2Infinite",
+    "headlinePre": "We build the",
+    "headlineEm": "decision intelligence layer",
+    "headlinePost": "for modern leadership.",
+    "lead": "D2Infinite was founded with a single conviction: organizations have all the data they need — what they lack is the clarity to act on it.",
     "story": {
       "title": "Our Story",
-      "p1": "D2Infinite was founded with a clear mission: to bridge the gap between complex data and executive decision-making. We recognized that organizations possess vast amounts of data, but often struggle to transform it into actionable insights.",
-      "p2": "Our team combines deep expertise in data analytics, web development, and business intelligence to create solutions that speak the language of decision-makers. We don't just build dashboards; we craft decision support systems that drive real business outcomes.",
-      "p3": "Today, we partner with organizations across manufacturing, retail, logistics, healthcare, and financial services to deliver infographic reports and real-time dashboards that turn data into competitive advantage."
+      "p1": "D2Infinite was founded to bridge the most expensive gap in the modern enterprise: the distance between data and decisions. Organizations possess vast amounts of data, but most still struggle to convert it into action that compounds.",
+      "p2": "Our team combines deep expertise in data engineering, web product design, and business intelligence to create platforms that speak the language of decision-makers. We don't just build dashboards — we craft the decision support systems that drive real outcomes.",
+      "p3": "Today we partner with leadership across manufacturing, retail, logistics, healthcare, and financial services — delivering infographic intelligence and realtime dashboards that turn data into a competitive advantage."
     },
-    "values": {
-      "title": "Our Values",
-      "clarity": {
-        "title": "Clarity",
-        "description": "We believe in making complex data simple and actionable. Every solution we build prioritizes clear communication."
-      },
-      "precision": {
-        "title": "Precision",
-        "description": "Accuracy is non-negotiable. Our solutions are built on rigorous data validation and quality assurance."
-      },
-      "partnership": {
-        "title": "Partnership",
-        "description": "We work alongside your team, understanding your challenges and co-creating solutions that fit your needs."
-      },
-      "innovation": {
-        "title": "Innovation",
-        "description": "We continuously evolve our approaches to leverage the latest technologies and best practices."
+    "stats": {
+      "projects": "Projects Delivered",
+      "clients": "Happy Clients",
+      "industries": "Industries Served",
+      "support": "Support Cadence",
+      "founded": "Founded in Bangkok. Engineered for ASEAN.",
+      "foundedSub": "Independent. Privately held. Deeply hands-on."
+    },
+    "principles": {
+      "eyebrow": "Operating Principles",
+      "titlePre": "Four principles.",
+      "titleEm": "Zero exceptions.",
+      "items": {
+        "clarity": { "title": "Clarity", "desc": "If a decision-maker can't act on it in 90 seconds, it isn't done. Every output we ship prioritizes clear visual hierarchy." },
+        "precision": { "title": "Precision", "desc": "Accuracy is non-negotiable. Our solutions are built on rigorous data validation, lineage, and quality assurance." },
+        "partnership": { "title": "Partnership", "desc": "We work alongside your team — understanding your business and co-creating solutions that fit how you actually work." },
+        "compounding": { "title": "Compounding", "desc": "We continuously evolve. Every release sharpens the decisions your organization makes — so the platform compounds over time." }
       }
     },
     "team": {
-      "title": "Our Team",
-      "subtitle": "Experts dedicated to your success",
-      "member1": {
-        "name": "Leadership Team",
-        "role": "Strategy & Vision",
-        "bio": "Experienced executives with backgrounds in data analytics, enterprise software, and business consulting."
-      },
-      "member2": {
-        "name": "Development Team",
-        "role": "Engineering & Architecture",
-        "bio": "Full-stack developers and data engineers specializing in modern web technologies and data platforms."
-      },
-      "member3": {
-        "name": "Design Team",
-        "role": "UX & Visual Design",
-        "bio": "Designers focused on creating intuitive interfaces and compelling data visualizations."
-      },
-      "member4": {
-        "name": "Analytics Team",
-        "role": "Data Science & BI",
-        "bio": "Analysts and data scientists who transform raw data into meaningful business insights."
+      "eyebrow": "Our Team",
+      "title": "Specialists, not generalists.",
+      "lead": "Every project is staffed by a tight pod with deep expertise in the layer they own.",
+      "items": {
+        "leadership": { "title": "Leadership", "subtitle": "Strategy & Vision", "desc": "Senior executives with backgrounds in data analytics, enterprise software, and management consulting." },
+        "engineering": { "title": "Engineering", "subtitle": "Full-stack & Data", "desc": "Engineers specializing in modern web platforms, cloud-native architecture, and high-throughput data pipelines." },
+        "design": { "title": "Design", "subtitle": "UX & Visual Intelligence", "desc": "Designers focused on intuitive executive interfaces and compelling data visualizations." },
+        "analytics": { "title": "Analytics", "subtitle": "Data Science & BI", "desc": "Analysts and scientists who transform raw data into meaningful, decision-grade business insights." }
       }
+    },
+    "manifesto": {
+      "body": "Data without clarity is noise. Clarity without speed is a memo. D2Infinite engineers the surface where leaders see what matters, decide what's next, and move before the moment passes.",
+      "footer": "Infinity in Data · Clarity in Decisions"
     }
   },
   "contact": {
-    "title": "Contact Us",
-    "subtitle": "Let's discuss how we can help transform your data into decisions",
+    "eyebrow": "Let's talk",
+    "headlinePre": "Tell us where your",
+    "headlineEm": "decisions get stuck.",
+    "lead": "30 minutes. Your data. Our team. A working preview of what's possible — no slides, no fluff.",
     "info": {
       "title": "Contact Information",
-      "email": "Email",
-      "phone": "Phone",
-      "address": "Address",
-      "openMaps": "Open in Google Maps"
+      "emailLabel": "Email",
+      "phoneLabel": "Phone",
+      "addressLabel": "Headquarters",
+      "address": "422/147 Panya Indra Rd., Khet Klong Samwa, Bangkok 10510, Thailand",
+      "responseTitle": "Response Time",
+      "responseBody": "Most replies within 4 business hours."
     },
     "form": {
-      "title": "Send us a Message",
+      "title": "Send us a message",
       "name": "Full Name",
       "namePlaceholder": "Your name",
       "email": "Email Address",
       "emailPlaceholder": "your@email.com",
       "company": "Company",
-      "companyPlaceholder": "Your company name",
+      "companyPlaceholder": "Your organization",
       "role": "Role",
-      "rolePlaceholder": "Your role or title",
+      "rolePlaceholder": "Your title",
       "message": "Message",
-      "messagePlaceholder": "Tell us about your project or inquiry...",
+      "messagePlaceholder": "Tell us what decisions you're trying to make faster...",
       "submit": "Send Message",
       "sending": "Sending...",
-      "success": "Thank you — we'll contact you shortly.",
+      "success": "Message received.",
+      "successBody": "We'll be in touch within 4 business hours. In the meantime, look out for a calendar invite from a member of our executive team.",
+      "sendAnother": "Send another message",
+      "disclaimer": "By submitting you agree to our standard NDA-by-request and privacy practices.",
       "errors": {
-        "nameRequired": "Name is required",
-        "emailRequired": "Email is required",
-        "emailInvalid": "Please enter a valid email address",
-        "messageRequired": "Message is required",
-        "submitFailed": "Failed to send message. Please try again later."
+        "nameRequired": "Please enter your name",
+        "emailRequired": "Please enter your email",
+        "emailInvalid": "Please enter a valid email",
+        "messageRequired": "Please enter a message",
+        "submitFailed": "Failed to send message. Please try again."
       }
     }
   },
   "footer": {
-    "description": "Data analytics tools through web-application platform development. Infographic reports and real-time dashboards for executive decision-making.",
-    "quickLinks": "Quick Links",
-    "contact": "Contact",
-    "copyright": "© {year} D2Infinite Co.,Ltd. All rights reserved.",
-    "address": "422/147 Panya Indra Rd., Samwa-Tawantok, Khet Klong Samwa, Bangkok 10510, Thailand"
+    "description": "The decision-intelligence layer for the modern executive. Bespoke data platforms, infographic intelligence, and realtime dashboards engineered for leaders.",
+    "navigate": "Navigate",
+    "solutionsHeading": "Solutions",
+    "contactHeading": "Contact",
+    "address": "422/147 Panya Indra Rd., Khet Klong Samwa, Bangkok 10510",
+    "rights": "All rights reserved.",
+    "crafted": "Crafted for executive clarity.",
+    "solutions": {
+      "infographic": "Infographic Reports",
+      "realtime": "Realtime Dashboards",
+      "platform": "Data Platforms",
+      "support": "Decision Support"
+    }
   }
 }

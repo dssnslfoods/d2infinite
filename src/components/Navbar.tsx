@@ -1,59 +1,32 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
-import { Menu, X, ChevronDown, Globe } from 'lucide-react';
-import Image from 'next/image';
+import { ArrowRight, Globe, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [langMenuOpen, setLangMenuOpen] = useState(false);
-  const langMenuRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const sheetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+    const onEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (langMenuRef.current && !langMenuRef.current.contains(event.target as Node)) {
-        setLangMenuOpen(false);
-      }
-    };
-
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setLangMenuOpen(false);
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEsc);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEsc);
-    };
+    document.addEventListener('keydown', onEsc);
+    return () => document.removeEventListener('keydown', onEsc);
   }, []);
 
   const switchLocale = (newLocale: 'en' | 'th') => {
-    localStorage.setItem('preferred-locale', newLocale);
+    setOpen(false);
     router.replace(pathname, { locale: newLocale });
-    setLangMenuOpen(false);
   };
 
-  const navLinks = [
+  const links = [
     { href: '/', label: t('home') },
     { href: '/solutions', label: t('solutions') },
     { href: '/case-studies', label: t('caseStudies') },
@@ -61,173 +34,111 @@ export default function Navbar() {
     { href: '/contact', label: t('contact') },
   ];
 
+  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-soft'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <div className="relative w-10 h-10 lg:w-12 lg:h-12 group-hover:scale-105 transition-transform">
-              <Image
-                src="/logo-mark.svg"
-                alt="D2Infinite"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <span className="font-bold text-xl text-slate-900 ml-1">
-              D2Infinite
-            </span>
+    <>
+      <div className="nav-wrap">
+        <nav className="nav" role="navigation" aria-label="Primary">
+          <Link href="/" className="nav-brand">
+            <span className="nav-brand-mark">D2</span>
+            <span>D2Infinite</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {navLinks.map((link) => (
+          <div className="nav-links hide-md-down">
+            {links.map((l) => (
               <Link
-                key={link.href}
-                href={link.href}
-                aria-current={pathname === link.href ? 'page' : undefined}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  pathname === link.href
-                    ? 'text-cyan-600 bg-cyan-50'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                }`}
+                key={l.href}
+                href={l.href}
+                className={`nav-link ${isActive(l.href) ? 'active' : ''}`}
+                aria-current={isActive(l.href) ? 'page' : undefined}
               >
-                {link.label}
+                {l.label}
               </Link>
             ))}
           </div>
 
-          {/* Right side: Language switcher + CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
-            {/* Language Switcher */}
-            <div className="relative" ref={langMenuRef}>
-              <button
-                type="button"
-                onClick={() => setLangMenuOpen(!langMenuOpen)}
-                className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
-                aria-label="Switch language"
-                aria-expanded={langMenuOpen}
-                aria-controls="language-menu"
-                aria-haspopup="menu"
-              >
-                <Globe className="w-4 h-4" />
-                <span>{locale.toUpperCase()}</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${langMenuOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {langMenuOpen && (
-                <div id="language-menu" role="menu" className="absolute right-0 mt-2 w-32 bg-white rounded-lg shadow-soft-lg border border-slate-100 py-1 z-50">
-                  <button
-                    type="button"
-                    onClick={() => switchLocale('en')}
-                    role="menuitemradio"
-                    aria-checked={locale === 'en'}
-                    className={`w-full px-4 py-2 text-left text-sm hover:bg-slate-50 transition-colors ${
-                      locale === 'en' ? 'text-cyan-600 font-medium' : 'text-slate-600'
-                    }`}
-                  >
-                    English
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => switchLocale('th')}
-                    role="menuitemradio"
-                    aria-checked={locale === 'th'}
-                    className={`w-full px-4 py-2 text-left text-sm hover:bg-slate-50 transition-colors ${
-                      locale === 'th' ? 'text-cyan-600 font-medium' : 'text-slate-600'
-                    }`}
-                  >
-                    ไทย
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* CTA Button */}
-            <Link
-              href="/contact"
-              className="px-5 py-2.5 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-sm font-semibold rounded-lg hover:from-cyan-600 hover:to-cyan-700 transition-all shadow-md hover:shadow-lg"
+          <div className="nav-cta-group">
+            <button
+              type="button"
+              className="btn btn-ghost btn-sm hide-md-down"
+              onClick={() => switchLocale(locale === 'en' ? 'th' : 'en')}
+              aria-label="Toggle language"
             >
-              {t('requestDemo')}
+              <Globe size={14} /> {locale.toUpperCase()}
+            </button>
+            <Link href="/contact" className="btn btn-primary btn-sm hide-md-down">
+              {t('requestDemo')} <ArrowRight size={14} />
             </Link>
+            <button
+              type="button"
+              className="btn btn-glass btn-sm md:hidden"
+              style={{ display: 'none' }}
+              aria-hidden
+            />
+            <button
+              type="button"
+              className="btn btn-ghost btn-sm mobile-toggle"
+              onClick={() => setOpen((v) => !v)}
+              aria-label="Toggle menu"
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+            >
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
           </div>
+        </nav>
+      </div>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-            aria-controls="mobile-navigation"
+      {open && (
+        <div id="mobile-nav" ref={sheetRef} className="glass glass-strong nav-sheet" role="dialog" aria-modal="true">
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className={`nav-link ${isActive(l.href) ? 'active' : ''}`}
+              style={{ padding: '12px 14px', fontSize: 15 }}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <div style={{ height: 1, background: 'rgba(255,255,255,0.08)', margin: '8px 0' }} />
+          <div style={{ display: 'flex', gap: 8, padding: '4px 6px' }}>
+            <button
+              type="button"
+              onClick={() => switchLocale('en')}
+              className={`btn btn-sm ${locale === 'en' ? 'btn-primary' : 'btn-glass'}`}
+              style={{ flex: 1 }}
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              onClick={() => switchLocale('th')}
+              className={`btn btn-sm ${locale === 'th' ? 'btn-primary' : 'btn-glass'}`}
+              style={{ flex: 1 }}
+            >
+              TH
+            </button>
+          </div>
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className="btn btn-primary"
+            style={{ margin: '8px 6px 0' }}
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+            {t('requestDemo')} <ArrowRight size={14} />
+          </Link>
         </div>
+      )}
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div id="mobile-navigation" className="lg:hidden py-4 border-t border-slate-100">
-            <div className="flex flex-col space-y-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  aria-current={pathname === link.href ? 'page' : undefined}
-                  className={`px-4 py-3 rounded-lg text-base font-medium transition-colors ${
-                    pathname === link.href
-                      ? 'text-cyan-600 bg-cyan-50'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <hr className="my-2 border-slate-100" />
-              <div className="flex items-center space-x-2 px-4 py-2">
-                <span className="text-sm text-slate-500">{locale === 'en' ? 'Language:' : 'ภาษา:'}</span>
-                <button
-                  type="button"
-                  onClick={() => switchLocale('en')}
-                  className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                    locale === 'en'
-                      ? 'bg-cyan-500 text-white'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                  }`}
-                >
-                  EN
-                </button>
-                <button
-                  type="button"
-                  onClick={() => switchLocale('th')}
-                  className={`px-3 py-1 rounded text-sm font-medium transition-colors ${
-                    locale === 'th'
-                      ? 'bg-cyan-500 text-white'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                  }`}
-                >
-                  TH
-                </button>
-              </div>
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="mx-4 mt-2 px-5 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-center font-semibold rounded-lg hover:from-cyan-600 hover:to-cyan-700 transition-all"
-              >
-                {t('requestDemo')}
-              </Link>
-            </div>
-          </div>
-        )}
-      </nav>
-    </header>
+      <style>{`
+        .mobile-toggle { display: none; }
+        @media (max-width: 860px) {
+          .mobile-toggle { display: inline-flex; }
+        }
+      `}</style>
+    </>
   );
 }

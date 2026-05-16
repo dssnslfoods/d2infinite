@@ -1,7 +1,10 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { FileBarChart2, LayoutDashboard, Server, Users, CheckCircle2, Target, Package, BarChart3, PieChart, TrendingUp, Activity } from 'lucide-react';
-import { Card } from '@/components/ui/Card';
-import { CTASection } from '@/components/home';
+import { useTranslations } from 'next-intl';
+import { Activity, FileText, Layers, Users } from 'lucide-react';
+import type { ComponentType, ReactNode } from 'react';
+import { Eyebrow, Glass, Reveal } from '@/components/ui';
+import { CTABand } from '@/components/home';
+import SolutionMock from '@/components/solutions/SolutionMock';
 
 export async function generateMetadata({
   params,
@@ -10,16 +13,233 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'solutions' });
-  const tMeta = await getTranslations({ locale, namespace: 'metadata' });
-
   return {
-    title: `${t('title')} | D2Infinite`,
-    description: t('subtitle'),
-    openGraph: {
-      title: `${t('title')} | D2Infinite`,
-      description: t('subtitle'),
-    },
+    title: `${t('headlinePre')} ${t('headlineEm')} | D2Infinite`,
+    description: t('lead'),
   };
+}
+
+interface SolutionItem {
+  id: 'infographic' | 'realtime' | 'platform' | 'support';
+  Icon: ComponentType<{ size?: number }>;
+  tint: '' | 'violet' | 'emerald' | 'amber';
+  tintRgba: string;
+}
+
+const ITEMS: SolutionItem[] = [
+  { id: 'infographic', Icon: FileText, tint: '', tintRgba: 'rgba(34, 211, 238, 0.15)' },
+  { id: 'realtime', Icon: Activity, tint: 'violet', tintRgba: 'rgba(167, 139, 250, 0.15)' },
+  { id: 'platform', Icon: Layers, tint: 'emerald', tintRgba: 'rgba(52, 211, 153, 0.15)' },
+  { id: 'support', Icon: Users, tint: 'amber', tintRgba: 'rgba(251, 191, 36, 0.15)' },
+];
+
+const BULLET_COLORS: Record<'outcomes' | 'kpis' | 'deliverables', string> = {
+  outcomes: '#34d399',
+  kpis: '#22d3ee',
+  deliverables: '#a78bfa',
+};
+
+function SolutionsContent() {
+  const t = useTranslations('solutions');
+
+  return (
+    <div className="page-enter">
+      <section className="section" style={{ paddingTop: 160, paddingBottom: 48 }}>
+        <div className="container-x">
+          <Reveal>
+            <div style={{ maxWidth: 840 }}>
+              <Eyebrow>{t('eyebrow')}</Eyebrow>
+              <h1 className="h1" style={{ marginTop: 22 }}>
+                {t('headlinePre')} <span className="gradient-text">{t('headlineEm')}</span>
+              </h1>
+              <p className="lead" style={{ marginTop: 22, maxWidth: 680 }}>
+                {t('lead')}
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 36 }}>
+              {ITEMS.map((s) => {
+                const item = t.raw(`items.${s.id}`) as { title: string };
+                return (
+                  <a key={s.id} href={`#${s.id}`} className="btn btn-glass btn-sm">
+                    <s.Icon size={14} /> {item.title.split(' ').slice(0, 2).join(' ')}
+                  </a>
+                );
+              })}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section style={{ padding: '24px 0 80px' }}>
+        <div className="container-x">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+            {ITEMS.map((s, i) => {
+              const item = t.raw(`items.${s.id}`) as {
+                title: string;
+                tagline: string;
+                desc: string;
+                outcomes: string[];
+                kpis: string[];
+                deliverables: string[];
+              };
+              const lefty = i % 2 === 0;
+              const groups: { t: string; items: string[]; key: keyof typeof BULLET_COLORS }[] = [
+                { t: t('labels.outcomes'), items: item.outcomes, key: 'outcomes' },
+                { t: t('labels.kpis'), items: item.kpis, key: 'kpis' },
+                { t: t('labels.deliverables'), items: item.deliverables, key: 'deliverables' },
+              ];
+
+              const detail: ReactNode = (
+                <div>
+                  <div className={`card-icon ${s.tint}`} style={{ width: 54, height: 54 }}>
+                    <s.Icon size={26} />
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 18 }}>
+                    <span
+                      className="mono"
+                      style={{ fontSize: 12, color: 'var(--text-3)', letterSpacing: '0.08em' }}
+                    >
+                      0{i + 1}
+                    </span>
+                    <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.18)' }} />
+                    <span
+                      style={{
+                        fontSize: 12,
+                        color: 'var(--text-3)',
+                        letterSpacing: '0.04em',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      {item.tagline}
+                    </span>
+                  </div>
+                  <h2 className="h2" style={{ marginTop: 14, fontSize: 'clamp(28px, 3vw, 40px)' }}>
+                    {item.title}
+                  </h2>
+                  <p className="lead" style={{ marginTop: 14, fontSize: 17 }}>
+                    {item.desc}
+                  </p>
+                  <div
+                    className="bullet-grid"
+                    style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24, marginTop: 28 }}
+                  >
+                    {groups.map((g) => (
+                      <div key={g.t}>
+                        <div
+                          style={{
+                            fontSize: 11,
+                            color: 'var(--text-3)',
+                            letterSpacing: '0.08em',
+                            textTransform: 'uppercase',
+                            marginBottom: 10,
+                            fontWeight: 500,
+                          }}
+                        >
+                          {g.t}
+                        </div>
+                        <ul
+                          style={{
+                            listStyle: 'none',
+                            padding: 0,
+                            margin: 0,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: 7,
+                          }}
+                        >
+                          {g.items.map((it) => (
+                            <li
+                              key={it}
+                              style={{
+                                display: 'flex',
+                                alignItems: 'flex-start',
+                                gap: 8,
+                                fontSize: 13.5,
+                                color: 'var(--text-2)',
+                                lineHeight: 1.4,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  width: 5,
+                                  height: 5,
+                                  borderRadius: '50%',
+                                  background: BULLET_COLORS[g.key],
+                                  boxShadow: `0 0 6px ${BULLET_COLORS[g.key]}`,
+                                  marginTop: 7,
+                                  flexShrink: 0,
+                                }}
+                              />
+                              {it}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+
+              const mock: ReactNode = (
+                <Glass style={{ height: 320, borderRadius: 18 }}>
+                  <SolutionMock kind={s.id} />
+                </Glass>
+              );
+
+              return (
+                <Reveal key={s.id}>
+                  <Glass
+                    id={s.id}
+                    strong
+                    style={{ padding: 42, borderRadius: 28, position: 'relative' }}
+                  >
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: -100,
+                        right: -80,
+                        width: 400,
+                        height: 400,
+                        background: `radial-gradient(circle, ${s.tintRgba}, transparent 60%)`,
+                        pointerEvents: 'none',
+                      }}
+                    />
+                    <div
+                      className="sol-grid"
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: lefty ? '1.2fr 1fr' : '1fr 1.2fr',
+                        gap: 48,
+                        alignItems: 'center',
+                        position: 'relative',
+                      }}
+                    >
+                      {lefty ? detail : mock}
+                      {lefty ? mock : detail}
+                    </div>
+                  </Glass>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <CTABand />
+
+      <style>{`
+        @media (max-width: 1000px) {
+          .sol-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 720px) {
+          .bullet-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </div>
+  );
 }
 
 export default async function SolutionsPage({
@@ -29,279 +249,8 @@ export default async function SolutionsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-
-  return (
-    <>
-      <SolutionsHero locale={locale} />
-      <SolutionsGrid locale={locale} />
-      <CTASection />
-    </>
-  );
+  return <SolutionsContent />;
 }
 
-async function SolutionsHero({ locale }: { locale: string }) {
-  const t = await getTranslations({ locale, namespace: 'solutions' });
+// Note: SolutionsContent uses useTranslations which works in server components when setRequestLocale has been called.
 
-  const highlights = [
-    { icon: LayoutDashboard, label: t('heroHighlight1'), color: 'text-cyan-500' },
-    { icon: FileBarChart2, label: t('heroHighlight2'), color: 'text-blue-500' },
-    { icon: Server, label: t('heroHighlight3'), color: 'text-indigo-500' },
-    { icon: Users, label: t('heroHighlight4'), color: 'text-violet-500' },
-  ];
-
-  return (
-    <section className="pt-20 pb-8 lg:pt-24 lg:pb-12 bg-gradient-to-br from-slate-50 via-white to-cyan-50/30 overflow-hidden relative">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 grid-pattern opacity-30" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-          {/* Left: Text content */}
-          <div className="flex-1 text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-5">
-              {t('title')}
-            </h1>
-            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-              {t('subtitle')}
-            </p>
-
-            {/* Feature highlights */}
-            <div className="grid grid-cols-2 gap-3 max-w-md mx-auto lg:mx-0">
-              {highlights.map((h) => {
-                const Icon = h.icon;
-                return (
-                  <div
-                    key={h.label}
-                    className="flex items-center gap-2.5 bg-white rounded-lg px-3 py-2.5 shadow-soft border border-slate-100"
-                  >
-                    <Icon className={`w-5 h-5 ${h.color} flex-shrink-0`} />
-                    <span className="text-sm font-medium text-slate-700">{h.label}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Right: Dashboard illustration */}
-          <div className="flex-shrink-0 w-full max-w-md lg:max-w-lg">
-            <div className="relative">
-              {/* Main dashboard card */}
-              <div className="bg-white rounded-2xl shadow-soft-lg border border-slate-200/80 p-5 relative z-10">
-                {/* Browser chrome */}
-                <div className="flex items-center gap-1.5 mb-4">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                  <div className="ml-3 h-5 bg-slate-100 rounded-full flex-1 max-w-[180px]" />
-                </div>
-
-                {/* Stats row */}
-                <div className="grid grid-cols-3 gap-3 mb-4">
-                  <div className="bg-gradient-to-br from-cyan-50 to-cyan-100/50 rounded-lg p-3">
-                    <TrendingUp className="w-4 h-4 text-cyan-500 mb-1" />
-                    <div className="text-lg font-bold text-slate-800">94%</div>
-                    <div className="text-[10px] text-slate-500 leading-tight">Efficiency</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-lg p-3">
-                    <Activity className="w-4 h-4 text-blue-500 mb-1" />
-                    <div className="text-lg font-bold text-slate-800">2.4k</div>
-                    <div className="text-[10px] text-slate-500 leading-tight">Data Points</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-indigo-50 to-indigo-100/50 rounded-lg p-3">
-                    <PieChart className="w-4 h-4 text-indigo-500 mb-1" />
-                    <div className="text-lg font-bold text-slate-800">12</div>
-                    <div className="text-[10px] text-slate-500 leading-tight">KPIs</div>
-                  </div>
-                </div>
-
-                {/* Chart area */}
-                <div className="bg-slate-50 rounded-lg p-4 mb-3">
-                  <div className="flex items-end justify-between gap-1.5 h-20">
-                    {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((h, i) => (
-                      <div
-                        key={i}
-                        className="flex-1 rounded-t bg-gradient-to-t from-cyan-500 to-blue-400 opacity-70"
-                        style={{ height: `${h}%` }}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Table rows */}
-                <div className="space-y-2">
-                  {[
-                    { w: '60%', accent: 'bg-cyan-200' },
-                    { w: '80%', accent: 'bg-blue-200' },
-                    { w: '45%', accent: 'bg-indigo-200' },
-                  ].map((row, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className={`w-2 h-2 rounded-full ${row.accent}`} />
-                      <div className="h-2 bg-slate-100 rounded flex-1" style={{ maxWidth: row.w }} />
-                      <div className="h-2 w-10 bg-slate-100 rounded" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Floating accent card - top right */}
-              <div className="absolute -top-3 -right-3 bg-white rounded-xl shadow-soft border border-slate-100 p-3 z-20">
-                <BarChart3 className="w-6 h-6 text-cyan-500" />
-              </div>
-
-              {/* Background glow */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-cyan-200/20 to-blue-200/20 rounded-3xl -z-10 blur-xl" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-async function SolutionsGrid({ locale }: { locale: string }) {
-  const t = await getTranslations({ locale, namespace: 'solutions' });
-
-  const solutions = [
-    {
-      icon: FileBarChart2,
-      key: 'infographicReport',
-      color: 'from-blue-500 to-blue-600',
-      bgLight: 'bg-blue-50',
-    },
-    {
-      icon: LayoutDashboard,
-      key: 'realtimeDashboard',
-      color: 'from-cyan-500 to-cyan-600',
-      bgLight: 'bg-cyan-50',
-    },
-    {
-      icon: Server,
-      key: 'dataPlatform',
-      color: 'from-indigo-500 to-indigo-600',
-      bgLight: 'bg-indigo-50',
-    },
-    {
-      icon: Users,
-      key: 'executiveSupport',
-      color: 'from-violet-500 to-violet-600',
-      bgLight: 'bg-violet-50',
-    },
-  ];
-
-  return (
-    <section className="py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-12 lg:space-y-16">
-          {solutions.map((solution, index) => {
-            const Icon = solution.icon;
-            const isEven = index % 2 === 0;
-
-            return (
-              <Card key={solution.key} className="overflow-hidden" padding="lg" hover={false}>
-                <div className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12`}>
-                  {/* Content */}
-                  <div className="flex-1">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${solution.color} rounded-xl flex items-center justify-center shadow-lg mb-6`}>
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-
-                    <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4">
-                      {t(`${solution.key}.title`)}
-                    </h2>
-
-                    <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                      {t(`${solution.key}.description`)}
-                    </p>
-
-                    {/* Three columns: Outcomes, KPIs, Deliverables */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                      {/* Outcomes */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                          <h3 className="font-semibold text-slate-900">
-                            {t(`${solution.key}.outcomes`)}
-                          </h3>
-                        </div>
-                        <ul className="space-y-2">
-                          {[1, 2, 3].map((i) => (
-                            <li key={i} className="text-sm text-slate-600 flex items-start">
-                              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full mt-1.5 mr-2 flex-shrink-0" />
-                              {t(`${solution.key}.outcome${i}`)}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* KPIs */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <Target className="w-5 h-5 text-blue-500" />
-                          <h3 className="font-semibold text-slate-900">
-                            {t(`${solution.key}.kpis`)}
-                          </h3>
-                        </div>
-                        <ul className="space-y-2">
-                          {[1, 2, 3].map((i) => (
-                            <li key={i} className="text-sm text-slate-600 flex items-start">
-                              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 mr-2 flex-shrink-0" />
-                              {t(`${solution.key}.kpi${i}`)}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Deliverables */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <Package className="w-5 h-5 text-violet-500" />
-                          <h3 className="font-semibold text-slate-900">
-                            {t(`${solution.key}.deliverables`)}
-                          </h3>
-                        </div>
-                        <ul className="space-y-2">
-                          {[1, 2, 3].map((i) => (
-                            <li key={i} className="text-sm text-slate-600 flex items-start">
-                              <span className="w-1.5 h-1.5 bg-violet-500 rounded-full mt-1.5 mr-2 flex-shrink-0" />
-                              {t(`${solution.key}.deliverable${i}`)}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Visual/Illustration placeholder */}
-                  <div className={`flex-shrink-0 w-full lg:w-80 ${solution.bgLight} rounded-xl p-8 flex items-center justify-center`}>
-                    <div className="w-full max-w-xs">
-                      {/* Dashboard mockup */}
-                      <div className="bg-white rounded-lg shadow-soft p-4">
-                        <div className="flex items-center gap-1.5 mb-3">
-                          <div className="w-2 h-2 rounded-full bg-red-400" />
-                          <div className="w-2 h-2 rounded-full bg-yellow-400" />
-                          <div className="w-2 h-2 rounded-full bg-green-400" />
-                        </div>
-                        <div className="space-y-2">
-                          <div className="h-3 bg-slate-100 rounded w-2/3" />
-                          <div className="grid grid-cols-2 gap-2">
-                            <div className={`h-12 rounded bg-gradient-to-br ${solution.color} opacity-20`} />
-                            <div className="h-12 rounded bg-slate-100" />
-                          </div>
-                          <div className="h-16 rounded bg-slate-50" />
-                          <div className="flex gap-2">
-                            <div className={`h-2 rounded w-1/3 bg-gradient-to-r ${solution.color} opacity-40`} />
-                            <div className="h-2 rounded w-1/4 bg-slate-100" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}

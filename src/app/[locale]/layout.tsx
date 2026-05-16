@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import AuroraBackground from '@/components/ui/AuroraBackground';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -66,31 +67,28 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* Google Fonts - loaded via CSS for better build compatibility */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        {/* Alternate language links */}
         <link rel="alternate" hrefLang="en" href="https://d2infinite.com/en" />
         <link rel="alternate" hrefLang="th" href="https://d2infinite.com/th" />
         <link rel="alternate" hrefLang="x-default" href="https://d2infinite.com/en" />
       </head>
-      <body className={`font-sans antialiased bg-white text-slate-900 ${locale === 'th' ? 'font-thai' : ''}`}>
+      <body className={locale === 'th' ? 'font-thai' : ''}>
+        <AuroraBackground />
         <NextIntlClientProvider messages={messages}>
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-cyan-500 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-slate-900"
           >
             Skip to main content
           </a>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <main id="main-content" className="flex-grow">{children}</main>
-            <Footer />
-          </div>
+          <Navbar />
+          <main id="main-content">{children}</main>
+          <Footer />
           <OrganizationSchema locale={locale} />
         </NextIntlClientProvider>
       </body>
@@ -114,9 +112,10 @@ function OrganizationSchema({ locale }: { locale: string }) {
       postalCode: '10510',
       addressCountry: 'TH',
     },
-    description: locale === 'th'
-      ? 'เครื่องมือวิเคราะห์ข้อมูลผ่านการพัฒนาแพลตฟอร์มเว็บแอปพลิเคชัน'
-      : 'Data analytics tools through web-application platform development.',
+    description:
+      locale === 'th'
+        ? 'แพลตฟอร์มข้อมูลเชิงตัดสินใจสำหรับผู้บริหาร — รายงานอินโฟกราฟิก แดชบอร์ดเรียลไทม์ และแพลตฟอร์มข้อมูลที่ออกแบบเฉพาะ'
+        : 'Decision-intelligence platform for executives — bespoke data platforms, infographic intelligence, and realtime dashboards.',
     sameAs: [],
   };
 

@@ -2,9 +2,8 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { Card } from '@/components/ui/Card';
-import Button from '@/components/ui/Button';
+import { AlertCircle, Check, Send } from 'lucide-react';
+import { Glass } from '@/components/ui';
 
 interface FormData {
   name: string;
@@ -14,264 +13,185 @@ interface FormData {
   message: string;
 }
 
-interface FormErrors {
-  name?: string;
-  email?: string;
-  message?: string;
-}
+const empty: FormData = { name: '', email: '', company: '', role: '', message: '' };
 
 export default function ContactForm() {
   const t = useTranslations('contact.form');
-  const tErrors = useTranslations('contact.form.errors');
+  const tErr = useTranslations('contact.form.errors');
 
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    company: '',
-    role: '',
-    message: '',
-  });
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [form, setForm] = useState<FormData>(empty);
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const validateEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
+  const update =
+    (k: keyof FormData) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm((f) => ({ ...f, [k]: e.target.value }));
+      if (errors[k]) setErrors((er) => ({ ...er, [k]: undefined }));
+    };
 
-  const validate = (): boolean => {
-    const newErrors: FormErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = tErrors('nameRequired');
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = tErrors('emailRequired');
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = tErrors('emailInvalid');
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = tErrors('messageRequired');
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+  const validate = () => {
+    const next: typeof errors = {};
+    if (!form.name.trim()) next.name = tErr('nameRequired');
+    if (!form.email.trim()) next.email = tErr('emailRequired');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) next.email = tErr('emailInvalid');
+    if (!form.message.trim()) next.message = tErr('messageRequired');
+    setErrors(next);
+    return Object.keys(next).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!validate()) return;
-
-    setIsSubmitting(true);
+    setSubmitting(true);
     setSubmitError(null);
-
     try {
-      const response = await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
-      }
-
-      setIsSuccess(true);
-
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        role: '',
-        message: '',
-      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || tErr('submitFailed'));
+      setSent(true);
+      setForm(empty);
     } catch (err) {
-      const message = err instanceof Error ? err.message : tErrors('submitFailed');
-      setSubmitError(message);
+      setSubmitError(err instanceof Error ? err.message : tErr('submitFailed'));
     } finally {
-      setIsSubmitting(false);
+      setSubmitting(false);
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
-    if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  if (isSuccess) {
+  if (sent) {
     return (
-      <Card className="h-full flex items-center justify-center" padding="lg" hover={false}>
-        <div className="text-center py-12">
-          <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle className="w-8 h-8 text-emerald-600" />
-          </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-2">
-            {t('success')}
-          </h3>
-          <button
-            onClick={() => setIsSuccess(false)}
-            className="text-cyan-600 hover:text-cyan-700 font-medium mt-4"
+      <Glass strong style={{ padding: 42, borderRadius: 24 }}>
+        <div style={{ padding: '64px 0', textAlign: 'center' }}>
+          <div
+            style={{
+              width: 64,
+              height: 64,
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #22d3ee, #06b6d4)',
+              margin: '0 auto',
+              display: 'grid',
+              placeItems: 'center',
+              boxShadow: '0 10px 40px -8px rgba(34, 211, 238, 0.6)',
+            }}
           >
-            Send another message
+            <Check size={28} style={{ color: '#062028' }} />
+          </div>
+          <h2 className="h3" style={{ marginTop: 24 }}>{t('success')}</h2>
+          <p className="lead" style={{ marginTop: 14, fontSize: 16 }}>
+            {t('successBody')}
+          </p>
+          <button type="button" className="btn btn-glass" style={{ marginTop: 24 }} onClick={() => setSent(false)}>
+            {t('sendAnother')}
           </button>
         </div>
-      </Card>
+      </Glass>
     );
   }
 
   return (
-    <Card className="h-full" padding="lg" hover={false}>
-      <h2 className="text-2xl font-bold text-slate-900 mb-6">
-        {t('title')}
-      </h2>
-
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {/* Name & Email row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1.5">
-              {t('name')} *
-            </label>
+    <Glass strong style={{ padding: 42, borderRadius: 24 }}>
+      <h2 className="h3" style={{ fontSize: 22, fontWeight: 500 }}>{t('title')}</h2>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18, marginTop: 24 }}>
+        <div className="row-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className={`field ${errors.name ? 'error' : ''}`}>
+            <label htmlFor="name">{t('name')} *</label>
             <input
-              type="text"
               id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
+              required
+              value={form.name}
+              onChange={update('name')}
               placeholder={t('namePlaceholder')}
-              className={`w-full px-4 py-2.5 rounded-lg border ${
-                errors.name
-                  ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
-                  : 'border-slate-200 focus:border-cyan-500 focus:ring-cyan-500'
-              } focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors`}
             />
-            {errors.name && (
-              <p className="mt-1.5 text-sm text-red-600 flex items-center gap-1">
-                <AlertCircle className="w-4 h-4" />
-                {errors.name}
-              </p>
-            )}
+            {errors.name && <FieldError text={errors.name} />}
           </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1.5">
-              {t('email')} *
-            </label>
+          <div className={`field ${errors.email ? 'error' : ''}`}>
+            <label htmlFor="email">{t('email')} *</label>
             <input
-              type="email"
               id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
+              type="email"
+              required
+              value={form.email}
+              onChange={update('email')}
               placeholder={t('emailPlaceholder')}
-              className={`w-full px-4 py-2.5 rounded-lg border ${
-                errors.email
-                  ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
-                  : 'border-slate-200 focus:border-cyan-500 focus:ring-cyan-500'
-              } focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors`}
             />
-            {errors.email && (
-              <p className="mt-1.5 text-sm text-red-600 flex items-center gap-1">
-                <AlertCircle className="w-4 h-4" />
-                {errors.email}
-              </p>
-            )}
+            {errors.email && <FieldError text={errors.email} />}
           </div>
         </div>
-
-        {/* Company & Role row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div>
-            <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-1.5">
-              {t('company')}
-            </label>
+        <div className="row-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          <div className="field">
+            <label htmlFor="company">{t('company')}</label>
             <input
-              type="text"
               id="company"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
+              value={form.company}
+              onChange={update('company')}
               placeholder={t('companyPlaceholder')}
-              className="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-cyan-500 focus:ring-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors"
             />
           </div>
-
-          <div>
-            <label htmlFor="role" className="block text-sm font-medium text-slate-700 mb-1.5">
-              {t('role')}
-            </label>
-            <input
-              type="text"
-              id="role"
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              placeholder={t('rolePlaceholder')}
-              className="w-full px-4 py-2.5 rounded-lg border border-slate-200 focus:border-cyan-500 focus:ring-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors"
-            />
+          <div className="field">
+            <label htmlFor="role">{t('role')}</label>
+            <input id="role" value={form.role} onChange={update('role')} placeholder={t('rolePlaceholder')} />
           </div>
         </div>
-
-        {/* Message */}
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1.5">
-            {t('message')} *
-          </label>
+        <div className={`field ${errors.message ? 'error' : ''}`}>
+          <label htmlFor="message">{t('message')} *</label>
           <textarea
             id="message"
-            name="message"
-            rows={5}
-            value={formData.message}
-            onChange={handleChange}
+            required
+            value={form.message}
+            onChange={update('message')}
             placeholder={t('messagePlaceholder')}
-            className={`w-full px-4 py-2.5 rounded-lg border ${
-              errors.message
-                ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
-                : 'border-slate-200 focus:border-cyan-500 focus:ring-cyan-500'
-            } focus:outline-none focus:ring-2 focus:ring-offset-0 transition-colors resize-none`}
           />
-          {errors.message && (
-            <p className="mt-1.5 text-sm text-red-600 flex items-center gap-1">
-              <AlertCircle className="w-4 h-4" />
-              {errors.message}
-            </p>
-          )}
+          {errors.message && <FieldError text={errors.message} />}
         </div>
 
-        {/* Submit Error */}
         {submitError && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700">
-            <AlertCircle className="w-5 h-5 flex-shrink-0" />
-            <span>{submitError}</span>
+          <div
+            style={{
+              padding: 14,
+              borderRadius: 12,
+              background: 'rgba(251, 113, 133, 0.08)',
+              border: '1px solid rgba(251, 113, 133, 0.25)',
+              color: 'var(--rose-400)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              fontSize: 13.5,
+            }}
+          >
+            <AlertCircle size={16} /> {submitError}
           </div>
         )}
 
-        {/* Submit */}
-        <Button
+        <button
           type="submit"
-          disabled={isSubmitting}
-          fullWidth
-          size="lg"
-          icon={Send}
+          disabled={submitting}
+          className="btn btn-primary"
+          style={{ marginTop: 6, padding: '16px 22px', fontSize: 15.5, opacity: submitting ? 0.7 : 1 }}
         >
-          {isSubmitting ? t('sending') : t('submit')}
-        </Button>
+          {submitting ? t('sending') : t('submit')} <Send size={16} />
+        </button>
+        <p className="caption" style={{ textAlign: 'center' }}>{t('disclaimer')}</p>
       </form>
-    </Card>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .row-2 { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </Glass>
+  );
+}
+
+function FieldError({ text }: { text: string }) {
+  return (
+    <p style={{ fontSize: 12, color: 'var(--rose-400)', display: 'flex', alignItems: 'center', gap: 6, marginTop: 2 }}>
+      <AlertCircle size={12} /> {text}
+    </p>
   );
 }

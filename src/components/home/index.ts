@@ -1,12 +1,7 @@
 export { default as HeroSection } from './HeroSection';
-export { default as SocialProofSection } from './SocialProofSection';
-export { default as WhatWeDoSection } from './WhatWeDoSection';
-export { default as SolutionsPreviewSection } from './SolutionsPreviewSection';
-export { default as PhotoShowcase } from './PhotoShowcase';
-export { default as PhotoBanner } from './PhotoBanner';
-export { default as HowItWorksSection } from './HowItWorksSection';
-export { default as UseCasesSection } from './UseCasesSection';
-export { default as ESGShowcaseSection } from './ESGShowcaseSection';
-// Temporarily removed TestimonialsSection
-// export { default as TestimonialsSection } from './TestimonialsSection';
-export { default as CTASection } from './CTASection';
+export { default as TrustedBy } from './TrustedBy';
+export { default as Capabilities } from './Capabilities';
+export { default as HowItWorks } from './HowItWorks';
+export { default as ESGFeatured } from './ESGFeatured';
+export { default as Testimonials } from './Testimonials';
+export { default as CTABand } from './CTABand';
