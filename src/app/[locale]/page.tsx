@@ -6,7 +6,6 @@ import {
   Capabilities,
   HowItWorks,
   ESGFeatured,
-  Testimonials,
   CTABand,
 } from '@/components/home';
 import { buildPageMetadata } from '@/lib/seo';
@@ -47,7 +46,6 @@ export default async function HomePage({
       <Capabilities />
       <HowItWorks />
       <ESGFeatured />
-      <Testimonials />
       <CTABand />
     </div>
   );
