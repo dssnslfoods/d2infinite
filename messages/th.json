@@ -239,6 +239,20 @@
         "challenge": "SME ในไทยต้องเลือกระหว่างจ่ายค่าซอฟต์แวร์บัญชีหรือระบบ OEM ที่ราคาแพงและออกแบบเกินจำเป็น หรือทำเงินเดือนด้วยมือพร้อมความเสี่ยงทั้งหมด ธุรกิจที่ต้องการความลับเงินเดือนยิ่งมีตัวเลือกน้อยลงในราคาที่เหมาะสม",
         "solution": "PayrollITH เป็นเว็บแอปพลิเคชันที่สร้างด้วยเทคโนโลยี full-stack ที่ขึ้นชื่อด้านความปลอดภัยและการตอบสนองที่รวดเร็ว ให้ SME มีแพลตฟอร์มเงินเดือนเบาและราคาเหมาะสมโดยไม่ต้องแบกระบบบัญชีเต็ม ข้อมูลเงินเดือนแยกขาดและเป็นความลับ เข้าถึงได้เฉพาะผู้มีสิทธิ์",
         "result": "การจัดการเงินเดือนในราคาเหมาะสมโดยไม่ต้องเสียค่า license enterprise ข้อมูลเงินเดือนแยกขาดจากระบบธุรกิจอื่น เข้าถึงผ่านเว็บได้รวดเร็วและปลอดภัยจากทุกที่ และเป็นโซลูชันที่ขยายตัวไปกับธุรกิจได้"
+      },
+      "smartinventory": {
+        "industry": "Food Service Distribution · NSL",
+        "title": "SmartInventory — Lot-Level Intelligence ซ้อนบน SAP",
+        "summary": "สร้างแพลตฟอร์มบริหารคลังระดับ Lot ที่เปิดเผยของหมดอายุค้าง ฿14.9M ที่ไม่มีใครเห็นในวันแรกที่ใช้งาน — เป็น layer ซ้อนบน SAP ไม่ใช่ทดแทน",
+        "m1v": "฿14.9M",
+        "m1l": "ของหมดอายุที่พบ",
+        "m2v": "30→14 วัน",
+        "m2l": "Reorder cycle",
+        "m3v": "263.8K",
+        "m3l": "ธุรกรรมที่ติดตาม",
+        "challenge": "NSL Food Service มีของหมดอายุค้างคลังถึง ฿14.9M ซ่อนอยู่ในระบบ SAP — ไม่มี Lot-level tracking ใช้ Excel ส่งต่อกันมือ พอทีม Ops ลาออกระบบล่ม Audit GMP/HACCP แจ้งเตือนเรื่อง Batch Traceability ที่ขาดมาทุกปี",
+        "solution": "เราสร้าง SmartInventory เป็น Intelligence Layer ซ้อนบน SAP — มี Lot-level expiry tracking, VV Matrix (Value × Validity) engine เฉพาะ, FEFO อัตโนมัติ, และ 3 มุมวิเคราะห์ (Lot / Worst-Case / Weighted) ให้ Ops จัดซื้อ และการเงินมองข้อมูลชุดเดียวกันได้คนละมุม",
+        "result": "เคลียร์ของหมดอายุได้ ฿8.5M ใน 3 เดือนแรก Reorder cycle ลดจาก 30→14 วัน Audit GMP/HACCP ผ่านครั้งแรกตั้งแต่ใช้ระบบ ทีม Ops เลิกใช้ Excel ใช้ FEFO Pick List ทุกวัน ห้องประชุมเห็นสุขภาพคลังในมุมมองเดียว"
       }
     }
   },
@@ -293,53 +307,106 @@
     "eyebrow": "ตัวอย่างจากระบบจริง",
     "headlinePre": "ตัวอย่างรายงานจาก",
     "headlineEm": "ระบบที่ deploy ใช้งานจริง",
-    "lead": "ESG Smart Performance Platform — ระบบบริหารข้อมูลความยั่งยืนที่ D2Infinite พัฒนาให้ NSL Foods Public Company Limited ข้อมูลจริง ผู้ใช้จริง การตัดสินใจจริง",
-    "client": "บริษัท เอ็นเอสแอล ฟู้ดส์ จำกัด (มหาชน)",
-    "industry": "ผู้ผลิตอาหาร",
-    "scope": "แพลตฟอร์มข้อมูล ESG ครบวงจร",
-    "stack": "Next.js · TypeScript · Realtime charts · Multi-tenant auth",
+    "lead": "2 แพลตฟอร์มที่ D2Infinite สร้างและ deploy ใช้งานจริงโดยทีมจริง สลับ tab เพื่อดูแต่ละระบบ",
     "labels": {
       "client": "ลูกค้า",
       "industry": "อุตสาหกรรม",
       "scope": "ขอบเขตงาน",
       "stack": "เทคโนโลยี"
     },
-    "brief": {
-      "title": "โจทย์",
-      "p1": "รวมศูนย์ข้อมูล ESG ที่กระจัดกระจาย — พลังงาน ก๊าซเรือนกระจก น้ำ ของเสีย สังคม และธรรมาภิบาล — จากหลายสาขาและโรงงานผลิต ให้กลายเป็นแหล่งข้อมูลเดียวที่เชื่อถือได้",
-      "p2": "แทนที่ spreadsheet และไฟล์ PDF ด้วยแพลตฟอร์มที่มีระบบสิทธิ์ตามบทบาท การตรวจสอบย้อนกลับได้ และส่งออกข้อมูลพร้อมใช้สำหรับผู้บริหารและการรายงานต่อหน่วยงานภายนอก"
+    "tabs": {
+      "esg": "ESG Smart Performance",
+      "smartinventory": "SmartInventory"
     },
-    "shots": {
-      "loginTitle": "หน้า Login",
-      "loginDesc": "Glass-morphism authentication รองรับสองภาษา พร้อมจุดยืนด้าน Climate Action และคำมั่นด้านความยั่งยืนที่มองเห็นทันทีตอนเข้าสู่ระบบ",
-      "dashboardTitle": "Admin Dashboard",
-      "dashboardDesc": "User analytics แบบ real-time — ความถี่การบันทึก ช่วงเวลาที่ใช้งานสูงสุด ผลงานรายบุคคล พร้อม registry สิทธิ์ครบทั้ง Admin Executive Supervisor และ Staff",
-      "envTitle": "Environmental Report",
-      "envDesc": "มุมมองด้านสิ่งแวดล้อมครบ — GHG (Scope 1+2) Total Electricity Renewables% Water Withdrawal Total Waste Waste Diversion Rate — แบ่งตาม Company Site และ Year พร้อมเปรียบเทียบรายปี"
-    },
-    "features": {
-      "title": "สิ่งที่อยู่ในระบบ",
-      "f1Title": "6 หมวด ESG",
-      "f1Desc": "Environmental Social Governance พร้อม Master Data และ Audit Log บริหารในที่เดียว",
-      "f2Title": "สิทธิ์ตามบทบาท",
-      "f2Desc": "Admin Executive Supervisor Staff พร้อม permission ระดับ row และ audit trail ครบ",
-      "f3Title": "Dashboard เรียลไทม์",
-      "f3Desc": "ดู submission analytics กิจกรรมรายชั่วโมง ช่วงเวลาพีค และ contribution รายผู้ใช้แบบ real-time",
-      "f4Title": "Export Excel",
-      "f4Desc": "ส่งออกข้อมูลผู้บริหารคลิกเดียว — TV View สำหรับหน้าจอ Excel สำหรับ offline พร้อมสำหรับ assurance"
-    },
-    "outcomes": {
-      "title": "ผลลัพธ์",
-      "o1Label": "ข้อมูลที่ประมวลผล",
-      "o1Val": "1,138",
-      "o2Label": "ผู้ใช้งานจริง",
-      "o2Val": "14",
-      "o3Label": "Site ที่ติดตาม",
-      "o3Val": "10",
-      "o4Label": "Waste Diversion",
-      "o4Val": "96.6%"
-    },
-    "note": "ภาพหน้าจอที่แสดงเป็นระบบที่ deploy ใช้งานจริงพร้อมข้อมูลสาธิต สามารถเข้าถึงระบบจริงได้เมื่อขอภายใต้ NDA"
+    "note": "ภาพหน้าจอที่แสดงเป็นระบบที่ deploy ใช้งานจริง ข้อมูลส่วนบุคคลถูกปกปิดแล้ว สามารถขอ walkthrough ระบบจริงได้ภายใต้ NDA",
+    "systems": {
+      "esg": {
+        "tagline": "ระบบบริหารข้อมูลความยั่งยืนสำหรับ NSL Foods Public Company Limited",
+        "client": "บริษัท เอ็นเอสแอล ฟู้ดส์ จำกัด (มหาชน)",
+        "industry": "ผู้ผลิตอาหาร",
+        "scope": "แพลตฟอร์มข้อมูล ESG ครบวงจร",
+        "stack": "Next.js · TypeScript · Realtime charts · Multi-tenant auth",
+        "brief": {
+          "title": "โจทย์",
+          "p1": "รวมศูนย์ข้อมูล ESG ที่กระจัดกระจาย — พลังงาน ก๊าซเรือนกระจก น้ำ ของเสีย สังคม และธรรมาภิบาล — จากหลายสาขาและโรงงานผลิต ให้กลายเป็นแหล่งข้อมูลเดียวที่เชื่อถือได้",
+          "p2": "แทนที่ spreadsheet และไฟล์ PDF ด้วยแพลตฟอร์มที่มีระบบสิทธิ์ตามบทบาท การตรวจสอบย้อนกลับได้ และส่งออกข้อมูลพร้อมใช้สำหรับผู้บริหารและการรายงานต่อหน่วยงานภายนอก"
+        },
+        "shots": {
+          "loginTitle": "หน้า Login",
+          "loginDesc": "Glass-morphism authentication รองรับสองภาษา พร้อมจุดยืนด้าน Climate Action และคำมั่นด้านความยั่งยืนที่มองเห็นทันทีตอนเข้าสู่ระบบ",
+          "dashboardTitle": "Admin Dashboard",
+          "dashboardDesc": "User analytics แบบ real-time — ความถี่การบันทึก ช่วงเวลาที่ใช้งานสูงสุด ผลงานรายบุคคล พร้อม registry สิทธิ์ครบทั้ง Admin Executive Supervisor และ Staff",
+          "envTitle": "Environmental Report",
+          "envDesc": "มุมมองด้านสิ่งแวดล้อมครบ — GHG (Scope 1+2) Total Electricity Renewables% Water Withdrawal Total Waste Waste Diversion Rate — แบ่งตาม Company Site และ Year พร้อมเปรียบเทียบรายปี"
+        },
+        "features": {
+          "title": "สิ่งที่อยู่ในระบบ",
+          "f1Title": "6 หมวด ESG",
+          "f1Desc": "Environmental Social Governance พร้อม Master Data และ Audit Log บริหารในที่เดียว",
+          "f2Title": "สิทธิ์ตามบทบาท",
+          "f2Desc": "Admin Executive Supervisor Staff พร้อม permission ระดับ row และ audit trail ครบ",
+          "f3Title": "Dashboard เรียลไทม์",
+          "f3Desc": "ดู submission analytics กิจกรรมรายชั่วโมง ช่วงเวลาพีค และ contribution รายผู้ใช้แบบ real-time",
+          "f4Title": "Export Excel",
+          "f4Desc": "ส่งออกข้อมูลผู้บริหารคลิกเดียว — TV View สำหรับหน้าจอ Excel สำหรับ offline พร้อมสำหรับ assurance"
+        },
+        "outcomes": {
+          "title": "ผลลัพธ์",
+          "o1Label": "ข้อมูลที่ประมวลผล",
+          "o1Val": "1,138",
+          "o2Label": "ผู้ใช้งานจริง",
+          "o2Val": "14",
+          "o3Label": "Site ที่ติดตาม",
+          "o3Val": "10",
+          "o4Label": "Waste Diversion",
+          "o4Val": "96.6%"
+        }
+      },
+      "smartinventory": {
+        "tagline": "ระบบบริหารคลังสินค้าระดับ Lot สำหรับธุรกิจ Food Service",
+        "client": "NSL Food Service",
+        "industry": "ผู้นำเข้า/จัดจำหน่ายอาหารแช่แข็ง",
+        "scope": "แพลตฟอร์ม Lot-level Inventory Intelligence",
+        "stack": "React 19 · TypeScript · Supabase · PostgreSQL 17 · Recharts",
+        "brief": {
+          "title": "โจทย์",
+          "p1": "NSL Food Service มีของหมดอายุค้างคลังถึง ฿14.9M ซ่อนอยู่ในระบบ SAP — ไม่มี Lot-level tracking ใช้ Excel ส่งต่อกันมือ พอทีม Ops ลาออกระบบล่ม Audit GMP/HACCP ก็เกือบไม่ผ่านเพราะ Batch Traceability ไม่ครบ",
+          "p2": "เราสร้าง SmartInventory เป็น Intelligence Layer ซ้อนบน SAP — มี Lot-level expiry tracking, VV Matrix (Value × Validity), FEFO automation, และ 3 มุมวิเคราะห์สำหรับห้องประชุม เคลียร์ของหมดอายุได้ ฿8.5M ใน 3 เดือนแรก"
+        },
+        "shots": {
+          "loginTitle": "หน้า Login",
+          "loginDesc": "Sign-in แบบ executive-grade พื้นหลังเข้ม พร้อม live network map ของคลังสินค้า สถานะระบบ Audit Trail และ Multi-tenant isolation มองเห็นทันทีก่อนเข้าระบบ",
+          "dashboardTitle": "Executive Dashboard",
+          "dashboardDesc": "Working Capital, Inventory Turnover, Days Inventory, Dead-stock %, และ VV Matrix Class — แสดงในมุมมองเดียวระดับผู้บริหาร พร้อม delta MoM และ QoQ",
+          "vvMatrixTitle": "VV Matrix — Value × Validity",
+          "vvMatrixDesc": "Engine ให้คะแนนเฉพาะของเรา จัดอันดับทุก Lot ตามมูลค่าและวันก่อนหมดอายุ มี 3 mode (By Lot / Item Worst / Item Weighted) ตอบโจทย์ที่ต่างกันจากข้อมูลชุดเดียว",
+          "fefoTitle": "FEFO Pick List + Aging Matrix",
+          "fefoDesc": "รายการ First-Expired-First-Out พร้อม Aging Buckets (หมดอายุแล้ว / ≤30วัน / 31–60 / 61–90 / 91–180 / >180) ทีมคลังหยิบของ Lot ที่ใกล้หมดก่อนทุกครั้ง ไม่ต้องเปิด Excel"
+        },
+        "features": {
+          "title": "สิ่งที่อยู่ในระบบ",
+          "f1Title": "VV Matrix Scoring",
+          "f1Desc": "Engine เฉพาะของเราที่ให้คะแนน Value × Validity — สินค้าเสี่ยงสูงเด้งขึ้นมาก่อน ปรับค่า α ได้ตามอุตสาหกรรม",
+          "f2Title": "3 มุมวิเคราะห์",
+          "f2Desc": "By Lot สำหรับ Ops, Worst-Case สำหรับจัดซื้อ, Weighted สำหรับการเงิน — ข้อมูลชุดเดียวมองได้ 3 มุม",
+          "f3Title": "FEFO อัตโนมัติ",
+          "f3Desc": "ระบบสร้าง Pick List ของที่ใกล้หมดอายุก่อนให้ทุกวัน ทีมคลังหยิบได้ถูก Lot โดยไม่ต้องเดา",
+          "f4Title": "GMP/HACCP Ready",
+          "f4Desc": "Lot-level traceability + audit trail ครบ ผ่าน Food Safety audit ที่ ERP ทั่วไปไม่ผ่าน"
+        },
+        "outcomes": {
+          "title": "ผลลัพธ์",
+          "o1Label": "ของหมดอายุที่พบ",
+          "o1Val": "฿14.9M",
+          "o2Label": "SKUs ที่ดูแล",
+          "o2Val": "3,862",
+          "o3Label": "คลังสินค้า",
+          "o3Val": "17",
+          "o4Label": "Transactions",
+          "o4Val": "263.8K"
+        }
+      }
+    }
   },
   "contact": {
     "eyebrow": "มาคุยกัน",

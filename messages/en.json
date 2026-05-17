@@ -239,6 +239,20 @@
         "challenge": "SMEs in Thailand face a tough choice: pay for expensive accounting software or OEM systems that are over-engineered and costly to scale, or manage payroll manually with all the risks that entails. Businesses needing payroll confidentiality have even fewer options at a reasonable price.",
         "solution": "PayrollITH is a purpose-built web application developed using full-stack technologies known for security and fast response times. It gives SMEs a lightweight, affordable payroll platform without the overhead of a full accounting suite — payroll data stays isolated and confidential, accessible only to authorized personnel.",
         "result": "Affordable payroll management without enterprise licensing, confidential payroll separated from other business systems, fast secure web-based access from anywhere, and a solution that scales with the business."
+      },
+      "smartinventory": {
+        "industry": "Food Service Distribution · NSL",
+        "title": "SmartInventory — Lot-Level Intelligence Above SAP",
+        "summary": "Built a lot-level inventory intelligence platform that surfaced ฿14.9M in invisible expired stock on day one — a layer above SAP, not a replacement.",
+        "m1v": "฿14.9M",
+        "m1l": "Expired stock surfaced",
+        "m2v": "30→14 days",
+        "m2l": "Reorder cycle",
+        "m3v": "263.8K",
+        "m3l": "Transactions tracked",
+        "challenge": "NSL Food Service had ฿14.9M in expired inventory hidden inside their SAP system. No lot-level tracking. Manual Excel handoffs broke whenever an operations staffer turned over. GMP/HACCP auditors flagged batch traceability gaps year after year.",
+        "solution": "We built SmartInventory as an intelligence layer above SAP — lot-level expiry tracking, a proprietary VV Matrix (Value × Validity) scoring engine, FEFO automation, and three analysis modes (Lot, Worst-Case, Weighted) for ops, procurement, and finance to share the same data and reach different conclusions.",
+        "result": "฿8.5M of dead stock cleared in the first three months. Reorder cycle dropped from 30 to 14 days. First GMP/HACCP audit passed cleanly. Operations team replaced Excel chaos with a daily FEFO pick list. Boardroom now sees inventory health in one glance."
       }
     }
   },
@@ -291,55 +305,108 @@
   },
   "sampleReport": {
     "eyebrow": "Live Showcase",
-    "headlinePre": "Sample report from a",
-    "headlineEm": "production deployment.",
-    "lead": "ESG Smart Performance Platform — a sustainability intelligence system built by D2Infinite for NSL Foods Public Company Limited. Real data, real users, real decisions.",
-    "client": "NSL Foods Public Company Limited",
-    "industry": "Food Manufacturing",
-    "scope": "End-to-end ESG data platform",
-    "stack": "Next.js · TypeScript · Realtime charts · Multi-tenant auth",
+    "headlinePre": "Sample reports from",
+    "headlineEm": "production deployments.",
+    "lead": "Two live platforms built by D2Infinite, deployed and used in production by real teams. Switch tabs to explore each system.",
     "labels": {
       "client": "Client",
       "industry": "Industry",
       "scope": "Scope",
       "stack": "Stack"
     },
-    "brief": {
-      "title": "The Brief",
-      "p1": "Centralize fragmented ESG data — Energy, GHG, Water, Waste, Social, and Governance — across multiple branches and production facilities into a single source of truth.",
-      "p2": "Replace spreadsheets and PDF compilations with a governed platform that supports role-based access, auditability, and on-demand exports for executive review and external reporting."
+    "tabs": {
+      "esg": "ESG Smart Performance",
+      "smartinventory": "SmartInventory"
     },
-    "shots": {
-      "loginTitle": "Welcome Screen",
-      "loginDesc": "Glass-morphism authentication with bilingual support, climate-action positioning, and live sustainability commitments visible at sign-in.",
-      "dashboardTitle": "Admin Dashboard",
-      "dashboardDesc": "Real-time user analytics — submission velocity, peak hours, per-user contribution, and a complete role registry across admin, executive, supervisor, and staff tiers.",
-      "envTitle": "Environmental Report",
-      "envDesc": "End-to-end environmental view — GHG (Scope 1+2), Total Electricity, Renewables %, Water Withdrawal, Total Waste, Waste Diversion Rate — sliced by Company, Site, and Year with year-over-year deltas."
-    },
-    "features": {
-      "title": "What's Inside",
-      "f1Title": "Six ESG Domains",
-      "f1Desc": "Environmental, Social, Governance, plus master data and audit log — all governed in one place.",
-      "f2Title": "Role-Based Access",
-      "f2Desc": "Admin, Executive, Supervisor, and Staff tiers with row-level permissions and full audit trail.",
-      "f3Title": "Live Dashboards",
-      "f3Desc": "Submission analytics, hourly activity, peak times, and per-user contribution surfaced in real time.",
-      "f4Title": "Export to Excel",
-      "f4Desc": "One-click executive exports — TV View for screens, Excel for offline review, ready for assurance."
-    },
-    "outcomes": {
-      "title": "Outcomes",
-      "o1Label": "Records Processed",
-      "o1Val": "1,138",
-      "o2Label": "Active Users",
-      "o2Val": "14",
-      "o3Label": "Sites Tracked",
-      "o3Val": "10",
-      "o4Label": "Waste Diversion",
-      "o4Val": "96.6%"
-    },
-    "note": "Screens shown are from the live deployment with placeholder demonstration data. Full system access available on request under NDA."
+    "note": "Screens shown are from live deployments. Personal data has been redacted. Full system walkthrough available on request under NDA.",
+    "systems": {
+      "esg": {
+        "tagline": "Sustainability intelligence for NSL Foods Public Company Limited.",
+        "client": "NSL Foods Public Company Limited",
+        "industry": "Food Manufacturing",
+        "scope": "End-to-end ESG data platform",
+        "stack": "Next.js · TypeScript · Realtime charts · Multi-tenant auth",
+        "brief": {
+          "title": "The Brief",
+          "p1": "Centralize fragmented ESG data — Energy, GHG, Water, Waste, Social, and Governance — across multiple branches and production facilities into a single source of truth.",
+          "p2": "Replace spreadsheets and PDF compilations with a governed platform that supports role-based access, auditability, and on-demand exports for executive review and external reporting."
+        },
+        "shots": {
+          "loginTitle": "Welcome Screen",
+          "loginDesc": "Glass-morphism authentication with bilingual support, climate-action positioning, and live sustainability commitments visible at sign-in.",
+          "dashboardTitle": "Admin Dashboard",
+          "dashboardDesc": "Real-time user analytics — submission velocity, peak hours, per-user contribution, and a complete role registry across admin, executive, supervisor, and staff tiers.",
+          "envTitle": "Environmental Report",
+          "envDesc": "End-to-end environmental view — GHG (Scope 1+2), Total Electricity, Renewables %, Water Withdrawal, Total Waste, Waste Diversion Rate — sliced by Company, Site, and Year with year-over-year deltas."
+        },
+        "features": {
+          "title": "What's Inside",
+          "f1Title": "Six ESG Domains",
+          "f1Desc": "Environmental, Social, Governance, plus master data and audit log — all governed in one place.",
+          "f2Title": "Role-Based Access",
+          "f2Desc": "Admin, Executive, Supervisor, and Staff tiers with row-level permissions and full audit trail.",
+          "f3Title": "Live Dashboards",
+          "f3Desc": "Submission analytics, hourly activity, peak times, and per-user contribution surfaced in real time.",
+          "f4Title": "Export to Excel",
+          "f4Desc": "One-click executive exports — TV View for screens, Excel for offline review, ready for assurance."
+        },
+        "outcomes": {
+          "title": "Outcomes",
+          "o1Label": "Records Processed",
+          "o1Val": "1,138",
+          "o2Label": "Active Users",
+          "o2Val": "14",
+          "o3Label": "Sites Tracked",
+          "o3Val": "10",
+          "o4Label": "Waste Diversion",
+          "o4Val": "96.6%"
+        }
+      },
+      "smartinventory": {
+        "tagline": "Lot-level inventory intelligence for food service operators.",
+        "client": "NSL Food Service",
+        "industry": "Food Service Distribution",
+        "scope": "Lot-level inventory intelligence platform",
+        "stack": "React 19 · TypeScript · Supabase · PostgreSQL 17 · Recharts",
+        "brief": {
+          "title": "The Brief",
+          "p1": "NSL Food Service had ฿14.9M in expired stock hidden inside their SAP system — no lot-level tracking, manual Excel handoffs that broke whenever an operations staffer turned over. Auditors flagged batch traceability gaps in GMP/HACCP reviews.",
+          "p2": "We built SmartInventory as an intelligence layer on top of SAP — lot-level expiry tracking, VV Matrix scoring (Value × Validity), FEFO automation, and three boardroom-ready analysis modes. ฿8.5M of dead stock cleared in the first three months."
+        },
+        "shots": {
+          "loginTitle": "Welcome Screen",
+          "loginDesc": "Dark executive-grade sign-in surface with a live network map of warehouses. System status, audit trail, and multi-tenant isolation badges visible before sign-in.",
+          "dashboardTitle": "Executive Dashboard",
+          "dashboardDesc": "Working capital, inventory turnover, days inventory, dead-stock %, and VV Matrix class breakdown — surfaced in a single board-grade view with MoM and QoQ deltas.",
+          "vvMatrixTitle": "VV Matrix — Value × Validity",
+          "vvMatrixDesc": "Proprietary scoring engine that grades every lot by stock value and days-to-expiry. Three analysis modes — By Lot, Item Worst-Case, and Item Weighted — answer different boardroom questions from the same data.",
+          "fefoTitle": "FEFO Pick List + Aging Matrix",
+          "fefoDesc": "First-Expired-First-Out pick list with aging buckets (expired, ≤30d, 31–60d, 61–90d, 91–180d, >180d). Warehouse teams pick from the right batch every time — no spreadsheet required."
+        },
+        "features": {
+          "title": "What's Inside",
+          "f1Title": "VV Matrix Scoring",
+          "f1Desc": "Unique Value × Validity scoring engine — surfaces the riskiest lots first. Configurable α exponent for industry-specific sensitivity.",
+          "f2Title": "3 Analysis Modes",
+          "f2Desc": "By Lot for ops, Worst-Case for procurement, Weighted for finance — the same data, three boardroom angles.",
+          "f3Title": "FEFO Automation",
+          "f3Desc": "First-Expired-First-Out pick lists generated daily. Warehouse teams pick the right batch without guesswork.",
+          "f4Title": "GMP/HACCP Ready",
+          "f4Desc": "Full lot-level traceability and audit trail. Passes food-safety audits that ERPs typically fail."
+        },
+        "outcomes": {
+          "title": "Outcomes",
+          "o1Label": "Expired Surfaced",
+          "o1Val": "฿14.9M",
+          "o2Label": "Active SKUs",
+          "o2Val": "3,862",
+          "o3Label": "Warehouses",
+          "o3Val": "17",
+          "o4Label": "Transactions",
+          "o4Val": "263.8K"
+        }
+      }
+    }
   },
   "contact": {
     "eyebrow": "Let's talk",
