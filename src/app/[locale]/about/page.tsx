@@ -98,7 +98,7 @@ function AboutContent() {
             <Reveal delay={120}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
                 {[
-                  { v: 100, s: '+', l: t('stats.projects') },
+                  { v: 50, s: '+', l: t('stats.projects') },
                   { v: 50, s: '+', l: t('stats.clients') },
                   { v: 5, s: '', l: t('stats.industries') },
                   { v: 24, s: '/7', l: t('stats.support') },
