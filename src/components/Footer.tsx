@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { Mail, MapPin, Phone } from 'lucide-react';
@@ -13,14 +12,9 @@ export default function Footer() {
       <div className="container-x">
         <div className="footer-grid">
           <div className="footer-col">
-            <div style={{ marginBottom: 18 }}>
-              <Image
-                src="/d2infinite-logo.png"
-                alt="D2Infinite"
-                width={670}
-                height={470}
-                style={{ height: 48, width: 'auto', display: 'block' }}
-              />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
+              <span className="nav-brand-mark">D2</span>
+              <span style={{ fontWeight: 600, fontSize: 18 }}>D2Infinite</span>
             </div>
             <p className="body-text" style={{ maxWidth: 340, fontSize: 14 }}>
               {t('footer.description')}
