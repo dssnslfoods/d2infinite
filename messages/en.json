@@ -335,7 +335,7 @@
           "loginTitle": "Welcome Screen",
           "loginDesc": "Glass-morphism authentication with bilingual support, climate-action positioning, and live sustainability commitments visible at sign-in.",
           "dashboardTitle": "Admin Dashboard",
-          "dashboardDesc": "Real-time user analytics — submission velocity, peak hours, per-user contribution, and a complete role registry across admin, executive, supervisor, and staff tiers.",
+          "dashboardDesc": "Top-level KPIs — companies, sites, metrics — plus real-time user analytics: submission velocity, peak hours, peak day, and hourly/daily trend charts that update as data flows in.",
           "envTitle": "Environmental Report",
           "envDesc": "End-to-end environmental view — GHG (Scope 1+2), Total Electricity, Renewables %, Water Withdrawal, Total Waste, Waste Diversion Rate — sliced by Company, Site, and Year with year-over-year deltas."
         },

@@ -49,7 +49,7 @@ const SYSTEMS: Record<SystemId, SystemDef> = {
     Icon: Leaf,
     shots: [
       { id: 'login', src: '/showcase/esg-login.png', ratio: 16 / 10 },
-      { id: 'dashboard', src: '/showcase/esg-dashboard.png', ratio: 16 / 19 },
+      { id: 'dashboard', src: '/showcase/esg-dashboard.png', ratio: 16 / 13 },
       { id: 'env', src: '/showcase/esg-environmental.png', ratio: 16 / 32 },
     ],
     features: [

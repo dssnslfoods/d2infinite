@@ -335,7 +335,7 @@
           "loginTitle": "หน้า Login",
           "loginDesc": "Glass-morphism authentication รองรับสองภาษา พร้อมจุดยืนด้าน Climate Action และคำมั่นด้านความยั่งยืนที่มองเห็นทันทีตอนเข้าสู่ระบบ",
           "dashboardTitle": "Admin Dashboard",
-          "dashboardDesc": "User analytics แบบ real-time — ความถี่การบันทึก ช่วงเวลาที่ใช้งานสูงสุด ผลงานรายบุคคล พร้อม registry สิทธิ์ครบทั้ง Admin Executive Supervisor และ Staff",
+          "dashboardDesc": "KPI ระดับสูง — บริษัท ไซต์ เมตริก — พร้อม User Analytics แบบ real-time: ความถี่การบันทึก ช่วงเวลาที่ใช้งานสูงสุด วันที่มีกิจกรรมสูงสุด และกราฟ Hourly/Daily Trend ที่อัปเดตทันทีเมื่อมีข้อมูลเข้า",
           "envTitle": "Environmental Report",
           "envDesc": "มุมมองด้านสิ่งแวดล้อมครบ — GHG (Scope 1+2) Total Electricity Renewables% Water Withdrawal Total Waste Waste Diversion Rate — แบ่งตาม Company Site และ Year พร้อมเปรียบเทียบรายปี"
         },
