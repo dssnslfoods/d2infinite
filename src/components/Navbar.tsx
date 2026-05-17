@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { ArrowRight, Globe, Menu, X } from 'lucide-react';
@@ -42,15 +41,9 @@ export default function Navbar() {
     <>
       <div className="nav-wrap">
         <nav className="nav" role="navigation" aria-label="Primary">
-          <Link href="/" className="nav-brand nav-brand-img" aria-label="D2Infinite">
-            <Image
-              src="/d2infinite-logo.png"
-              alt="D2Infinite"
-              width={670}
-              height={470}
-              priority
-              className="nav-logo"
-            />
+          <Link href="/" className="nav-brand">
+            <span className="nav-brand-mark">D2</span>
+            <span>D2Infinite</span>
           </Link>
 
           <div className="nav-links hide-md-down">
