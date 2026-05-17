@@ -178,6 +178,14 @@
         "outcomes": ["Data-driven strategy alignment", "Reduced decision latency", "Competitive intelligence rituals"],
         "kpis": ["Strategic initiative tracking", "Board reporting metrics", "Risk assessment scores"],
         "deliverables": ["Executive briefing sessions", "Strategic recommendations", "Quarterly business reviews"]
+      },
+      "ai": {
+        "title": "AI Deep-Dive Analysis",
+        "tagline": "An analyst sitting alongside every dashboard",
+        "desc": "We embed AI directly into your data layer — continuously scanning for anomalies, surfacing root causes, and writing the first draft of every deep-dive report. Your team validates and decides, instead of starting from a blank spreadsheet.",
+        "outcomes": ["Hours of analyst time recovered every week", "Pattern detection across every metric, every day", "Boardroom-ready narratives, not just numbers"],
+        "kpis": ["Anomaly detection precision & recall", "Root-cause coverage of variances", "Insight-to-action latency"],
+        "deliverables": ["AI insight engine wired into your platform", "Auto-generated deep-dive PDF reports", "Conversational data Q&A for executives"]
       }
     }
   },
@@ -522,7 +530,8 @@
       "infographic": "Infographic Reports",
       "realtime": "Realtime Dashboards",
       "platform": "Data Platforms",
-      "support": "Decision Support"
+      "support": "Decision Support",
+      "ai": "AI Deep-Dive Analysis"
     }
   }
 }

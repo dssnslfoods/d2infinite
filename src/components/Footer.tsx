@@ -50,6 +50,7 @@ export default function Footer() {
               <li><Link href="/solutions#infographic">{t('footer.solutions.infographic')}</Link></li>
               <li><Link href="/solutions#realtime">{t('footer.solutions.realtime')}</Link></li>
               <li><Link href="/solutions#platform">{t('footer.solutions.platform')}</Link></li>
+              <li><Link href="/solutions#ai">{t('footer.solutions.ai')}</Link></li>
               <li><Link href="/solutions#support">{t('footer.solutions.support')}</Link></li>
             </ul>
           </div>

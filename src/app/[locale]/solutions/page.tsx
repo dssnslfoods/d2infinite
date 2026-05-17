@@ -1,6 +1,6 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import { Activity, FileText, Layers, Users } from 'lucide-react';
+import { Activity, Brain, FileText, Layers, Users } from 'lucide-react';
 import type { ComponentType, ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Eyebrow, Glass, Reveal } from '@/components/ui';
@@ -29,9 +29,9 @@ export async function generateMetadata({
 }
 
 interface SolutionItem {
-  id: 'infographic' | 'realtime' | 'platform' | 'support';
+  id: 'infographic' | 'realtime' | 'platform' | 'ai' | 'support';
   Icon: ComponentType<{ size?: number }>;
-  tint: '' | 'violet' | 'emerald' | 'amber';
+  tint: '' | 'violet' | 'emerald' | 'amber' | 'rose';
   tintRgba: string;
 }
 
@@ -39,6 +39,7 @@ const ITEMS: SolutionItem[] = [
   { id: 'infographic', Icon: FileText, tint: '', tintRgba: 'rgba(34, 211, 238, 0.15)' },
   { id: 'realtime', Icon: Activity, tint: 'violet', tintRgba: 'rgba(167, 139, 250, 0.15)' },
   { id: 'platform', Icon: Layers, tint: 'emerald', tintRgba: 'rgba(52, 211, 153, 0.15)' },
+  { id: 'ai', Icon: Brain, tint: 'rose', tintRgba: 'rgba(251, 113, 133, 0.15)' },
   { id: 'support', Icon: Users, tint: 'amber', tintRgba: 'rgba(251, 191, 36, 0.15)' },
 ];
 

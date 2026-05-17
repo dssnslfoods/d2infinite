@@ -1,10 +1,10 @@
 'use client';
 
-import { ChevronRight } from 'lucide-react';
+import { AlertCircle, ChevronRight, Sparkles, TrendingDown, TrendingUp } from 'lucide-react';
 import { BarChart, Sparkline } from '@/components/ui';
 
 interface Props {
-  kind: 'infographic' | 'realtime' | 'platform' | 'support';
+  kind: 'infographic' | 'realtime' | 'platform' | 'ai' | 'support';
 }
 
 export default function SolutionMock({ kind }: Props) {
@@ -168,6 +168,93 @@ export default function SolutionMock({ kind }: Props) {
         >
           <span style={{ fontSize: 11, color: 'var(--text-3)' }}>Daily throughput</span>
           <span className="mono" style={{ fontSize: 12, color: 'var(--emerald-400)' }}>↑ 2.4M rows / sec</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (kind === 'ai') {
+    const insights: { Icon: typeof TrendingUp; text: string; severity: string; color: string; conf: string }[] = [
+      {
+        Icon: TrendingDown,
+        text: 'Cohort #B-12 churn risk ↑ 28% — root cause: pricing shift in EU-South',
+        severity: 'HIGH',
+        color: '#fb7185',
+        conf: '0.94',
+      },
+      {
+        Icon: AlertCircle,
+        text: 'Inventory aging anomaly in SKU-2841 — 4σ above 12-week baseline',
+        severity: 'MED',
+        color: '#fbbf24',
+        conf: '0.88',
+      },
+      {
+        Icon: TrendingUp,
+        text: 'Energy intensity ↓ 11% post-retrofit at Site-3 — replicate to Site-7?',
+        severity: 'OPP',
+        color: '#34d399',
+        conf: '0.91',
+      },
+    ];
+    return (
+      <div style={{ padding: 18, height: '100%', display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <Sparkles size={12} style={{ color: 'var(--rose-400)' }} />
+            <span
+              style={{
+                fontSize: 11,
+                color: 'var(--text-3)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.06em',
+              }}
+            >
+              Deep-Dive Engine · Q3 scan
+            </span>
+          </div>
+          <span className="tag" style={{ fontSize: 10, background: 'rgba(251, 113, 133, 0.12)', color: 'var(--rose-400)', borderColor: 'rgba(251, 113, 133, 0.25)' }}>
+            <Sparkles size={9} /> AI
+          </span>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {insights.map((ins) => (
+            <div
+              key={ins.text}
+              style={{
+                display: 'flex',
+                gap: 8,
+                padding: '10px 11px',
+                borderRadius: 10,
+                background: 'rgba(255,255,255,0.03)',
+                borderLeft: `2px solid ${ins.color}`,
+                alignItems: 'flex-start',
+              }}
+            >
+              <ins.Icon size={13} style={{ color: ins.color, flexShrink: 0, marginTop: 2 }} />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 11.5, lineHeight: 1.4, color: 'var(--text-1)' }}>{ins.text}</div>
+                <div className="mono" style={{ fontSize: 9.5, color: ins.color, marginTop: 3, letterSpacing: '0.06em' }}>
+                  {ins.severity} · confidence {ins.conf}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div
+          style={{
+            marginTop: 'auto',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            padding: '8px 12px',
+            borderRadius: 10,
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}
+        >
+          <span style={{ fontSize: 10.5, color: 'var(--text-3)' }}>1,284 metrics scanned</span>
+          <span className="mono" style={{ fontSize: 10.5, color: 'var(--cyan-400)' }}>3 insights · 14s</span>
         </div>
       </div>
     );
