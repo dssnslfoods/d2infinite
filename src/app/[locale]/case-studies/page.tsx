@@ -82,7 +82,7 @@ function CasesContent() {
             >
               {[
                 { v: 50, s: '+', l: t('stats.projects') },
-                { v: 50, s: '+', l: t('stats.teams') },
+                { v: 25, s: '+', l: t('stats.teams') },
                 { v: 5, s: '', l: t('stats.industries') },
                 { v: 6, s: '×', l: t('stats.faster'), d: 1 },
               ].map((s) => (
