@@ -312,6 +312,8 @@
       "companyPlaceholder": "ชื่อองค์กร",
       "role": "ตำแหน่ง",
       "rolePlaceholder": "ตำแหน่งของคุณ",
+      "phone": "เบอร์ติดต่อ",
+      "phonePlaceholder": "+66 8x xxx xxxx",
       "message": "ข้อความ",
       "messagePlaceholder": "บอกเราว่าการตัดสินใจแบบไหนที่คุณอยากทำให้เร็วขึ้น...",
       "submit": "ส่งข้อความ",

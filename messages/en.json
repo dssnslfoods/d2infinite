@@ -312,6 +312,8 @@
       "companyPlaceholder": "Your organization",
       "role": "Role",
       "rolePlaceholder": "Your title",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+66 8x xxx xxxx",
       "message": "Message",
       "messagePlaceholder": "Tell us what decisions you're trying to make faster...",
       "submit": "Send Message",

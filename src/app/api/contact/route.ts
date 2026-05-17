@@ -4,6 +4,7 @@ import { Resend } from 'resend';
 interface ContactFormData {
   name: string;
   email: string;
+  phone?: string;
   company?: string;
   role?: string;
   message: string;
@@ -12,7 +13,7 @@ interface ContactFormData {
 export async function POST(request: NextRequest) {
   try {
     const body: ContactFormData = await request.json();
-    const { name, email, company, role, message } = body;
+    const { name, email, phone, company, role, message } = body;
 
     // Basic validation
     if (!name || !email || !message) {
@@ -54,6 +55,7 @@ export async function POST(request: NextRequest) {
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
         ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
         ${role ? `<p><strong>Role:</strong> ${role}</p>` : ''}
         <p><strong>Message:</strong></p>
@@ -64,6 +66,7 @@ New Contact Form Submission
 
 Name: ${name}
 Email: ${email}
+${phone ? `Phone: ${phone}` : ''}
 ${company ? `Company: ${company}` : ''}
 ${role ? `Role: ${role}` : ''}
 

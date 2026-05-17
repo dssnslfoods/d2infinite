@@ -8,12 +8,13 @@ import { Glass } from '@/components/ui';
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   company: string;
   role: string;
   message: string;
 }
 
-const empty: FormData = { name: '', email: '', company: '', role: '', message: '' };
+const empty: FormData = { name: '', email: '', phone: '', company: '', role: '', message: '' };
 
 export default function ContactForm() {
   const t = useTranslations('contact.form');
@@ -137,6 +138,16 @@ export default function ContactForm() {
             <label htmlFor="role">{t('role')}</label>
             <input id="role" value={form.role} onChange={update('role')} placeholder={t('rolePlaceholder')} />
           </div>
+        </div>
+        <div className="field">
+          <label htmlFor="phone">{t('phone')}</label>
+          <input
+            id="phone"
+            type="tel"
+            value={form.phone}
+            onChange={update('phone')}
+            placeholder={t('phonePlaceholder')}
+          />
         </div>
         <div className={`field ${errors.message ? 'error' : ''}`}>
           <label htmlFor="message">{t('message')} *</label>
