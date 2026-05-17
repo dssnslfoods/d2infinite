@@ -9,6 +9,7 @@
     "home": "หน้าแรก",
     "solutions": "โซลูชัน",
     "caseStudies": "ผลงาน",
+    "sampleReport": "ตัวอย่างรายงาน",
     "about": "เกี่ยวกับเรา",
     "contact": "ติดต่อเรา",
     "requestDemo": "ขอเดโม"
@@ -287,6 +288,58 @@
       "body": "ข้อมูลที่ไม่มีความชัดเจนคือเสียงรบกวน ความชัดเจนที่ไม่มีความเร็วคือเอกสารบันทึก D2Infinite สร้างพื้นผิวที่ผู้นำเห็นสิ่งสำคัญ ตัดสินใจขั้นถัดไป และขยับก่อนที่ช่วงเวลาจะผ่านไป",
       "footer": "ข้อมูลไม่มีที่สิ้นสุด · การตัดสินใจที่ชัดเจน"
     }
+  },
+  "sampleReport": {
+    "eyebrow": "ตัวอย่างจากระบบจริง",
+    "headlinePre": "ตัวอย่างรายงานจาก",
+    "headlineEm": "ระบบที่ deploy ใช้งานจริง",
+    "lead": "ESG Smart Performance Platform — ระบบบริหารข้อมูลความยั่งยืนที่ D2Infinite พัฒนาให้ NSL Foods Public Company Limited ข้อมูลจริง ผู้ใช้จริง การตัดสินใจจริง",
+    "client": "บริษัท เอ็นเอสแอล ฟู้ดส์ จำกัด (มหาชน)",
+    "industry": "ผู้ผลิตอาหาร",
+    "scope": "แพลตฟอร์มข้อมูล ESG ครบวงจร",
+    "stack": "Next.js · TypeScript · Realtime charts · Multi-tenant auth",
+    "labels": {
+      "client": "ลูกค้า",
+      "industry": "อุตสาหกรรม",
+      "scope": "ขอบเขตงาน",
+      "stack": "เทคโนโลยี"
+    },
+    "brief": {
+      "title": "โจทย์",
+      "p1": "รวมศูนย์ข้อมูล ESG ที่กระจัดกระจาย — พลังงาน ก๊าซเรือนกระจก น้ำ ของเสีย สังคม และธรรมาภิบาล — จากหลายสาขาและโรงงานผลิต ให้กลายเป็นแหล่งข้อมูลเดียวที่เชื่อถือได้",
+      "p2": "แทนที่ spreadsheet และไฟล์ PDF ด้วยแพลตฟอร์มที่มีระบบสิทธิ์ตามบทบาท การตรวจสอบย้อนกลับได้ และส่งออกข้อมูลพร้อมใช้สำหรับผู้บริหารและการรายงานต่อหน่วยงานภายนอก"
+    },
+    "shots": {
+      "loginTitle": "หน้า Login",
+      "loginDesc": "Glass-morphism authentication รองรับสองภาษา พร้อมจุดยืนด้าน Climate Action และคำมั่นด้านความยั่งยืนที่มองเห็นทันทีตอนเข้าสู่ระบบ",
+      "dashboardTitle": "Admin Dashboard",
+      "dashboardDesc": "User analytics แบบ real-time — ความถี่การบันทึก ช่วงเวลาที่ใช้งานสูงสุด ผลงานรายบุคคล พร้อม registry สิทธิ์ครบทั้ง Admin Executive Supervisor และ Staff",
+      "envTitle": "Environmental Report",
+      "envDesc": "มุมมองด้านสิ่งแวดล้อมครบ — GHG (Scope 1+2) Total Electricity Renewables% Water Withdrawal Total Waste Waste Diversion Rate — แบ่งตาม Company Site และ Year พร้อมเปรียบเทียบรายปี"
+    },
+    "features": {
+      "title": "สิ่งที่อยู่ในระบบ",
+      "f1Title": "6 หมวด ESG",
+      "f1Desc": "Environmental Social Governance พร้อม Master Data และ Audit Log บริหารในที่เดียว",
+      "f2Title": "สิทธิ์ตามบทบาท",
+      "f2Desc": "Admin Executive Supervisor Staff พร้อม permission ระดับ row และ audit trail ครบ",
+      "f3Title": "Dashboard เรียลไทม์",
+      "f3Desc": "ดู submission analytics กิจกรรมรายชั่วโมง ช่วงเวลาพีค และ contribution รายผู้ใช้แบบ real-time",
+      "f4Title": "Export Excel",
+      "f4Desc": "ส่งออกข้อมูลผู้บริหารคลิกเดียว — TV View สำหรับหน้าจอ Excel สำหรับ offline พร้อมสำหรับ assurance"
+    },
+    "outcomes": {
+      "title": "ผลลัพธ์",
+      "o1Label": "ข้อมูลที่ประมวลผล",
+      "o1Val": "1,138",
+      "o2Label": "ผู้ใช้งานจริง",
+      "o2Val": "14",
+      "o3Label": "Site ที่ติดตาม",
+      "o3Val": "10",
+      "o4Label": "Waste Diversion",
+      "o4Val": "96.6%"
+    },
+    "note": "ภาพหน้าจอที่แสดงเป็นระบบที่ deploy ใช้งานจริงพร้อมข้อมูลสาธิต สามารถเข้าถึงระบบจริงได้เมื่อขอภายใต้ NDA"
   },
   "contact": {
     "eyebrow": "มาคุยกัน",

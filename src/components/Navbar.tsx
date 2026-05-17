@@ -30,6 +30,7 @@ export default function Navbar() {
     { href: '/', label: t('home') },
     { href: '/solutions', label: t('solutions') },
     { href: '/case-studies', label: t('caseStudies') },
+    { href: '/sample-report', label: t('sampleReport') },
     { href: '/about', label: t('about') },
     { href: '/contact', label: t('contact') },
   ];

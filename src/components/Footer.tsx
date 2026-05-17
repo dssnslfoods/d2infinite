@@ -38,6 +38,7 @@ export default function Footer() {
               <li><Link href="/">{nav('home')}</Link></li>
               <li><Link href="/solutions">{nav('solutions')}</Link></li>
               <li><Link href="/case-studies">{nav('caseStudies')}</Link></li>
+              <li><Link href="/sample-report">{nav('sampleReport')}</Link></li>
               <li><Link href="/about">{nav('about')}</Link></li>
               <li><Link href="/contact">{nav('contact')}</Link></li>
             </ul>

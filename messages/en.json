@@ -9,6 +9,7 @@
     "home": "Home",
     "solutions": "Solutions",
     "caseStudies": "Case Studies",
+    "sampleReport": "Sample Report",
     "about": "About",
     "contact": "Contact",
     "requestDemo": "Request Demo"
@@ -287,6 +288,58 @@
       "body": "Data without clarity is noise. Clarity without speed is a memo. D2Infinite engineers the surface where leaders see what matters, decide what's next, and move before the moment passes.",
       "footer": "Infinity in Data · Clarity in Decisions"
     }
+  },
+  "sampleReport": {
+    "eyebrow": "Live Showcase",
+    "headlinePre": "Sample report from a",
+    "headlineEm": "production deployment.",
+    "lead": "ESG Smart Performance Platform — a sustainability intelligence system built by D2Infinite for NSL Foods Public Company Limited. Real data, real users, real decisions.",
+    "client": "NSL Foods Public Company Limited",
+    "industry": "Food Manufacturing",
+    "scope": "End-to-end ESG data platform",
+    "stack": "Next.js · TypeScript · Realtime charts · Multi-tenant auth",
+    "labels": {
+      "client": "Client",
+      "industry": "Industry",
+      "scope": "Scope",
+      "stack": "Stack"
+    },
+    "brief": {
+      "title": "The Brief",
+      "p1": "Centralize fragmented ESG data — Energy, GHG, Water, Waste, Social, and Governance — across multiple branches and production facilities into a single source of truth.",
+      "p2": "Replace spreadsheets and PDF compilations with a governed platform that supports role-based access, auditability, and on-demand exports for executive review and external reporting."
+    },
+    "shots": {
+      "loginTitle": "Welcome Screen",
+      "loginDesc": "Glass-morphism authentication with bilingual support, climate-action positioning, and live sustainability commitments visible at sign-in.",
+      "dashboardTitle": "Admin Dashboard",
+      "dashboardDesc": "Real-time user analytics — submission velocity, peak hours, per-user contribution, and a complete role registry across admin, executive, supervisor, and staff tiers.",
+      "envTitle": "Environmental Report",
+      "envDesc": "End-to-end environmental view — GHG (Scope 1+2), Total Electricity, Renewables %, Water Withdrawal, Total Waste, Waste Diversion Rate — sliced by Company, Site, and Year with year-over-year deltas."
+    },
+    "features": {
+      "title": "What's Inside",
+      "f1Title": "Six ESG Domains",
+      "f1Desc": "Environmental, Social, Governance, plus master data and audit log — all governed in one place.",
+      "f2Title": "Role-Based Access",
+      "f2Desc": "Admin, Executive, Supervisor, and Staff tiers with row-level permissions and full audit trail.",
+      "f3Title": "Live Dashboards",
+      "f3Desc": "Submission analytics, hourly activity, peak times, and per-user contribution surfaced in real time.",
+      "f4Title": "Export to Excel",
+      "f4Desc": "One-click executive exports — TV View for screens, Excel for offline review, ready for assurance."
+    },
+    "outcomes": {
+      "title": "Outcomes",
+      "o1Label": "Records Processed",
+      "o1Val": "1,138",
+      "o2Label": "Active Users",
+      "o2Val": "14",
+      "o3Label": "Sites Tracked",
+      "o3Val": "10",
+      "o4Label": "Waste Diversion",
+      "o4Val": "96.6%"
+    },
+    "note": "Screens shown are from the live deployment with placeholder demonstration data. Full system access available on request under NDA."
   },
   "contact": {
     "eyebrow": "Let's talk",

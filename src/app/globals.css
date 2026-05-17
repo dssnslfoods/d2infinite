@@ -765,6 +765,8 @@ html { scroll-behavior: smooth; }
   .glass-manifesto { padding: 48px 32px !important; border-radius: 24px !important; }
   .esg-outer { padding: 40px 32px 0 !important; border-radius: 22px !important; }
   .hero-dash-wrap { height: 360px; }
+  /* Hero/page top padding reduction */
+  .page-hero { padding-top: 120px !important; }
 }
 
 /* --- Mobile (≤ 600px) --- */
@@ -786,4 +788,6 @@ html { scroll-behavior: smooth; }
   .stat-grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
   /* Nav pill: slightly less horizontal padding */
   .nav { padding: 6px 6px 6px 14px; gap: 16px; }
+  /* Hero/page top padding reduction (mobile) */
+  .page-hero { padding-top: 100px !important; }
 }
