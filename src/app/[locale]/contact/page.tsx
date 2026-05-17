@@ -2,20 +2,28 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import type { ComponentType } from 'react';
+import type { Metadata } from 'next';
 import { Eyebrow, Glass, Reveal } from '@/components/ui';
 import ContactForm from './ContactForm';
+import { buildPageMetadata, breadcrumbSchema, localeUrl } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contact' });
-  return {
-    title: `${t('headlinePre')} ${t('headlineEm')} | D2Infinite`,
+  return buildPageMetadata({
+    locale,
+    path: 'contact',
+    title: `${t('headlinePre')} ${t('headlineEm')}`.replace(/\.$/, ''),
     description: t('lead'),
-  };
+    keywords:
+      locale === 'th'
+        ? ['ติดต่อ D2Infinite', 'ขอเดโม', 'request demo', 'contact', 'Bangkok']
+        : ['contact D2Infinite', 'request demo', 'sales contact', 'Bangkok'],
+  });
 }
 
 interface InfoItem {
@@ -145,5 +153,20 @@ export default async function ContactPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <ContactContent />;
+  const nav = await getTranslations({ locale, namespace: 'nav' });
+
+  const crumbs = breadcrumbSchema([
+    { name: nav('home'), url: localeUrl(locale) },
+    { name: nav('contact'), url: localeUrl(locale, 'contact') },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
+      <ContactContent />
+    </>
+  );
 }

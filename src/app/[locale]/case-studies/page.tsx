@@ -2,21 +2,29 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Boxes, FlaskConical, Leaf, Wallet } from 'lucide-react';
 import type { ComponentType } from 'react';
+import type { Metadata } from 'next';
 import { Eyebrow, Glass, Reveal, Stat } from '@/components/ui';
 import { CTABand } from '@/components/home';
 import { Link } from '@/i18n/routing';
+import { buildPageMetadata, breadcrumbSchema, localeUrl } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'cases' });
-  return {
-    title: `${t('headlinePre')} ${t('headlineEm')} | D2Infinite`,
+  return buildPageMetadata({
+    locale,
+    path: 'case-studies',
+    title: `${t('headlinePre')} ${t('headlineEm')}`.replace(/\.$/, ''),
     description: t('lead'),
-  };
+    keywords:
+      locale === 'th'
+        ? ['ผลงาน', 'case study', 'NSL Foods', 'ESG platform', 'SmartInventory', 'R&D dashboard', 'PayrollITH', 'D2Infinite']
+        : ['case studies', 'NSL Foods', 'ESG platform', 'SmartInventory', 'R&D dashboard', 'PayrollITH', 'D2Infinite'],
+  });
 }
 
 interface CaseDef {
@@ -245,5 +253,20 @@ export default async function CasesPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <CasesContent />;
+  const nav = await getTranslations({ locale, namespace: 'nav' });
+
+  const crumbs = breadcrumbSchema([
+    { name: nav('home'), url: localeUrl(locale) },
+    { name: nav('caseStudies'), url: localeUrl(locale, 'case-studies') },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
+      <CasesContent />
+    </>
+  );
 }

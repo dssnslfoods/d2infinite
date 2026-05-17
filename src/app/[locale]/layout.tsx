@@ -1,3 +1,4 @@
+import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -5,45 +6,75 @@ import { routing } from '@/i18n/routing';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AuroraBackground from '@/components/ui/AuroraBackground';
+import {
+  SITE_URL,
+  buildPageMetadata,
+  organizationSchema,
+  websiteSchema,
+} from '@/lib/seo';
 import '../globals.css';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+export const viewport: Viewport = {
+  themeColor: '#0a0f1e',
+  width: 'device-width',
+  initialScale: 1,
+  colorScheme: 'dark',
+};
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const messages = await getMessages();
   const t = messages.metadata as Record<string, string>;
 
-  const baseUrl = 'https://d2infinite.com';
-
   return {
-    title: t.title,
-    description: t.description,
-    openGraph: {
-      title: t.ogTitle,
-      description: t.ogDescription,
-      url: `${baseUrl}/${locale}`,
-      siteName: 'D2Infinite',
-      locale: locale === 'th' ? 'th_TH' : 'en_US',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t.ogTitle,
-      description: t.ogDescription,
-    },
-    alternates: {
-      canonical: `${baseUrl}/${locale}`,
-      languages: {
-        en: `${baseUrl}/en`,
-        th: `${baseUrl}/th`,
-      },
+    metadataBase: new URL(SITE_URL),
+    ...buildPageMetadata({
+      locale,
+      path: '',
+      title: t.title,
+      description: t.description,
+      keywords:
+        locale === 'th'
+          ? [
+              'ระบบจัดการข้อมูล',
+              'แดชบอร์ดผู้บริหาร',
+              'ESG dashboard',
+              'data platform',
+              'business intelligence',
+              'รายงานอินโฟกราฟิก',
+              'realtime dashboard',
+              'D2Infinite',
+              'แพลตฟอร์มข้อมูล',
+              'decision intelligence',
+            ]
+          : [
+              'decision intelligence',
+              'executive dashboard',
+              'data platform',
+              'business intelligence',
+              'ESG dashboard',
+              'realtime dashboard',
+              'infographic reports',
+              'D2Infinite',
+              'Bangkok data company',
+              'enterprise analytics',
+            ],
+    }),
+    applicationName: 'D2Infinite',
+    referrer: 'origin-when-cross-origin',
+    category: 'business',
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
     },
   };
 }
@@ -73,9 +104,6 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="alternate" hrefLang="en" href="https://d2infinite.com/en" />
-        <link rel="alternate" hrefLang="th" href="https://d2infinite.com/th" />
-        <link rel="alternate" hrefLang="x-default" href="https://d2infinite.com/en" />
       </head>
       <body className={locale === 'th' ? 'font-thai' : ''}>
         <AuroraBackground />
@@ -89,40 +117,24 @@ export default async function LocaleLayout({
           <Navbar />
           <main id="main-content">{children}</main>
           <Footer />
-          <OrganizationSchema locale={locale} />
+          <StructuredData locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>
   );
 }
 
-function OrganizationSchema({ locale }: { locale: string }) {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'D2Infinite Co.,Ltd.',
-    url: 'https://d2infinite.com',
-    email: 'contact@d2infinite.com',
-    telephone: '+66 870 783 663',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '422/147 Panya Indra Rd., Samwa-Tawantok',
-      addressLocality: 'Khet Klong Samwa',
-      addressRegion: 'Bangkok',
-      postalCode: '10510',
-      addressCountry: 'TH',
-    },
-    description:
-      locale === 'th'
-        ? 'แพลตฟอร์มข้อมูลเชิงตัดสินใจสำหรับผู้บริหาร — รายงานอินโฟกราฟิก แดชบอร์ดเรียลไทม์ และแพลตฟอร์มข้อมูลที่ออกแบบเฉพาะ'
-        : 'Decision-intelligence platform for executives — bespoke data platforms, infographic intelligence, and realtime dashboards.',
-    sameAs: [],
-  };
-
+function StructuredData({ locale }: { locale: string }) {
+  const schemas = [organizationSchema(locale), websiteSchema(locale)];
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      {schemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
+    </>
   );
 }

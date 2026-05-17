@@ -2,21 +2,30 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { Activity, FileText, Layers, Users } from 'lucide-react';
 import type { ComponentType, ReactNode } from 'react';
+import type { Metadata } from 'next';
 import { Eyebrow, Glass, Reveal } from '@/components/ui';
 import { CTABand } from '@/components/home';
 import SolutionMock from '@/components/solutions/SolutionMock';
+import { buildPageMetadata, breadcrumbSchema, localeUrl } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'solutions' });
-  return {
-    title: `${t('headlinePre')} ${t('headlineEm')} | D2Infinite`,
+  const nav = await getTranslations({ locale, namespace: 'nav' });
+  return buildPageMetadata({
+    locale,
+    path: 'solutions',
+    title: `${t('headlinePre')} ${t('headlineEm')}`.replace(/\.$/, ''),
     description: t('lead'),
-  };
+    keywords:
+      locale === 'th'
+        ? [nav('solutions'), 'infographic reports', 'realtime dashboard', 'data platform', 'decision support', 'D2Infinite']
+        : [nav('solutions'), 'infographic reports', 'realtime dashboards', 'data platforms', 'decision support', 'D2Infinite'],
+  });
 }
 
 interface SolutionItem {
@@ -253,7 +262,22 @@ export default async function SolutionsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <SolutionsContent />;
+  const nav = await getTranslations({ locale, namespace: 'nav' });
+
+  const crumbs = breadcrumbSchema([
+    { name: nav('home'), url: localeUrl(locale) },
+    { name: nav('solutions'), url: localeUrl(locale, 'solutions') },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
+      <SolutionsContent />
+    </>
+  );
 }
 
 // Note: SolutionsContent uses useTranslations which works in server components when setRequestLocale has been called.

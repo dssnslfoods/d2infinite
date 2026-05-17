@@ -2,20 +2,28 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import { BarChart3, Code2, Eye, Handshake, Lightbulb, Palette, Quote, Sparkles, Target, Users } from 'lucide-react';
 import type { ComponentType } from 'react';
+import type { Metadata } from 'next';
 import { Eyebrow, Glass, Reveal, Stat } from '@/components/ui';
 import { CTABand } from '@/components/home';
+import { buildPageMetadata, breadcrumbSchema, localeUrl } from '@/lib/seo';
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'about' });
-  return {
-    title: `${t('headlinePre')} ${t('headlineEm')} | D2Infinite`,
+  return buildPageMetadata({
+    locale,
+    path: 'about',
+    title: `${t('headlinePre')} ${t('headlineEm')} ${t('headlinePost')}`.replace(/\.$/, ''),
     description: t('lead'),
-  };
+    keywords:
+      locale === 'th'
+        ? ['เกี่ยวกับ D2Infinite', 'บริษัท', 'ทีมงาน', 'data company Bangkok', 'D2Infinite Co.,Ltd.']
+        : ['about D2Infinite', 'company', 'team', 'Bangkok data company', 'D2Infinite Co.,Ltd.'],
+  });
 }
 
 interface PrincipleDef {
@@ -255,5 +263,20 @@ export default async function AboutPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <AboutContent />;
+  const nav = await getTranslations({ locale, namespace: 'nav' });
+
+  const crumbs = breadcrumbSchema([
+    { name: nav('home'), url: localeUrl(locale) },
+    { name: nav('about'), url: localeUrl(locale, 'about') },
+  ]);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbs) }}
+      />
+      <AboutContent />
+    </>
+  );
 }
