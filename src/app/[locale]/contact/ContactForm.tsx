@@ -96,7 +96,7 @@ export default function ContactForm() {
   }
 
   return (
-    <Glass strong style={{ padding: 42, borderRadius: 24 }}>
+    <Glass strong className="glass-lg" style={{ padding: 42, borderRadius: 24 }}>
       <h2 className="h3" style={{ fontSize: 22, fontWeight: 500 }}>{t('title')}</h2>
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18, marginTop: 24 }}>
         <div className="row-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
@@ -191,7 +191,7 @@ export default function ContactForm() {
       </form>
 
       <style>{`
-        @media (max-width: 640px) {
+        @media (max-width: 680px) {
           .row-2 { grid-template-columns: 1fr !important; }
         }
       `}</style>

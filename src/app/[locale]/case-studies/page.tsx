@@ -110,7 +110,7 @@ function CasesContent() {
               ];
               return (
                 <Reveal key={c.id}>
-                  <Glass strong style={{ padding: 42, borderRadius: 28, position: 'relative' }}>
+                  <Glass strong className="glass-xl" style={{ padding: 42, borderRadius: 28, position: 'relative' }}>
                     <div
                       style={{
                         position: 'absolute',
@@ -227,7 +227,10 @@ function CasesContent() {
       <style>{`
         @media (max-width: 1000px) {
           .stat-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .case-grid { grid-template-columns: 1fr !important; }
+          .case-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+        }
+        @media (max-width: 480px) {
+          .stat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
         }
       `}</style>
     </div>

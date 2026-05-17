@@ -194,6 +194,7 @@ function SolutionsContent() {
                   <Glass
                     id={s.id}
                     strong
+                    className="glass-xl"
                     style={{ padding: 42, borderRadius: 28, position: 'relative' }}
                   >
                     <div
@@ -232,9 +233,12 @@ function SolutionsContent() {
 
       <style>{`
         @media (max-width: 1000px) {
-          .sol-grid { grid-template-columns: 1fr !important; }
+          .sol-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
         }
         @media (max-width: 720px) {
+          .bullet-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+        }
+        @media (max-width: 480px) {
           .bullet-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>

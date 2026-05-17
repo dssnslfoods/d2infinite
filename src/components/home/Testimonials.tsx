@@ -18,7 +18,7 @@ export default function Testimonials() {
           </div>
         </Reveal>
 
-        <div className="cap-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}>
+        <div className="testi-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}>
           {keys.map((k, i) => {
             const item = t.raw(`items.${k}`) as { quote: string; role: string; context: string };
             return (
@@ -41,6 +41,11 @@ export default function Testimonials() {
           })}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr !important; gap: 14px !important; } }
+        @media (max-width: 600px) { .testi-grid { gap: 12px !important; } }
+      `}</style>
     </section>
   );
 }

@@ -18,7 +18,7 @@ function ESGMock() {
   ];
 
   return (
-    <div style={{ position: 'relative', height: 540, marginBottom: -1 }}>
+    <div style={{ position: 'relative', height: 'clamp(420px, 55vw, 540px)', marginBottom: -1 }}>
       <Glass
         strong
         style={{
@@ -141,6 +141,7 @@ export default function ESGFeatured() {
         <Reveal>
           <Glass
             strong
+            className="esg-outer"
             style={{ padding: '56px 56px 0', borderRadius: 32, position: 'relative' }}
           >
             <div
@@ -191,6 +192,9 @@ export default function ESGFeatured() {
       <style>{`
         @media (max-width: 1000px) {
           .esg-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+        }
+        @media (max-width: 768px) {
+          .esg-grid > div:first-child { padding-bottom: 24px !important; }
         }
       `}</style>
     </section>

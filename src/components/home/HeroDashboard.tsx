@@ -34,24 +34,14 @@ export default function HeroDashboard() {
       ref={wrapRef}
       onMouseMove={handleMove}
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-      style={{
-        position: 'relative',
-        perspective: '1400px',
-        transformStyle: 'preserve-3d',
-        width: '100%',
-        height: 560,
-      }}
+      className="hero-dash-wrap"
     >
       {/* Main panel */}
       <Glass
         strong
+        className="hero-dash-main"
         style={{
-          position: 'absolute',
-          inset: '20px 60px 60px 20px',
-          padding: 22,
-          borderRadius: 22,
           transform: `rotateX(${tilt.x * 0.6}deg) rotateY(${tilt.y * 0.6}deg)`,
-          transition: 'transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
@@ -191,6 +181,7 @@ export default function HeroDashboard() {
 
       {/* Floating Q3 card */}
       <Glass
+        className="hero-float"
         style={{
           position: 'absolute',
           top: 0,
@@ -222,6 +213,7 @@ export default function HeroDashboard() {
 
       {/* Floating sources card */}
       <Glass
+        className="hero-float"
         style={{
           position: 'absolute',
           bottom: 0,

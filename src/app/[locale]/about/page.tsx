@@ -73,7 +73,7 @@ function AboutContent() {
             style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 48, alignItems: 'center' }}
           >
             <Reveal>
-              <Glass strong style={{ padding: 42, borderRadius: 28 }}>
+              <Glass strong className="glass-xl" style={{ padding: 42, borderRadius: 28 }}>
                 <h2 className="h2" style={{ fontSize: 'clamp(28px, 2.8vw, 38px)' }}>
                   {t('story.title')}
                 </h2>
@@ -184,6 +184,7 @@ function AboutContent() {
           <Reveal>
             <Glass
               strong
+              className="glass-manifesto"
               style={{
                 padding: '72px 56px',
                 borderRadius: 36,
@@ -240,6 +241,7 @@ function AboutContent() {
         }
         @media (max-width: 600px) {
           .cap-grid { grid-template-columns: 1fr !important; }
+          .story-stats { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>
     </div>

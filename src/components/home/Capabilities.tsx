@@ -85,7 +85,8 @@ export default function Capabilities() {
       </div>
 
       <style>{`
-        @media (max-width: 900px) { .cap-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 900px) { .cap-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 600px) { .cap-grid { grid-template-columns: 1fr !important; } }
       `}</style>
     </section>
   );

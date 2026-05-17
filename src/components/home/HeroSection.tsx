@@ -9,7 +9,7 @@ export default function HeroSection() {
   const tCommon = useTranslations('common');
 
   return (
-    <section className="section" style={{ paddingTop: 160 }}>
+    <section className="section hero-section" style={{ paddingTop: 160 }}>
       <div className="container-x">
         <div
           className="hero-grid"
@@ -62,6 +62,12 @@ export default function HeroSection() {
       <style>{`
         @media (max-width: 1000px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+        }
+        @media (max-width: 768px) {
+          .hero-section { padding-top: 120px !important; }
+        }
+        @media (max-width: 600px) {
+          .hero-section { padding-top: 100px !important; }
         }
       `}</style>
     </section>

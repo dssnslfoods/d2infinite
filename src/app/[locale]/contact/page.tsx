@@ -60,7 +60,7 @@ function ContactContent() {
             style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 24 }}
           >
             <Reveal>
-              <Glass strong style={{ padding: 36, borderRadius: 24 }}>
+              <Glass strong className="glass-lg" style={{ padding: 36, borderRadius: 24 }}>
                 <h2 className="h3" style={{ fontSize: 22, fontWeight: 500 }}>{t('info.title')}</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 22, marginTop: 28 }}>
                   {items.map((c) => (
@@ -131,7 +131,7 @@ function ContactContent() {
 
       <style>{`
         @media (max-width: 1000px) {
-          .contact-grid { grid-template-columns: 1fr !important; }
+          .contact-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
         }
       `}</style>
     </div>
