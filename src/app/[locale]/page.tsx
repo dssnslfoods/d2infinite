@@ -2,7 +2,6 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import {
   HeroSection,
-  TrustedBy,
   Capabilities,
   HowItWorks,
   ESGFeatured,
@@ -42,7 +41,6 @@ export default async function HomePage({
   return (
     <div className="page-enter">
       <HeroSection />
-      <TrustedBy />
       <Capabilities />
       <HowItWorks />
       <ESGFeatured />
