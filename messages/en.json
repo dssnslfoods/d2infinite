@@ -240,6 +240,20 @@
         "solution": "PayrollITH is a purpose-built web application developed using full-stack technologies known for security and fast response times. It gives SMEs a lightweight, affordable payroll platform without the overhead of a full accounting suite — payroll data stays isolated and confidential, accessible only to authorized personnel.",
         "result": "Affordable payroll management without enterprise licensing, confidential payroll separated from other business systems, fast secure web-based access from anywhere, and a solution that scales with the business."
       },
+      "catalog": {
+        "industry": "B2B Distribution · Multi-tenant SaaS",
+        "title": "Catalog Online — Bilingual Product Catalog with E-Catalog Publishing",
+        "summary": "A polished product catalog platform that doubles as a sales tool — bilingual storefront, E-Catalog flipbook publishing, and wishlist-to-quote lead capture, all driven by a no-code admin.",
+        "m1v": "TH · EN",
+        "m1l": "Bilingual public site",
+        "m2v": "12",
+        "m2l": "Admin modules shipped",
+        "m3v": "14",
+        "m3l": "DB migrations live",
+        "challenge": "B2B distributors and manufacturers needed a polished product catalog that doubles as a sales tool — but off-the-shelf shops either skipped the e-catalog publishing layer entirely or buried it behind enterprise pricing. Marketing teams wanted to ship hero changes, new categories, and announcements without filing engineering tickets.",
+        "solution": "We built Catalog Online as a multi-tenant SaaS platform. Bilingual TH/EN storefront. E-Catalog Builder turns SKUs into branded flipbooks with print-ready PDF export. Wishlist-to-Quote flow captures qualified leads in admin Analytics. A no-code Website Settings panel ships brand, theme, color presets, and homepage edits without a deploy.",
+        "result": "Single platform serving public storefront, e-catalog publishing, and lead capture. Marketing self-serves brand and content changes via the admin. Five live storefront modules, twelve admin modules, fourteen database migrations shipped — production-ready and used internally to demo the stack to prospects."
+      },
       "smartinventory": {
         "industry": "Food Service Distribution · NSL",
         "title": "SmartInventory — Lot-Level Intelligence Above SAP",
@@ -316,7 +330,8 @@
     },
     "tabs": {
       "esg": "ESG Smart Performance",
-      "smartinventory": "SmartInventory"
+      "smartinventory": "SmartInventory",
+      "catalog": "Catalog Online"
     },
     "note": "Screens shown are from live deployments. Personal data has been redacted. Full system walkthrough available on request under NDA.",
     "systems": {
@@ -360,6 +375,50 @@
           "o3Val": "10",
           "o4Label": "Waste Diversion",
           "o4Val": "96.6%"
+        }
+      },
+      "catalog": {
+        "tagline": "Bilingual product catalog with admin builder, E-Catalog flipbook, and lead capture.",
+        "client": "D2Infinite Internal Platform",
+        "industry": "B2B Distribution & Manufacturing",
+        "scope": "End-to-end product catalog + E-Catalog publishing platform",
+        "stack": "React 18 · TypeScript · Vite · Supabase · TanStack Query · Tailwind · jsPDF",
+        "brief": {
+          "title": "The Brief",
+          "p1": "B2B distributors and manufacturers need a polished product catalog that doubles as a sales tool — shoppable browse, premium e-catalog publications, wishlist-to-quote lead capture, and a CMS the marketing team can run without engineering tickets. Off-the-shelf shops either skip the e-catalog publishing layer or hide it behind enterprise pricing.",
+          "p2": "We built Catalog Online as a multi-tenant SaaS platform — bilingual (TH/EN) public storefront, an E-Catalog Builder that turns SKUs into interactive flipbooks with PDF export, a wishlist-to-quote flow that captures qualified inquiries, and a no-code Website Settings panel that lets marketing change brand, theme, and homepage in minutes."
+        },
+        "shots": {
+          "homeTitle": "Public Storefront — Hero",
+          "homeDesc": "Brand-led landing page with hero CTA, premium product slideshow, and instant trust signals. Two CTAs route to the catalog or the contact flow.",
+          "listingsTitle": "Categories · New Arrivals · Trusted Brands",
+          "listingsDesc": "Modular homepage sections rendered from CMS — shop by category cards, featured/new-arrival product grids with bilingual titles, and a trusted-brands row. Every block is editable from the admin.",
+          "ecatalogTitle": "E-Catalog Library",
+          "ecatalogDesc": "Digital catalog publishing — share interactive flipbooks, open in-browser, or export print-ready PDF. Each catalog has its own metadata, cover image, and share link.",
+          "adminTitle": "Admin Website Settings",
+          "adminDesc": "Marketing-friendly control panel — upload logo and favicon, switch color presets (Corporate Blue / Emerald / Sunset / Mono / Custom CI), and toggle light/dark/auto mode without engineering."
+        },
+        "features": {
+          "title": "What's Inside",
+          "f1Title": "Bilingual Storefront",
+          "f1Desc": "Public catalog renders in TH and EN with per-field translations. Shoppers switch language in one click; search and filters localize automatically.",
+          "f2Title": "E-Catalog Builder",
+          "f2Desc": "Drag-and-drop templates turn SKUs into branded flipbooks. Export print-ready PDF with jsPDF + html2canvas. Share a public link with one click.",
+          "f3Title": "Wishlist → Quote",
+          "f3Desc": "Visitors save products to a wishlist and submit a Quote Request. Inquiries land in admin Analytics with source attribution — no checkout, just qualified leads.",
+          "f4Title": "No-Code CMS",
+          "f4Desc": "Nav menus, homepage sections, announcements, content cards, custom pages — all editable from admin. Color presets and theme modes ship without a deploy."
+        },
+        "outcomes": {
+          "title": "Outcomes",
+          "o1Label": "Public Modules",
+          "o1Val": "5+",
+          "o2Label": "Admin Modules",
+          "o2Val": "12",
+          "o3Label": "Languages",
+          "o3Val": "TH · EN",
+          "o4Label": "DB Migrations",
+          "o4Val": "14 phases"
         }
       },
       "smartinventory": {

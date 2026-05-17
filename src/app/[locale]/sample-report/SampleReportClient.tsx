@@ -7,22 +7,27 @@ import {
   ArrowRight,
   BarChart3,
   Boxes,
+  BookOpen,
   Download,
   ExternalLink,
+  Filter,
+  Globe,
+  Heart,
   Layers,
   Leaf,
   Lock,
-  Sparkles,
-  Workflow,
-  Filter,
-  Truck,
+  Settings,
   Shield,
+  ShoppingBag,
+  Sparkles,
+  Truck,
+  Workflow,
 } from 'lucide-react';
 import type { ComponentType } from 'react';
 import { Eyebrow, Glass, Reveal } from '@/components/ui';
 import { Link } from '@/i18n/routing';
 
-type SystemId = 'esg' | 'smartinventory';
+type SystemId = 'esg' | 'smartinventory' | 'catalog';
 
 interface SystemDef {
   id: SystemId;
@@ -73,6 +78,22 @@ const SYSTEMS: Record<SystemId, SystemDef> = {
       { id: 'f2', Icon: Workflow, tint: '' },
       { id: 'f3', Icon: Truck, tint: 'emerald' },
       { id: 'f4', Icon: Shield, tint: 'violet' },
+    ],
+  },
+  catalog: {
+    id: 'catalog',
+    Icon: ShoppingBag,
+    shots: [
+      { id: 'home', src: '/showcase/catalog-home.png', ratio: 16 / 14 },
+      { id: 'listings', src: '/showcase/catalog-listings.png', ratio: 16 / 23 },
+      { id: 'ecatalog', src: '/showcase/catalog-ecatalog.png', ratio: 16 / 13 },
+      { id: 'admin', src: '/showcase/catalog-admin.png', ratio: 16 / 14 },
+    ],
+    features: [
+      { id: 'f1', Icon: Globe, tint: '' },
+      { id: 'f2', Icon: BookOpen, tint: 'violet' },
+      { id: 'f3', Icon: Heart, tint: 'emerald' },
+      { id: 'f4', Icon: Settings, tint: 'amber' },
     ],
   },
 };

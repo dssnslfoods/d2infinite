@@ -240,6 +240,20 @@
         "solution": "PayrollITH เป็นเว็บแอปพลิเคชันที่สร้างด้วยเทคโนโลยี full-stack ที่ขึ้นชื่อด้านความปลอดภัยและการตอบสนองที่รวดเร็ว ให้ SME มีแพลตฟอร์มเงินเดือนเบาและราคาเหมาะสมโดยไม่ต้องแบกระบบบัญชีเต็ม ข้อมูลเงินเดือนแยกขาดและเป็นความลับ เข้าถึงได้เฉพาะผู้มีสิทธิ์",
         "result": "การจัดการเงินเดือนในราคาเหมาะสมโดยไม่ต้องเสียค่า license enterprise ข้อมูลเงินเดือนแยกขาดจากระบบธุรกิจอื่น เข้าถึงผ่านเว็บได้รวดเร็วและปลอดภัยจากทุกที่ และเป็นโซลูชันที่ขยายตัวไปกับธุรกิจได้"
       },
+      "catalog": {
+        "industry": "B2B Distribution · Multi-tenant SaaS",
+        "title": "Catalog Online — แคตตาล็อกสินค้า 2 ภาษาพร้อมระบบ E-Catalog",
+        "summary": "แพลตฟอร์มแคตตาล็อกสินค้าที่เป็น Sales Tool ในตัว — Storefront 2 ภาษา ระบบ E-Catalog Flipbook และ Wishlist-to-Quote เก็บ Lead ทั้งหมดสั่งงานจาก Admin No-Code",
+        "m1v": "TH · EN",
+        "m1l": "หน้า Public 2 ภาษา",
+        "m2v": "12",
+        "m2l": "Module Admin",
+        "m3v": "14",
+        "m3l": "DB migrations",
+        "challenge": "ธุรกิจ B2B ผู้จัดจำหน่ายและผู้ผลิตต้องการแคตตาล็อกที่ใช้เป็น Sales Tool ได้ — แต่ระบบสำเร็จรูปข้าม E-Catalog หรือผูกกับแพ็กเกจ Enterprise ราคาแพง ทีมการตลาดอยาก Ship เปลี่ยน Hero, หมวดหมู่ใหม่, Announcement โดยไม่ต้องเขียน Ticket Engineering",
+        "solution": "เราสร้าง Catalog Online เป็น Multi-tenant SaaS — Storefront 2 ภาษา TH/EN, E-Catalog Builder เปลี่ยน SKU เป็น Flipbook พร้อม Export PDF, Wishlist-to-Quote เก็บ Lead ลง Admin Analytics และ Website Settings ที่ให้แก้ Brand, Theme, Color Preset, Homepage โดยไม่ต้อง Deploy",
+        "result": "แพลตฟอร์มเดียวรองรับ Storefront, E-Catalog Publishing และ Lead Capture ทีมการตลาด Self-Serve ทุกการเปลี่ยน Brand และ Content ส่ง 5+ Module Public, 12 Module Admin, 14 DB Migrations Production พร้อมใช้ และใช้เป็น Demo เพื่อโชว์ Stack ให้ลูกค้าที่คุยอยู่"
+      },
       "smartinventory": {
         "industry": "Food Service Distribution · NSL",
         "title": "SmartInventory — Lot-Level Intelligence ซ้อนบน SAP",
@@ -316,7 +330,8 @@
     },
     "tabs": {
       "esg": "ESG Smart Performance",
-      "smartinventory": "SmartInventory"
+      "smartinventory": "SmartInventory",
+      "catalog": "Catalog Online"
     },
     "note": "ภาพหน้าจอที่แสดงเป็นระบบที่ deploy ใช้งานจริง ข้อมูลส่วนบุคคลถูกปกปิดแล้ว สามารถขอ walkthrough ระบบจริงได้ภายใต้ NDA",
     "systems": {
@@ -360,6 +375,50 @@
           "o3Val": "10",
           "o4Label": "Waste Diversion",
           "o4Val": "96.6%"
+        }
+      },
+      "catalog": {
+        "tagline": "แคตตาล็อกสินค้า 2 ภาษา พร้อม Admin Builder, E-Catalog Flipbook และระบบเก็บ Lead",
+        "client": "D2Infinite Internal Platform",
+        "industry": "B2B Distribution & Manufacturing",
+        "scope": "แพลตฟอร์มแคตตาล็อกสินค้า + E-Catalog ครบวงจร",
+        "stack": "React 18 · TypeScript · Vite · Supabase · TanStack Query · Tailwind · jsPDF",
+        "brief": {
+          "title": "โจทย์",
+          "p1": "ธุรกิจ B2B ผู้จัดจำหน่ายและผู้ผลิตต้องการแคตตาล็อกสินค้าที่สวยและใช้เป็น Sales Tool ได้ในตัว — ดูสินค้าสะดวก E-Catalog แบบพรีเมียม Wishlist ที่เปลี่ยนเป็นใบขอราคา และ CMS ที่ทีมการตลาดดูแลเองได้ไม่ต้องรอ Dev ระบบสำเร็จรูปทั่วไปข้ามส่วน E-Catalog หรือมีในแพ็กเกจ Enterprise ราคาแพง",
+          "p2": "เราสร้าง Catalog Online เป็นแพลตฟอร์ม Multi-tenant SaaS — หน้าเว็บ Public 2 ภาษา (TH/EN), E-Catalog Builder ที่เปลี่ยน SKU เป็น Flipbook พร้อม Export PDF, ระบบ Wishlist-to-Quote เก็บ Lead คุณภาพ และ Website Settings ที่ให้ทีมการตลาดเปลี่ยน Brand, Theme, หน้าแรกได้ในไม่กี่นาที"
+        },
+        "shots": {
+          "homeTitle": "หน้าร้าน Public — Hero",
+          "homeDesc": "หน้าแรกที่สื่อแบรนด์ พร้อม Hero CTA, Slideshow สินค้าพรีเมียม และ Trust Signal ทันที CTA 2 ปุ่มแยกไป Catalog หรือ Contact",
+          "listingsTitle": "หมวดหมู่ · มาใหม่ล่าสุด · แบรนด์ที่ไว้ใจ",
+          "listingsDesc": "Section หน้าแรกแบบ Modular ดึงจาก CMS — การ์ดหมวดหมู่ Grid สินค้า Featured/New Arrivals พร้อมชื่อ 2 ภาษา และแถวแบรนด์ Trusted แก้ไขทุก Block ได้จาก Admin",
+          "ecatalogTitle": "ห้องสมุด E-Catalog",
+          "ecatalogDesc": "ระบบ E-Catalog แบบมือโปร — แชร์ Flipbook แบบ Interactive เปิดดูในเบราว์เซอร์ หรือ Export PDF พร้อมพิมพ์ แต่ละ Catalog มี Metadata, ภาพปก และ Share Link ของตัวเอง",
+          "adminTitle": "Admin Website Settings",
+          "adminDesc": "Control Panel ที่ทีมการตลาดใช้เองได้ — อัปโหลด Logo, Favicon, สลับ Color Preset (Corporate Blue / Emerald / Sunset / Mono / Custom CI) และ Light/Dark/Auto โดยไม่ต้อง Deploy"
+        },
+        "features": {
+          "title": "สิ่งที่อยู่ในระบบ",
+          "f1Title": "Storefront 2 ภาษา",
+          "f1Desc": "หน้าเว็บ Public แสดงผล TH/EN แยก Field ผู้ชมสลับภาษาได้คลิกเดียว Search/Filter ก็แปลตามอัตโนมัติ",
+          "f2Title": "E-Catalog Builder",
+          "f2Desc": "Template แบบ Drag-and-drop เปลี่ยน SKU เป็น Flipbook พร้อมแบรนด์ Export PDF พร้อมพิมพ์ด้วย jsPDF + html2canvas แชร์ผ่าน Link สาธารณะคลิกเดียว",
+          "f3Title": "Wishlist → ใบขอราคา",
+          "f3Desc": "ผู้ชมเก็บสินค้าเข้า Wishlist แล้วส่งใบขอราคาได้เลย ใบขอราคาเข้า Admin Analytics พร้อม Source Attribution — ไม่ใช่ระบบ Checkout แต่เก็บ Lead คุณภาพ",
+          "f4Title": "CMS แบบ No-Code",
+          "f4Desc": "Nav Menus, Homepage Sections, Announcements, Content Cards, Custom Pages — แก้ได้จาก Admin ทั้งหมด Color Preset และโหมดธีมเปลี่ยนได้ทันทีโดยไม่ต้อง Deploy"
+        },
+        "outcomes": {
+          "title": "ผลลัพธ์",
+          "o1Label": "Module Public",
+          "o1Val": "5+",
+          "o2Label": "Module Admin",
+          "o2Val": "12",
+          "o3Label": "ภาษาที่รองรับ",
+          "o3Val": "TH · EN",
+          "o4Label": "DB Migrations",
+          "o4Val": "14 phases"
         }
       },
       "smartinventory": {

@@ -1,6 +1,6 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Boxes, FlaskConical, Leaf, Wallet } from 'lucide-react';
+import { ArrowRight, Boxes, FlaskConical, Leaf, ShoppingBag, Wallet } from 'lucide-react';
 import type { ComponentType } from 'react';
 import type { Metadata } from 'next';
 import { Eyebrow, Glass, Reveal, Stat } from '@/components/ui';
@@ -28,9 +28,9 @@ export async function generateMetadata({
 }
 
 interface CaseDef {
-  id: 'esg' | 'rd' | 'payroll' | 'smartinventory';
+  id: 'esg' | 'rd' | 'payroll' | 'smartinventory' | 'catalog';
   Icon: ComponentType<{ size?: number }>;
-  tint: 'emerald' | 'violet' | 'amber' | '';
+  tint: 'emerald' | 'violet' | 'amber' | 'rose' | '';
   tintRgba: string;
   borderColor: string;
 }
@@ -38,6 +38,7 @@ interface CaseDef {
 const CASES: CaseDef[] = [
   { id: 'esg', Icon: Leaf, tint: 'emerald', tintRgba: 'rgba(52, 211, 153, 0.14)', borderColor: '#fb7185' },
   { id: 'smartinventory', Icon: Boxes, tint: 'amber', tintRgba: 'rgba(251, 191, 36, 0.14)', borderColor: '#fbbf24' },
+  { id: 'catalog', Icon: ShoppingBag, tint: 'rose', tintRgba: 'rgba(251, 113, 133, 0.14)', borderColor: '#fb7185' },
   { id: 'rd', Icon: FlaskConical, tint: '', tintRgba: 'rgba(34, 211, 238, 0.14)', borderColor: '#22d3ee' },
   { id: 'payroll', Icon: Wallet, tint: 'violet', tintRgba: 'rgba(167, 139, 250, 0.14)', borderColor: '#a78bfa' },
 ];
