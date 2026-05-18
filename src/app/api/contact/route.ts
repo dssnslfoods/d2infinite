@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
     const apiKey = process.env.RESEND_API_KEY;
     const fromAddress = process.env.CONTACT_FROM_EMAIL ?? 'D2Infinite Contact Form <no-reply@d2infinite.com>';
-    const toAddress = process.env.CONTACT_TO_EMAIL ?? 'contact@d2infinite.com';
+    const toAddress = process.env.CONTACT_TO_EMAIL ?? 'contact@d2infinite.com,arpaket@gmail.com';
 
     if (!apiKey) {
       console.error('RESEND_API_KEY is not configured');
