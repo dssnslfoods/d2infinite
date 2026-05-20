@@ -144,11 +144,19 @@ export default function SampleReportClient() {
     window.history.replaceState(null, '', url.toString());
   };
 
+  // Build a canonical share URL on the production domain (not localhost / preview)
+  const buildShareUrl = (view: SystemId) => {
+    const url = new URL(window.location.href);
+    url.protocol = 'https:';
+    url.host = 'd2infinite.com';
+    url.port = '';
+    url.searchParams.set('view', view);
+    return url.toString();
+  };
+
   // Open the share dialog: build the URL + QR in the handler (not an effect)
   const openShare = () => {
-    const url = new URL(window.location.href);
-    url.searchParams.set('view', active);
-    const full = url.toString();
+    const full = buildShareUrl(active);
     setShareUrl(full);
     setCopied(false);
     setShareOpen(true);

@@ -352,8 +352,8 @@
     "note": "Screens shown are from live deployments. Personal data has been redacted. Full system walkthrough available on request under NDA.",
     "systems": {
       "esg": {
-        "tagline": "Sustainability intelligence for NSL Foods Public Company Limited.",
-        "client": "NSL Foods Public Company Limited",
+        "tagline": "Sustainability intelligence for an enterprise food manufacturer.",
+        "client": "Enterprise Food Manufacturer (Public Company)",
         "industry": "Food Manufacturing",
         "scope": "End-to-end ESG data platform",
         "stack": "Next.js · TypeScript · Realtime charts · Multi-tenant auth",
