@@ -182,6 +182,7 @@ export default function SampleReportClient() {
   };
 
   return (
+    <>
     <div className="page-enter">
       {/* Hero */}
       <section className="section page-hero" style={{ paddingTop: 160, paddingBottom: 40 }}>
@@ -539,111 +540,6 @@ export default function SampleReportClient() {
         </div>
       </section>
 
-      {/* Share dialog */}
-      {shareOpen && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={t('share.title')}
-          onClick={() => setShareOpen(false)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 80,
-            display: 'grid',
-            placeItems: 'center',
-            padding: 20,
-            background: 'rgba(2, 6, 18, 0.62)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            animation: 'page-in 240ms ease both',
-          }}
-        >
-          <div
-            className="glass glass-strong"
-            onClick={(e) => e.stopPropagation()}
-            style={{ padding: 32, borderRadius: 24, maxWidth: 400, width: '100%', position: 'relative' }}
-          >
-            <button
-              type="button"
-              aria-label="Close"
-              onClick={() => setShareOpen(false)}
-              className="btn btn-ghost btn-sm"
-              style={{ position: 'absolute', top: 14, right: 14, padding: 8 }}
-            >
-              <X size={16} />
-            </button>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-              <sys.Icon size={18} />
-              <h3 style={{ fontSize: 18, fontWeight: 500 }}>{t('share.title')}</h3>
-            </div>
-            <p className="caption" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 22 }}>
-              {t('share.desc')}
-            </p>
-
-            {/* QR code */}
-            <div
-              style={{
-                display: 'grid',
-                placeItems: 'center',
-                marginBottom: 20,
-              }}
-            >
-              {qrDataUrl ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={qrDataUrl}
-                  alt={t('share.qrAlt')}
-                  width={200}
-                  height={200}
-                  style={{
-                    width: 200,
-                    height: 200,
-                    borderRadius: 14,
-                    background: '#fff',
-                    padding: 10,
-                    boxShadow: '0 8px 30px -10px rgba(0,0,0,0.5)',
-                  }}
-                />
-              ) : (
-                <div style={{ width: 200, height: 200, borderRadius: 14, background: 'rgba(255,255,255,0.05)' }} />
-              )}
-            </div>
-
-            {/* Link + copy */}
-            <div style={{ display: 'flex', gap: 8 }}>
-              <input
-                readOnly
-                value={shareUrl}
-                onFocus={(e) => e.currentTarget.select()}
-                aria-label="Share link"
-                style={{
-                  flex: 1,
-                  minWidth: 0,
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: 12,
-                  padding: '12px 14px',
-                  fontSize: 13,
-                  color: 'var(--text-2)',
-                  fontFamily: 'var(--font-mono)',
-                }}
-              />
-              <button
-                type="button"
-                onClick={copyLink}
-                className={copied ? 'btn btn-emerald btn-sm' : 'btn btn-primary btn-sm'}
-                style={{ flexShrink: 0, padding: '0 16px' }}
-              >
-                {copied ? <Check size={14} /> : <Copy size={14} />}
-                {copied ? t('share.copied') : t('share.copy')}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       <style>{`
         @media (max-width: 900px) {
           .meta-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -657,5 +553,118 @@ export default function SampleReportClient() {
         }
       `}</style>
     </div>
+
+    {/* Share dialog — rendered OUTSIDE page-enter so position:fixed works correctly */}
+    {shareOpen && (
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={t('share.title')}
+        onClick={() => setShareOpen(false)}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 80,
+          display: 'grid',
+          placeItems: 'center',
+          padding: 20,
+          background: 'rgba(2, 6, 18, 0.62)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          animation: 'page-in 240ms ease both',
+        }}
+      >
+        <div
+          className="glass glass-strong"
+          onClick={(e) => e.stopPropagation()}
+          style={{ padding: 32, borderRadius: 24, maxWidth: 400, width: '100%', position: 'relative' }}
+        >
+          <button
+            type="button"
+            aria-label="Close"
+            onClick={() => setShareOpen(false)}
+            className="btn btn-ghost btn-sm"
+            style={{ position: 'absolute', top: 14, right: 14, padding: 8 }}
+          >
+            <X size={16} />
+          </button>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+            <sys.Icon size={18} />
+            <h3 style={{ fontSize: 18, fontWeight: 500 }}>{t('share.title')}</h3>
+          </div>
+          <p className="caption" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 22 }}>
+            {t('share.desc')}
+          </p>
+
+          {/* QR code */}
+          <div style={{ display: 'grid', placeItems: 'center', marginBottom: 20 }}>
+            {qrDataUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={qrDataUrl}
+                alt={t('share.qrAlt')}
+                width={200}
+                height={200}
+                style={{
+                  width: 200,
+                  height: 200,
+                  borderRadius: 14,
+                  background: '#fff',
+                  padding: 10,
+                  boxShadow: '0 8px 30px -10px rgba(0,0,0,0.5)',
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: 200,
+                  height: 200,
+                  borderRadius: 14,
+                  background: 'rgba(255,255,255,0.05)',
+                  display: 'grid',
+                  placeItems: 'center',
+                  color: 'var(--text-3)',
+                  fontSize: 12,
+                }}
+              >
+                Generating…
+              </div>
+            )}
+          </div>
+
+          {/* Link + copy */}
+          <div style={{ display: 'flex', gap: 8 }}>
+            <input
+              readOnly
+              value={shareUrl}
+              onFocus={(e) => e.currentTarget.select()}
+              aria-label="Share link"
+              style={{
+                flex: 1,
+                minWidth: 0,
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.12)',
+                borderRadius: 12,
+                padding: '12px 14px',
+                fontSize: 13,
+                color: 'var(--text-2)',
+                fontFamily: 'var(--font-mono)',
+              }}
+            />
+            <button
+              type="button"
+              onClick={copyLink}
+              className={copied ? 'btn btn-emerald btn-sm' : 'btn btn-primary btn-sm'}
+              style={{ flexShrink: 0, padding: '0 16px' }}
+            >
+              {copied ? <Check size={14} /> : <Copy size={14} />}
+              {copied ? t('share.copied') : t('share.copy')}
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
