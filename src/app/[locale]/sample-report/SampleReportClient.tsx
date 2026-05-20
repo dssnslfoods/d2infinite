@@ -2,12 +2,15 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import QRCode from 'qrcode';
 import { useTranslations, useLocale } from 'next-intl';
 import {
   ArrowRight,
   BarChart3,
   Boxes,
   BookOpen,
+  Check,
+  Copy,
   Download,
   ExternalLink,
   FileDown,
@@ -19,11 +22,13 @@ import {
   Loader2,
   Lock,
   Settings,
+  Share2,
   Shield,
   ShoppingBag,
   Sparkles,
   Truck,
   Workflow,
+  X,
 } from 'lucide-react';
 import type { ComponentType } from 'react';
 import { Eyebrow, Glass, Reveal } from '@/components/ui';
@@ -112,6 +117,10 @@ export default function SampleReportClient() {
   const locale = useLocale();
   const [active, setActive] = useState<SystemId>('esg');
   const [pdfBusy, setPdfBusy] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [shareUrl, setShareUrl] = useState('');
+  const [qrDataUrl, setQrDataUrl] = useState('');
 
   const sys = SYSTEMS[active];
   const sysT = (key: string) => t(`systems.${active}.${key}`);
@@ -132,9 +141,71 @@ export default function SampleReportClient() {
   // Select a tab and reflect it in the URL without navigating
   const selectTab = (id: SystemId) => {
     setActive(id);
+    setCopied(false);
     const url = new URL(window.location.href);
     url.searchParams.set('view', id);
     window.history.replaceState(null, '', url.toString());
+  };
+
+  // Open the share dialog: build a deep-link to this tab (using the real
+  // current origin so it resolves wherever deployed) + a matching QR code.
+  const openShare = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('view', active);
+    const full = url.toString();
+    setShareUrl(full);
+    setCopied(false);
+    setShareOpen(true);
+    QRCode.toDataURL(full, {
+      width: 240,
+      margin: 1,
+      color: { dark: '#0a0f1e', light: '#ffffff' },
+    })
+      .then(setQrDataUrl)
+      .catch(() => setQrDataUrl(''));
+  };
+
+  // Close dialog on Escape
+  useEffect(() => {
+    if (!shareOpen) return;
+    const onEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShareOpen(false);
+    };
+    document.addEventListener('keydown', onEsc);
+    return () => document.removeEventListener('keydown', onEsc);
+  }, [shareOpen]);
+
+  const copyLink = async () => {
+    let ok = false;
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        ok = true;
+      } catch {
+        ok = false;
+      }
+    }
+    if (!ok) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = shareUrl;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0, ta.value.length);
+        ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    }
   };
 
   // Downscale a screenshot to a capped width and re-encode as JPEG so the
@@ -343,24 +414,36 @@ export default function SampleReportClient() {
               >
                 {sysT('tagline')}
               </p>
-              <button
-                type="button"
-                className="btn btn-glass btn-sm"
-                onClick={downloadSalesKit}
-                disabled={pdfBusy}
-                aria-busy={pdfBusy}
-                style={pdfBusy ? { opacity: 0.7, cursor: 'wait' } : undefined}
+              <div
+                style={{
+                  display: 'flex',
+                  gap: 10,
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                }}
               >
-                {pdfBusy ? (
-                  <>
-                    <Loader2 size={14} className="spin" /> {t('pdf.preparing')}
-                  </>
-                ) : (
-                  <>
-                    <FileDown size={14} /> {t('pdf.button')}
-                  </>
-                )}
-              </button>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-sm"
+                  onClick={downloadSalesKit}
+                  disabled={pdfBusy}
+                  aria-busy={pdfBusy}
+                  style={pdfBusy ? { opacity: 0.7, cursor: 'wait' } : undefined}
+                >
+                  {pdfBusy ? (
+                    <>
+                      <Loader2 size={14} className="spin" /> {t('pdf.preparing')}
+                    </>
+                  ) : (
+                    <>
+                      <FileDown size={14} /> {t('pdf.button')}
+                    </>
+                  )}
+                </button>
+                <button type="button" className="btn btn-glass btn-sm" onClick={openShare}>
+                  <Share2 size={14} /> {t('share.button')}
+                </button>
+              </div>
             </div>
           </Reveal>
 
@@ -638,6 +721,139 @@ export default function SampleReportClient() {
         }
       `}</style>
     </div>
+
+    {/* Share dialog — deep-link + QR for the active tab (rendered OUTSIDE
+        page-enter so position:fixed covers the full viewport) */}
+    {shareOpen && (
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={t('share.title')}
+        onClick={() => setShareOpen(false)}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 80,
+          display: 'grid',
+          placeItems: 'center',
+          padding: 20,
+          background: 'rgba(2, 6, 18, 0.62)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          animation: 'page-in 240ms ease both',
+        }}
+      >
+        <div
+          className="glass glass-strong"
+          onClick={(e) => e.stopPropagation()}
+          style={{ padding: 32, borderRadius: 24, maxWidth: 400, width: '100%', position: 'relative' }}
+        >
+          <button
+            type="button"
+            aria-label="Close"
+            onClick={() => setShareOpen(false)}
+            className="btn btn-ghost btn-sm"
+            style={{ position: 'absolute', top: 14, right: 14, padding: 8 }}
+          >
+            <X size={16} />
+          </button>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+            <sys.Icon size={18} />
+            <h3 style={{ fontSize: 18, fontWeight: 500 }}>{t('share.title')}</h3>
+          </div>
+          <p className="caption" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 22 }}>
+            {t('share.desc')}
+          </p>
+
+          {/* QR code */}
+          <div style={{ display: 'grid', placeItems: 'center', marginBottom: 20 }}>
+            {qrDataUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={qrDataUrl}
+                alt={t('share.qrAlt')}
+                width={200}
+                height={200}
+                style={{
+                  width: 200,
+                  height: 200,
+                  borderRadius: 14,
+                  background: '#fff',
+                  padding: 10,
+                  boxShadow: '0 8px 30px -10px rgba(0,0,0,0.5)',
+                }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: 200,
+                  height: 200,
+                  borderRadius: 14,
+                  background: 'rgba(255,255,255,0.05)',
+                  display: 'grid',
+                  placeItems: 'center',
+                  color: 'var(--text-3)',
+                  fontSize: 12,
+                }}
+              >
+                …
+              </div>
+            )}
+          </div>
+
+          {/* Link + copy */}
+          <div style={{ display: 'flex', gap: 8 }}>
+            <input
+              readOnly
+              value={shareUrl}
+              onFocus={(e) => e.currentTarget.select()}
+              aria-label="Share link"
+              style={{
+                flex: 1,
+                minWidth: 0,
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.12)',
+                borderRadius: 12,
+                padding: '12px 14px',
+                fontSize: 13,
+                color: 'var(--text-2)',
+                fontFamily: 'var(--font-mono)',
+              }}
+            />
+            <button
+              type="button"
+              onClick={copyLink}
+              className={copied ? 'btn btn-emerald btn-sm' : 'btn btn-primary btn-sm'}
+              style={{ flexShrink: 0, padding: '0 16px' }}
+            >
+              {copied ? <Check size={14} /> : <Copy size={14} />}
+              {copied ? t('share.copied') : t('share.copy')}
+            </button>
+          </div>
+
+          {/* Download from within the dialog too */}
+          <button
+            type="button"
+            className="btn btn-glass btn-sm"
+            onClick={downloadSalesKit}
+            disabled={pdfBusy}
+            aria-busy={pdfBusy}
+            style={{ width: '100%', marginTop: 12, ...(pdfBusy ? { opacity: 0.7, cursor: 'wait' } : {}) }}
+          >
+            {pdfBusy ? (
+              <>
+                <Loader2 size={14} className="spin" /> {t('pdf.preparing')}
+              </>
+            ) : (
+              <>
+                <FileDown size={14} /> {t('pdf.button')}
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    )}
     </>
   );
 }

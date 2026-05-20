@@ -348,6 +348,14 @@
       "screens": "Inside the System",
       "prepared": "Prepared"
     },
+    "share": {
+      "button": "Share / QR",
+      "title": "Share this view",
+      "desc": "Copy the link or scan the QR code — it opens this tab where the sales kit PDF can be downloaded.",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "qrAlt": "QR code linking to this showcase tab"
+    },
     "note": "Screens shown are from live deployments. Personal data has been redacted. Full system walkthrough available on request under NDA.",
     "systems": {
       "esg": {
