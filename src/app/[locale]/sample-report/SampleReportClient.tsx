@@ -144,12 +144,10 @@ export default function SampleReportClient() {
     window.history.replaceState(null, '', url.toString());
   };
 
-  // Build a canonical share URL on the production domain (not localhost / preview)
+  // Build a share URL using the actual current origin (whatever host serves
+  // the page), so the link always resolves wherever it's deployed.
   const buildShareUrl = (view: SystemId) => {
     const url = new URL(window.location.href);
-    url.protocol = 'https:';
-    url.host = 'd2infinite.com';
-    url.port = '';
     url.searchParams.set('view', view);
     return url.toString();
   };
