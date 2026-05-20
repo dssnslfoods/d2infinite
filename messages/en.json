@@ -208,7 +208,7 @@
     "items": {
       "esg": {
         "industry": "Food & Beverage · SET100",
-        "title": "ESG Tracking & Board Dashboard for NSL Foods",
+        "title": "ESG Tracking & Board Dashboard for an Enterprise Food Manufacturer",
         "summary": "A unified ESG operating system for a publicly-listed food manufacturer — sustainability reporting that meets global frameworks and board scrutiny.",
         "m1v": "100%",
         "m1l": "ESG data coverage",
@@ -216,7 +216,7 @@
         "m2l": "Report cycle time",
         "m3v": "GRI · SASB · TCFD",
         "m3l": "Frameworks aligned",
-        "challenge": "NSL Foods PLC needed one centralized platform to track Environmental, Social, and Governance activities across all operations, ensure compliance with global sustainability standards, and produce board-grade reporting on demand.",
+        "challenge": "A publicly-listed food manufacturer needed one centralized platform to track Environmental, Social, and Governance activities across all operations, ensure compliance with global sustainability standards, and produce board-grade reporting on demand.",
         "solution": "We delivered a user-friendly web platform with intuitive UX, real-time data ingestion across the supply chain, and an executive dashboard designed specifically for board committees and audit reviewers.",
         "result": "Streamlined ESG data collection, real-time visibility into sustainability KPIs, board-ready reports aligned with global standards, and dramatically improved governance transparency."
       },
@@ -263,7 +263,7 @@
         "result": "Single platform serving public storefront, e-catalog publishing, and lead capture. Marketing self-serves brand and content changes via the admin. Five live storefront modules, twelve admin modules, fourteen database migrations shipped — production-ready and used internally to demo the stack to prospects."
       },
       "smartinventory": {
-        "industry": "Food Service Distribution · NSL",
+        "industry": "Food Service Distribution",
         "title": "SmartInventory — Lot-Level Intelligence Above SAP",
         "summary": "Built a lot-level inventory intelligence platform that surfaced ฿14.9M in invisible expired stock on day one — a layer above SAP, not a replacement.",
         "m1v": "฿14.9M",
@@ -272,7 +272,7 @@
         "m2l": "Reorder cycle",
         "m3v": "263.8K",
         "m3l": "Transactions tracked",
-        "challenge": "NSL Food Service had ฿14.9M in expired inventory hidden inside their SAP system. No lot-level tracking. Manual Excel handoffs broke whenever an operations staffer turned over. GMP/HACCP auditors flagged batch traceability gaps year after year.",
+        "challenge": "A national food service distributor had ฿14.9M in expired inventory hidden inside their SAP system. No lot-level tracking. Manual Excel handoffs broke whenever an operations staffer turned over. GMP/HACCP auditors flagged batch traceability gaps year after year.",
         "solution": "We built SmartInventory as an intelligence layer above SAP — lot-level expiry tracking, a proprietary VV Matrix (Value × Validity) scoring engine, FEFO automation, and three analysis modes (Lot, Worst-Case, Weighted) for ops, procurement, and finance to share the same data and reach different conclusions.",
         "result": "฿8.5M of dead stock cleared in the first three months. Reorder cycle dropped from 30 to 14 days. First GMP/HACCP audit passed cleanly. Operations team replaced Excel chaos with a daily FEFO pick list. Boardroom now sees inventory health in one glance."
       }
@@ -443,13 +443,13 @@
       },
       "smartinventory": {
         "tagline": "Lot-level inventory intelligence for food service operators.",
-        "client": "NSL Food Service",
+        "client": "National Food Service Distributor",
         "industry": "Food Service Distribution",
         "scope": "Lot-level inventory intelligence platform",
         "stack": "React 19 · TypeScript · Supabase · PostgreSQL 17 · Recharts",
         "brief": {
           "title": "The Brief",
-          "p1": "NSL Food Service had ฿14.9M in expired stock hidden inside their SAP system — no lot-level tracking, manual Excel handoffs that broke whenever an operations staffer turned over. Auditors flagged batch traceability gaps in GMP/HACCP reviews.",
+          "p1": "A national food service distributor had ฿14.9M in expired stock hidden inside their SAP system — no lot-level tracking, manual Excel handoffs that broke whenever an operations staffer turned over. Auditors flagged batch traceability gaps in GMP/HACCP reviews.",
           "p2": "We built SmartInventory as an intelligence layer on top of SAP — lot-level expiry tracking, VV Matrix scoring (Value × Validity), FEFO automation, and three boardroom-ready analysis modes. ฿8.5M of dead stock cleared in the first three months."
         },
         "shots": {

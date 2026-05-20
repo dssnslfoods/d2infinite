@@ -208,7 +208,7 @@
     "items": {
       "esg": {
         "industry": "อาหารและเครื่องดื่ม · SET100",
-        "title": "ระบบติดตาม ESG และแดชบอร์ดบอร์ดสำหรับ NSL Foods",
+        "title": "ระบบติดตาม ESG และแดชบอร์ดบอร์ดสำหรับองค์กรผู้ผลิตอาหารระดับมหาชน",
         "summary": "ระบบ ESG รวมศูนย์สำหรับบริษัทอาหารจดทะเบียน — รายงานความยั่งยืนที่ตรงตาม framework สากลและพร้อมเสนอบอร์ด",
         "m1v": "100%",
         "m1l": "ความครอบคลุมข้อมูล ESG",
@@ -216,7 +216,7 @@
         "m2l": "เวลาในการจัดทำรายงาน",
         "m3v": "GRI · SASB · TCFD",
         "m3l": "Framework ที่สอดคล้อง",
-        "challenge": "บริษัท NSL Foods PLC ต้องการแพลตฟอร์มรวมศูนย์เพื่อติดตามกิจกรรม ESG ทั่วทั้งองค์กร เพื่อให้สอดคล้องกับมาตรฐานความยั่งยืนสากล และจัดทำรายงานระดับบอร์ดได้ตามต้องการ",
+        "challenge": "องค์กรผู้ผลิตอาหารระดับมหาชนต้องการแพลตฟอร์มรวมศูนย์เพื่อติดตามกิจกรรม ESG ทั่วทั้งองค์กร เพื่อให้สอดคล้องกับมาตรฐานความยั่งยืนสากล และจัดทำรายงานระดับบอร์ดได้ตามต้องการ",
         "solution": "เราส่งมอบแพลตฟอร์มเว็บที่ใช้งานง่ายพร้อม UX ที่เป็นมิตร การรวบรวมข้อมูลแบบเรียลไทม์ทั่วทั้ง supply chain และแดชบอร์ดผู้บริหารที่ออกแบบสำหรับคณะกรรมการบอร์ดและ auditor",
         "result": "การรวบรวมข้อมูล ESG ที่ราบรื่น มองเห็น KPI ความยั่งยืนแบบเรียลไทม์ รายงานพร้อมเสนอบอร์ดตามมาตรฐานสากล และความโปร่งใสในการกำกับดูแลที่ดีขึ้นมาก"
       },
@@ -263,7 +263,7 @@
         "result": "แพลตฟอร์มเดียวรองรับ Storefront, E-Catalog Publishing และ Lead Capture ทีมการตลาด Self-Serve ทุกการเปลี่ยน Brand และ Content ส่ง 5+ Module Public, 12 Module Admin, 14 DB Migrations Production พร้อมใช้ และใช้เป็น Demo เพื่อโชว์ Stack ให้ลูกค้าที่คุยอยู่"
       },
       "smartinventory": {
-        "industry": "Food Service Distribution · NSL",
+        "industry": "Food Service Distribution",
         "title": "SmartInventory — Lot-Level Intelligence ซ้อนบน SAP",
         "summary": "สร้างแพลตฟอร์มบริหารคลังระดับ Lot ที่เปิดเผยของหมดอายุค้าง ฿14.9M ที่ไม่มีใครเห็นในวันแรกที่ใช้งาน — เป็น layer ซ้อนบน SAP ไม่ใช่ทดแทน",
         "m1v": "฿14.9M",
@@ -272,7 +272,7 @@
         "m2l": "Reorder cycle",
         "m3v": "263.8K",
         "m3l": "ธุรกรรมที่ติดตาม",
-        "challenge": "NSL Food Service มีของหมดอายุค้างคลังถึง ฿14.9M ซ่อนอยู่ในระบบ SAP — ไม่มี Lot-level tracking ใช้ Excel ส่งต่อกันมือ พอทีม Ops ลาออกระบบล่ม Audit GMP/HACCP แจ้งเตือนเรื่อง Batch Traceability ที่ขาดมาทุกปี",
+        "challenge": "ผู้กระจายสินค้า Food Service รายใหญ่มีของหมดอายุค้างคลังถึง ฿14.9M ซ่อนอยู่ในระบบ SAP — ไม่มี Lot-level tracking ใช้ Excel ส่งต่อกันมือ พอทีม Ops ลาออกระบบล่ม Audit GMP/HACCP แจ้งเตือนเรื่อง Batch Traceability ที่ขาดมาทุกปี",
         "solution": "เราสร้าง SmartInventory เป็น Intelligence Layer ซ้อนบน SAP — มี Lot-level expiry tracking, VV Matrix (Value × Validity) engine เฉพาะ, FEFO อัตโนมัติ, และ 3 มุมวิเคราะห์ (Lot / Worst-Case / Weighted) ให้ Ops จัดซื้อ และการเงินมองข้อมูลชุดเดียวกันได้คนละมุม",
         "result": "เคลียร์ของหมดอายุได้ ฿8.5M ใน 3 เดือนแรก Reorder cycle ลดจาก 30→14 วัน Audit GMP/HACCP ผ่านครั้งแรกตั้งแต่ใช้ระบบ ทีม Ops เลิกใช้ Excel ใช้ FEFO Pick List ทุกวัน ห้องประชุมเห็นสุขภาพคลังในมุมมองเดียว"
       }
@@ -443,13 +443,13 @@
       },
       "smartinventory": {
         "tagline": "ระบบบริหารคลังสินค้าระดับ Lot สำหรับธุรกิจ Food Service",
-        "client": "NSL Food Service",
+        "client": "ผู้กระจายสินค้า Food Service รายใหญ่",
         "industry": "ผู้นำเข้า/จัดจำหน่ายอาหารแช่แข็ง",
         "scope": "แพลตฟอร์ม Lot-level Inventory Intelligence",
         "stack": "React 19 · TypeScript · Supabase · PostgreSQL 17 · Recharts",
         "brief": {
           "title": "โจทย์",
-          "p1": "NSL Food Service มีของหมดอายุค้างคลังถึง ฿14.9M ซ่อนอยู่ในระบบ SAP — ไม่มี Lot-level tracking ใช้ Excel ส่งต่อกันมือ พอทีม Ops ลาออกระบบล่ม Audit GMP/HACCP ก็เกือบไม่ผ่านเพราะ Batch Traceability ไม่ครบ",
+          "p1": "ผู้กระจายสินค้า Food Service รายใหญ่มีของหมดอายุค้างคลังถึง ฿14.9M ซ่อนอยู่ในระบบ SAP — ไม่มี Lot-level tracking ใช้ Excel ส่งต่อกันมือ พอทีม Ops ลาออกระบบล่ม Audit GMP/HACCP ก็เกือบไม่ผ่านเพราะ Batch Traceability ไม่ครบ",
           "p2": "เราสร้าง SmartInventory เป็น Intelligence Layer ซ้อนบน SAP — มี Lot-level expiry tracking, VV Matrix (Value × Validity), FEFO automation, และ 3 มุมวิเคราะห์สำหรับห้องประชุม เคลียร์ของหมดอายุได้ ฿8.5M ใน 3 เดือนแรก"
         },
         "shots": {
