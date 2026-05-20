@@ -18,6 +18,14 @@ export default function Stat({ value, suffix = '', label, decimals = 0, duration
     const el = ref.current;
     if (!el) return;
 
+    // Reduced-motion / no observer: show the final number, skip the count-up.
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || typeof IntersectionObserver === 'undefined') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setV(value);
+      return;
+    }
+
     let raf = 0;
     const animate = () => {
       const t0 = performance.now();

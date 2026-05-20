@@ -15,6 +15,12 @@ export default function Reveal({ children, delay = 0, className = '', as: Tag = 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // Respect reduced-motion / missing observer: show content immediately.
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || typeof IntersectionObserver === 'undefined') {
+      el.classList.add('in');
+      return;
+    }
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

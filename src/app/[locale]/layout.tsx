@@ -6,6 +6,7 @@ import { routing } from '@/i18n/routing';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AuroraBackground from '@/components/ui/AuroraBackground';
+import ScrollProgress from '@/components/ui/ScrollProgress';
 import {
   SITE_URL,
   buildPageMetadata,
@@ -107,6 +108,7 @@ export default async function LocaleLayout({
       </head>
       <body className={locale === 'th' ? 'font-thai' : ''}>
         <AuroraBackground />
+        <ScrollProgress />
         <NextIntlClientProvider messages={messages}>
           <a
             href="#main-content"
