@@ -19,7 +19,6 @@ import {
   Heart,
   Layers,
   Leaf,
-  Loader2,
   Lock,
   Settings,
   Share2,
@@ -116,7 +115,6 @@ export default function SampleReportClient() {
   const tCommon = useTranslations('common');
   const locale = useLocale();
   const [active, setActive] = useState<SystemId>('esg');
-  const [pdfBusy, setPdfBusy] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [shareUrl, setShareUrl] = useState('');
@@ -135,6 +133,7 @@ export default function SampleReportClient() {
   // Read the initial tab from the ?view= query param (deep-link support)
   useEffect(() => {
     const view = new URLSearchParams(window.location.search).get('view');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (isSystemId(view)) setActive(view);
   }, []);
 
@@ -147,12 +146,10 @@ export default function SampleReportClient() {
     window.history.replaceState(null, '', url.toString());
   };
 
-  // Open the share dialog: build a deep-link to this tab (using the real
-  // current origin so it resolves wherever deployed) + a matching QR code.
+  // Open the share dialog: the shared link is the direct PDF download URL, so
+  // anyone who opens it (or scans the QR) downloads the sales kit immediately.
   const openShare = () => {
-    const url = new URL(window.location.href);
-    url.searchParams.set('view', active);
-    const full = url.toString();
+    const full = `${window.location.origin}${salesKitUrl(active)}`;
     setShareUrl(full);
     setCopied(false);
     setShareOpen(true);
@@ -208,121 +205,10 @@ export default function SampleReportClient() {
     }
   };
 
-  // Downscale a screenshot to a capped width and re-encode as JPEG so the
-  // generated PDF stays light (full-res PNGs would balloon the file to ~8MB).
-  const downscaleImage = (url: string, maxW = 1400): Promise<string> =>
-    new Promise((resolve) => {
-      const img = new window.Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = () => {
-        const scale = Math.min(1, maxW / img.naturalWidth);
-        const w = Math.round(img.naturalWidth * scale);
-        const h = Math.round(img.naturalHeight * scale);
-        const canvas = document.createElement('canvas');
-        canvas.width = w;
-        canvas.height = h;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return resolve(url);
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, w, h);
-        ctx.drawImage(img, 0, 0, w, h);
-        try {
-          resolve(canvas.toDataURL('image/jpeg', 0.82));
-        } catch {
-          resolve(url);
-        }
-      };
-      img.onerror = () => resolve(url);
-      img.src = url;
-    });
-
-  // Generate + download a designed Sales Kit PDF for the active tab.
-  // Heavy deps are dynamically imported so they never hit the initial bundle.
-  const downloadSalesKit = async () => {
-    if (pdfBusy) return;
-    setPdfBusy(true);
-    try {
-      const [{ pdf }, pdfMod] = await Promise.all([
-        import('@react-pdf/renderer'),
-        import('./SalesKitPdf'),
-      ]);
-      const { default: SalesKitPdf, registerPdfFonts } = pdfMod;
-      registerPdfFonts();
-
-      // Swap glyphs the embedded PDF font can't render (e.g. the → arrow) for
-      // visually-equivalent ones it can (› renders correctly).
-      const san = (str: string) => str.replace(/→/g, '›');
-
-      const origin = window.location.origin;
-      const sysShots = SYSTEMS[active].shots;
-
-      // Pre-render compressed JPEGs for every screenshot in parallel
-      const shotImages = await Promise.all(
-        sysShots.map((shot) => downscaleImage(`${origin}${shot.src}`)),
-      );
-
-      const content = {
-        locale,
-        systemLabel: t(`tabs.${active}`),
-        eyebrow: t('pdf.eyebrow'),
-        tagline: san(sysT('tagline')),
-        meta: meta.map((m) => ({ label: t(`labels.${m.key}`), value: san(sysT(m.key)) })),
-        brief: {
-          title: sysT('brief.title'),
-          paragraphs: [san(sysT('brief.p1')), san(sysT('brief.p2'))],
-        },
-        outcomes: {
-          title: sysT('outcomes.title'),
-          items: (['o1', 'o2', 'o3', 'o4'] as const).map((k) => ({
-            value: sysT(`outcomes.${k}Val`),
-            label: sysT(`outcomes.${k}Label`),
-          })),
-        },
-        features: {
-          title: sysT('features.title'),
-          items: SYSTEMS[active].features.map((f) => ({
-            title: san(sysT(`features.${f.id}Title`)),
-            desc: san(sysT(`features.${f.id}Desc`)),
-          })),
-        },
-        shots: sysShots.map((shot, i) => ({
-          title: san(sysT(`shots.${shot.id}Title`)),
-          desc: san(sysT(`shots.${shot.id}Desc`)),
-          src: shotImages[i],
-          ratio: shot.ratio,
-        })),
-        shotsHeading: t('pdf.screens'),
-        note: t('note'),
-        cta: tCommon('requestDemo'),
-        contact: {
-          email: 'contact@d2infinite.com',
-          phone: '+66 870 783 663',
-          location: 'Bangkok, Thailand',
-          site: 'd2infinite.com',
-        },
-        generatedLabel: t('pdf.prepared'),
-        generatedDate: new Date().toLocaleDateString(locale === 'th' ? 'th-TH' : 'en-GB', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-        }),
-      };
-
-      const blob = await pdf(<SalesKitPdf c={content} />).toBlob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `D2Infinite-${active}-SalesKit.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 4000);
-    } catch (err) {
-      console.error('Sales kit PDF generation failed', err);
-    } finally {
-      setPdfBusy(false);
-    }
-  };
+  // Direct download URL — the /api/sales-kit route renders the PDF server-side
+  // and returns it as an attachment, so the link downloads the file directly.
+  const salesKitUrl = (view: SystemId) =>
+    `/api/sales-kit?view=${view}&locale=${locale}`;
 
   return (
     <>
@@ -422,24 +308,13 @@ export default function SampleReportClient() {
                   justifyContent: 'center',
                 }}
               >
-                <button
-                  type="button"
+                <a
+                  href={salesKitUrl(active)}
                   className="btn btn-primary btn-sm"
-                  onClick={downloadSalesKit}
-                  disabled={pdfBusy}
-                  aria-busy={pdfBusy}
-                  style={pdfBusy ? { opacity: 0.7, cursor: 'wait' } : undefined}
+                  rel="noopener"
                 >
-                  {pdfBusy ? (
-                    <>
-                      <Loader2 size={14} className="spin" /> {t('pdf.preparing')}
-                    </>
-                  ) : (
-                    <>
-                      <FileDown size={14} /> {t('pdf.button')}
-                    </>
-                  )}
-                </button>
+                  <FileDown size={14} /> {t('pdf.button')}
+                </a>
                 <button type="button" className="btn btn-glass btn-sm" onClick={openShare}>
                   <Share2 size={14} /> {t('share.button')}
                 </button>
@@ -832,25 +707,15 @@ export default function SampleReportClient() {
             </button>
           </div>
 
-          {/* Download from within the dialog too */}
-          <button
-            type="button"
+          {/* Download directly from within the dialog too */}
+          <a
+            href={salesKitUrl(active)}
             className="btn btn-glass btn-sm"
-            onClick={downloadSalesKit}
-            disabled={pdfBusy}
-            aria-busy={pdfBusy}
-            style={{ width: '100%', marginTop: 12, ...(pdfBusy ? { opacity: 0.7, cursor: 'wait' } : {}) }}
+            rel="noopener"
+            style={{ width: '100%', marginTop: 12 }}
           >
-            {pdfBusy ? (
-              <>
-                <Loader2 size={14} className="spin" /> {t('pdf.preparing')}
-              </>
-            ) : (
-              <>
-                <FileDown size={14} /> {t('pdf.button')}
-              </>
-            )}
-          </button>
+            <FileDown size={14} /> {t('pdf.button')}
+          </a>
         </div>
       </div>
     )}
