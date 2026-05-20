@@ -329,7 +329,7 @@
     "eyebrow": "Live Showcase",
     "headlinePre": "Sample reports from",
     "headlineEm": "production deployments.",
-    "lead": "Two live platforms built by D2Infinite, deployed and used in production by real teams. Switch tabs to explore each system.",
+    "lead": "Live platforms built by D2Infinite, deployed and used in production by real teams. Switch tabs to explore each system.",
     "labels": {
       "client": "Client",
       "industry": "Industry",
@@ -359,19 +359,23 @@
           "loginDesc": "Glass-morphism authentication with bilingual support, climate-action positioning, and live sustainability commitments visible at sign-in.",
           "dashboardTitle": "Admin Dashboard",
           "dashboardDesc": "Top-level KPIs — companies, sites, metrics — plus real-time user analytics: submission velocity, peak hours, peak day, and hourly/daily trend charts that update as data flows in.",
+          "bigPictureTitle": "ESG Big Picture — One-Page Summary",
+          "bigPictureDesc": "The entire materiality structure on a single page a board member can absorb in 60 seconds — 4 dimensions, 15 themes, 34 metrics, with completion progress at a glance. Generated on demand, ready to share or download as a print-perfect PDF, aligned with MSCI ESG and GRI Standards.",
+          "keyIssuesTitle": "ESG Key Issues — Materiality Framework",
+          "keyIssuesDesc": "The org's full ESG activity map organized as Dimension → Theme → Metric. Drill from Environment, Social, Governance, and General Information down to any single metric to see its infographic and trend charts. One framework, every team aligned on what counts.",
           "envTitle": "Environmental Report",
           "envDesc": "End-to-end environmental view — GHG (Scope 1+2), Total Electricity, Renewables %, Water Withdrawal, Total Waste, Waste Diversion Rate — sliced by Company, Site, and Year with year-over-year deltas."
         },
         "features": {
           "title": "What's Inside",
-          "f1Title": "Six ESG Domains",
-          "f1Desc": "Environmental, Social, Governance, plus master data and audit log — all governed in one place.",
-          "f2Title": "Role-Based Access",
-          "f2Desc": "Admin, Executive, Supervisor, and Staff tiers with row-level permissions and full audit trail.",
-          "f3Title": "Live Dashboards",
-          "f3Desc": "Submission analytics, hourly activity, peak times, and per-user contribution surfaced in real time.",
-          "f4Title": "Export to Excel",
-          "f4Desc": "One-click executive exports — TV View for screens, Excel for offline review, ready for assurance."
+          "f1Title": "Big Picture Summary",
+          "f1Desc": "The whole ESG framework on one page — dimensions, themes, metrics, and progress bars an executive can read in a minute. Export to print-ready PDF in one click.",
+          "f2Title": "Materiality Framework",
+          "f2Desc": "Dimension → Theme → Metric structure across six ESG domains. Drill from pillar to a single metric and see its infographic and trends, aligned with MSCI ESG & GRI.",
+          "f3Title": "Role-Based Access",
+          "f3Desc": "Admin, Executive, Supervisor, and Staff tiers with row-level permissions and a full audit trail.",
+          "f4Title": "Export to Excel & PDF",
+          "f4Desc": "One-click executive exports — TV View for screens, Excel for offline review, one-page PDF for the board."
         },
         "outcomes": {
           "title": "Outcomes",

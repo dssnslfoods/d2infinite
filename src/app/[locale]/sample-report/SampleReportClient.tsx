@@ -55,6 +55,8 @@ const SYSTEMS: Record<SystemId, SystemDef> = {
     shots: [
       { id: 'login', src: '/showcase/esg-login.png', ratio: 16 / 10 },
       { id: 'dashboard', src: '/showcase/esg-dashboard.png', ratio: 16 / 13 },
+      { id: 'bigPicture', src: '/showcase/esg-bigpicture.png', ratio: 16 / 10 },
+      { id: 'keyIssues', src: '/showcase/esg-key-issues.png', ratio: 16 / 33 },
       { id: 'env', src: '/showcase/esg-environmental.png', ratio: 16 / 32 },
     ],
     features: [
