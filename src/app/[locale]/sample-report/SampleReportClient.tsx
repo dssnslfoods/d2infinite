@@ -2,31 +2,28 @@
 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import QRCode from 'qrcode';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import {
   ArrowRight,
   BarChart3,
   Boxes,
   BookOpen,
-  Check,
-  Copy,
   Download,
   ExternalLink,
+  FileDown,
   Filter,
   Globe,
   Heart,
   Layers,
   Leaf,
+  Loader2,
   Lock,
   Settings,
-  Share2,
   Shield,
   ShoppingBag,
   Sparkles,
   Truck,
   Workflow,
-  X,
 } from 'lucide-react';
 import type { ComponentType } from 'react';
 import { Eyebrow, Glass, Reveal } from '@/components/ui';
@@ -112,11 +109,9 @@ const isSystemId = (v: string | null): v is SystemId =>
 export default function SampleReportClient() {
   const t = useTranslations('sampleReport');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
   const [active, setActive] = useState<SystemId>('esg');
-  const [shareOpen, setShareOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [shareUrl, setShareUrl] = useState('');
-  const [qrDataUrl, setQrDataUrl] = useState('');
+  const [pdfBusy, setPdfBusy] = useState(false);
 
   const sys = SYSTEMS[active];
   const sysT = (key: string) => t(`systems.${active}.${key}`);
@@ -131,86 +126,130 @@ export default function SampleReportClient() {
   // Read the initial tab from the ?view= query param (deep-link support)
   useEffect(() => {
     const view = new URLSearchParams(window.location.search).get('view');
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (isSystemId(view)) setActive(view);
   }, []);
 
   // Select a tab and reflect it in the URL without navigating
   const selectTab = (id: SystemId) => {
     setActive(id);
-    setCopied(false);
     const url = new URL(window.location.href);
     url.searchParams.set('view', id);
     window.history.replaceState(null, '', url.toString());
   };
 
-  // Build a share URL using the actual current origin (whatever host serves
-  // the page), so the link always resolves wherever it's deployed.
-  const buildShareUrl = (view: SystemId) => {
-    const url = new URL(window.location.href);
-    url.searchParams.set('view', view);
-    return url.toString();
-  };
+  // Downscale a screenshot to a capped width and re-encode as JPEG so the
+  // generated PDF stays light (full-res PNGs would balloon the file to ~8MB).
+  const downscaleImage = (url: string, maxW = 1400): Promise<string> =>
+    new Promise((resolve) => {
+      const img = new window.Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const scale = Math.min(1, maxW / img.naturalWidth);
+        const w = Math.round(img.naturalWidth * scale);
+        const h = Math.round(img.naturalHeight * scale);
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return resolve(url);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        try {
+          resolve(canvas.toDataURL('image/jpeg', 0.82));
+        } catch {
+          resolve(url);
+        }
+      };
+      img.onerror = () => resolve(url);
+      img.src = url;
+    });
 
-  // Open the share dialog: build the URL + QR in the handler (not an effect)
-  const openShare = () => {
-    const full = buildShareUrl(active);
-    setShareUrl(full);
-    setCopied(false);
-    setShareOpen(true);
-    QRCode.toDataURL(full, {
-      width: 240,
-      margin: 1,
-      color: { dark: '#0a0f1e', light: '#ffffff' },
-    })
-      .then(setQrDataUrl)
-      .catch(() => setQrDataUrl(''));
-  };
+  // Generate + download a designed Sales Kit PDF for the active tab.
+  // Heavy deps are dynamically imported so they never hit the initial bundle.
+  const downloadSalesKit = async () => {
+    if (pdfBusy) return;
+    setPdfBusy(true);
+    try {
+      const [{ pdf }, pdfMod] = await Promise.all([
+        import('@react-pdf/renderer'),
+        import('./SalesKitPdf'),
+      ]);
+      const { default: SalesKitPdf, registerPdfFonts } = pdfMod;
+      registerPdfFonts();
 
-  // Close dialog on Escape
-  useEffect(() => {
-    if (!shareOpen) return;
-    const onEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setShareOpen(false);
-    };
-    document.addEventListener('keydown', onEsc);
-    return () => document.removeEventListener('keydown', onEsc);
-  }, [shareOpen]);
+      // Swap glyphs the embedded PDF font can't render (e.g. the → arrow) for
+      // visually-equivalent ones it can (› renders correctly).
+      const san = (str: string) => str.replace(/→/g, '›');
 
-  const copyLink = async () => {
-    let ok = false;
-    // Preferred: async Clipboard API (needs secure context + permission)
-    if (navigator.clipboard?.writeText) {
-      try {
-        await navigator.clipboard.writeText(shareUrl);
-        ok = true;
-      } catch {
-        ok = false;
-      }
-    }
-    // Fallback: legacy execCommand via a temporary textarea
-    if (!ok) {
-      try {
-        const ta = document.createElement('textarea');
-        ta.value = shareUrl;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed';
-        ta.style.top = '0';
-        ta.style.left = '0';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.focus();
-        ta.select();
-        ta.setSelectionRange(0, ta.value.length);
-        ok = document.execCommand('copy');
-        document.body.removeChild(ta);
-      } catch {
-        ok = false;
-      }
-    }
-    if (ok) {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2200);
+      const origin = window.location.origin;
+      const sysShots = SYSTEMS[active].shots;
+
+      // Pre-render compressed JPEGs for every screenshot in parallel
+      const shotImages = await Promise.all(
+        sysShots.map((shot) => downscaleImage(`${origin}${shot.src}`)),
+      );
+
+      const content = {
+        locale,
+        systemLabel: t(`tabs.${active}`),
+        eyebrow: t('pdf.eyebrow'),
+        tagline: san(sysT('tagline')),
+        meta: meta.map((m) => ({ label: t(`labels.${m.key}`), value: san(sysT(m.key)) })),
+        brief: {
+          title: sysT('brief.title'),
+          paragraphs: [san(sysT('brief.p1')), san(sysT('brief.p2'))],
+        },
+        outcomes: {
+          title: sysT('outcomes.title'),
+          items: (['o1', 'o2', 'o3', 'o4'] as const).map((k) => ({
+            value: sysT(`outcomes.${k}Val`),
+            label: sysT(`outcomes.${k}Label`),
+          })),
+        },
+        features: {
+          title: sysT('features.title'),
+          items: SYSTEMS[active].features.map((f) => ({
+            title: san(sysT(`features.${f.id}Title`)),
+            desc: san(sysT(`features.${f.id}Desc`)),
+          })),
+        },
+        shots: sysShots.map((shot, i) => ({
+          title: san(sysT(`shots.${shot.id}Title`)),
+          desc: san(sysT(`shots.${shot.id}Desc`)),
+          src: shotImages[i],
+          ratio: shot.ratio,
+        })),
+        shotsHeading: t('pdf.screens'),
+        note: t('note'),
+        cta: tCommon('requestDemo'),
+        contact: {
+          email: 'contact@d2infinite.com',
+          phone: '+66 870 783 663',
+          location: 'Bangkok, Thailand',
+          site: 'd2infinite.com',
+        },
+        generatedLabel: t('pdf.prepared'),
+        generatedDate: new Date().toLocaleDateString(locale === 'th' ? 'th-TH' : 'en-GB', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        }),
+      };
+
+      const blob = await pdf(<SalesKitPdf c={content} />).toBlob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `D2Infinite-${active}-SalesKit.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+    } catch (err) {
+      console.error('Sales kit PDF generation failed', err);
+    } finally {
+      setPdfBusy(false);
     }
   };
 
@@ -307,9 +346,20 @@ export default function SampleReportClient() {
               <button
                 type="button"
                 className="btn btn-glass btn-sm"
-                onClick={openShare}
+                onClick={downloadSalesKit}
+                disabled={pdfBusy}
+                aria-busy={pdfBusy}
+                style={pdfBusy ? { opacity: 0.7, cursor: 'wait' } : undefined}
               >
-                <Share2 size={14} /> {t('share.button')}
+                {pdfBusy ? (
+                  <>
+                    <Loader2 size={14} className="spin" /> {t('pdf.preparing')}
+                  </>
+                ) : (
+                  <>
+                    <FileDown size={14} /> {t('pdf.button')}
+                  </>
+                )}
               </button>
             </div>
           </Reveal>
@@ -574,6 +624,8 @@ export default function SampleReportClient() {
       </section>
 
       <style>{`
+        @keyframes sk-spin { to { transform: rotate(360deg); } }
+        .spin { animation: sk-spin 0.9s linear infinite; }
         @media (max-width: 900px) {
           .meta-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .cap-grid { grid-template-columns: repeat(2, 1fr) !important; }
@@ -586,118 +638,6 @@ export default function SampleReportClient() {
         }
       `}</style>
     </div>
-
-    {/* Share dialog — rendered OUTSIDE page-enter so position:fixed works correctly */}
-    {shareOpen && (
-      <div
-        role="dialog"
-        aria-modal="true"
-        aria-label={t('share.title')}
-        onClick={() => setShareOpen(false)}
-        style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 80,
-          display: 'grid',
-          placeItems: 'center',
-          padding: 20,
-          background: 'rgba(2, 6, 18, 0.62)',
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
-          animation: 'page-in 240ms ease both',
-        }}
-      >
-        <div
-          className="glass glass-strong"
-          onClick={(e) => e.stopPropagation()}
-          style={{ padding: 32, borderRadius: 24, maxWidth: 400, width: '100%', position: 'relative' }}
-        >
-          <button
-            type="button"
-            aria-label="Close"
-            onClick={() => setShareOpen(false)}
-            className="btn btn-ghost btn-sm"
-            style={{ position: 'absolute', top: 14, right: 14, padding: 8 }}
-          >
-            <X size={16} />
-          </button>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-            <sys.Icon size={18} />
-            <h3 style={{ fontSize: 18, fontWeight: 500 }}>{t('share.title')}</h3>
-          </div>
-          <p className="caption" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 22 }}>
-            {t('share.desc')}
-          </p>
-
-          {/* QR code */}
-          <div style={{ display: 'grid', placeItems: 'center', marginBottom: 20 }}>
-            {qrDataUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={qrDataUrl}
-                alt={t('share.qrAlt')}
-                width={200}
-                height={200}
-                style={{
-                  width: 200,
-                  height: 200,
-                  borderRadius: 14,
-                  background: '#fff',
-                  padding: 10,
-                  boxShadow: '0 8px 30px -10px rgba(0,0,0,0.5)',
-                }}
-              />
-            ) : (
-              <div
-                style={{
-                  width: 200,
-                  height: 200,
-                  borderRadius: 14,
-                  background: 'rgba(255,255,255,0.05)',
-                  display: 'grid',
-                  placeItems: 'center',
-                  color: 'var(--text-3)',
-                  fontSize: 12,
-                }}
-              >
-                Generating…
-              </div>
-            )}
-          </div>
-
-          {/* Link + copy */}
-          <div style={{ display: 'flex', gap: 8 }}>
-            <input
-              readOnly
-              value={shareUrl}
-              onFocus={(e) => e.currentTarget.select()}
-              aria-label="Share link"
-              style={{
-                flex: 1,
-                minWidth: 0,
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                borderRadius: 12,
-                padding: '12px 14px',
-                fontSize: 13,
-                color: 'var(--text-2)',
-                fontFamily: 'var(--font-mono)',
-              }}
-            />
-            <button
-              type="button"
-              onClick={copyLink}
-              className={copied ? 'btn btn-emerald btn-sm' : 'btn btn-primary btn-sm'}
-              style={{ flexShrink: 0, padding: '0 16px' }}
-            >
-              {copied ? <Check size={14} /> : <Copy size={14} />}
-              {copied ? t('share.copied') : t('share.copy')}
-            </button>
-          </div>
-        </div>
-      </div>
-    )}
     </>
   );
 }
