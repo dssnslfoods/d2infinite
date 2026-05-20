@@ -180,12 +180,39 @@ export default function SampleReportClient() {
   }, [shareOpen]);
 
   const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(shareUrl);
+    let ok = false;
+    // Preferred: async Clipboard API (needs secure context + permission)
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        ok = true;
+      } catch {
+        ok = false;
+      }
+    }
+    // Fallback: legacy execCommand via a temporary textarea
+    if (!ok) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = shareUrl;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '0';
+        ta.style.left = '0';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0, ta.value.length);
+        ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    if (ok) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2200);
-    } catch {
-      /* clipboard unavailable — user can still read the link field */
     }
   };
 
