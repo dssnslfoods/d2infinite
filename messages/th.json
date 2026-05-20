@@ -341,6 +341,14 @@
       "smartinventory": "SmartInventory",
       "catalog": "Catalog Online"
     },
+    "share": {
+      "button": "แชร์ / QR",
+      "title": "แชร์มุมมองนี้",
+      "desc": "สแกน QR หรือคัดลอกลิงก์ — เปิด tab นี้ได้โดยตรง",
+      "copy": "คัดลอก",
+      "copied": "คัดลอกแล้ว!",
+      "qrAlt": "QR code สำหรับ tab นี้"
+    },
     "note": "ภาพหน้าจอที่แสดงเป็นระบบที่ deploy ใช้งานจริง ข้อมูลส่วนบุคคลถูกปกปิดแล้ว สามารถขอ walkthrough ระบบจริงได้ภายใต้ NDA",
     "systems": {
       "esg": {

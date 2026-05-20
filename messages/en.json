@@ -341,6 +341,14 @@
       "smartinventory": "SmartInventory",
       "catalog": "Catalog Online"
     },
+    "share": {
+      "button": "Share / QR",
+      "title": "Share this view",
+      "desc": "Scan the QR code or copy the link — it opens this exact tab.",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "qrAlt": "QR code for this showcase tab"
+    },
     "note": "Screens shown are from live deployments. Personal data has been redacted. Full system walkthrough available on request under NDA.",
     "systems": {
       "esg": {

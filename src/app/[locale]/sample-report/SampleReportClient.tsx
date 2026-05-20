@@ -1,13 +1,16 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import QRCode from 'qrcode';
 import { useTranslations } from 'next-intl';
 import {
   ArrowRight,
   BarChart3,
   Boxes,
   BookOpen,
+  Check,
+  Copy,
   Download,
   ExternalLink,
   Filter,
@@ -17,11 +20,13 @@ import {
   Leaf,
   Lock,
   Settings,
+  Share2,
   Shield,
   ShoppingBag,
   Sparkles,
   Truck,
   Workflow,
+  X,
 } from 'lucide-react';
 import type { ComponentType } from 'react';
 import { Eyebrow, Glass, Reveal } from '@/components/ui';
@@ -100,10 +105,18 @@ const SYSTEMS: Record<SystemId, SystemDef> = {
   },
 };
 
+const SYSTEM_IDS = Object.keys(SYSTEMS) as SystemId[];
+const isSystemId = (v: string | null): v is SystemId =>
+  v !== null && (SYSTEM_IDS as string[]).includes(v);
+
 export default function SampleReportClient() {
   const t = useTranslations('sampleReport');
   const tCommon = useTranslations('common');
   const [active, setActive] = useState<SystemId>('esg');
+  const [shareOpen, setShareOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [shareUrl, setShareUrl] = useState('');
+  const [qrDataUrl, setQrDataUrl] = useState('');
 
   const sys = SYSTEMS[active];
   const sysT = (key: string) => t(`systems.${active}.${key}`);
@@ -114,6 +127,59 @@ export default function SampleReportClient() {
     { key: 'scope' },
     { key: 'stack' },
   ];
+
+  // Read the initial tab from the ?view= query param (deep-link support)
+  useEffect(() => {
+    const view = new URLSearchParams(window.location.search).get('view');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (isSystemId(view)) setActive(view);
+  }, []);
+
+  // Select a tab and reflect it in the URL without navigating
+  const selectTab = (id: SystemId) => {
+    setActive(id);
+    setCopied(false);
+    const url = new URL(window.location.href);
+    url.searchParams.set('view', id);
+    window.history.replaceState(null, '', url.toString());
+  };
+
+  // Open the share dialog: build the URL + QR in the handler (not an effect)
+  const openShare = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('view', active);
+    const full = url.toString();
+    setShareUrl(full);
+    setCopied(false);
+    setShareOpen(true);
+    QRCode.toDataURL(full, {
+      width: 240,
+      margin: 1,
+      color: { dark: '#0a0f1e', light: '#ffffff' },
+    })
+      .then(setQrDataUrl)
+      .catch(() => setQrDataUrl(''));
+  };
+
+  // Close dialog on Escape
+  useEffect(() => {
+    if (!shareOpen) return;
+    const onEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShareOpen(false);
+    };
+    document.addEventListener('keydown', onEsc);
+    return () => document.removeEventListener('keydown', onEsc);
+  }, [shareOpen]);
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    } catch {
+      /* clipboard unavailable — user can still read the link field */
+    }
+  };
 
   return (
     <div className="page-enter">
@@ -164,7 +230,7 @@ export default function SampleReportClient() {
                     type="button"
                     role="tab"
                     aria-selected={isActive}
-                    onClick={() => setActive(id)}
+                    onClick={() => selectTab(id)}
                     className={isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'}
                     style={{
                       flex: 1,
@@ -181,20 +247,37 @@ export default function SampleReportClient() {
             </div>
           </Reveal>
 
-          {/* Tagline under tab */}
+          {/* Tagline + Share under tab */}
           <Reveal delay={140}>
-            <p
-              className="caption"
+            <div
               style={{
-                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 14,
                 marginTop: 22,
-                fontSize: 14,
-                color: 'var(--text-3)',
-                fontStyle: 'italic',
               }}
             >
-              {sysT('tagline')}
-            </p>
+              <p
+                className="caption"
+                style={{
+                  textAlign: 'center',
+                  fontSize: 14,
+                  color: 'var(--text-3)',
+                  fontStyle: 'italic',
+                  margin: 0,
+                }}
+              >
+                {sysT('tagline')}
+              </p>
+              <button
+                type="button"
+                className="btn btn-glass btn-sm"
+                onClick={openShare}
+              >
+                <Share2 size={14} /> {t('share.button')}
+              </button>
+            </div>
           </Reveal>
 
           {/* Meta strip */}
@@ -455,6 +538,111 @@ export default function SampleReportClient() {
           </Reveal>
         </div>
       </section>
+
+      {/* Share dialog */}
+      {shareOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={t('share.title')}
+          onClick={() => setShareOpen(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 80,
+            display: 'grid',
+            placeItems: 'center',
+            padding: 20,
+            background: 'rgba(2, 6, 18, 0.62)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            animation: 'page-in 240ms ease both',
+          }}
+        >
+          <div
+            className="glass glass-strong"
+            onClick={(e) => e.stopPropagation()}
+            style={{ padding: 32, borderRadius: 24, maxWidth: 400, width: '100%', position: 'relative' }}
+          >
+            <button
+              type="button"
+              aria-label="Close"
+              onClick={() => setShareOpen(false)}
+              className="btn btn-ghost btn-sm"
+              style={{ position: 'absolute', top: 14, right: 14, padding: 8 }}
+            >
+              <X size={16} />
+            </button>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+              <sys.Icon size={18} />
+              <h3 style={{ fontSize: 18, fontWeight: 500 }}>{t('share.title')}</h3>
+            </div>
+            <p className="caption" style={{ fontSize: 13, lineHeight: 1.5, marginBottom: 22 }}>
+              {t('share.desc')}
+            </p>
+
+            {/* QR code */}
+            <div
+              style={{
+                display: 'grid',
+                placeItems: 'center',
+                marginBottom: 20,
+              }}
+            >
+              {qrDataUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={qrDataUrl}
+                  alt={t('share.qrAlt')}
+                  width={200}
+                  height={200}
+                  style={{
+                    width: 200,
+                    height: 200,
+                    borderRadius: 14,
+                    background: '#fff',
+                    padding: 10,
+                    boxShadow: '0 8px 30px -10px rgba(0,0,0,0.5)',
+                  }}
+                />
+              ) : (
+                <div style={{ width: 200, height: 200, borderRadius: 14, background: 'rgba(255,255,255,0.05)' }} />
+              )}
+            </div>
+
+            {/* Link + copy */}
+            <div style={{ display: 'flex', gap: 8 }}>
+              <input
+                readOnly
+                value={shareUrl}
+                onFocus={(e) => e.currentTarget.select()}
+                aria-label="Share link"
+                style={{
+                  flex: 1,
+                  minWidth: 0,
+                  background: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  borderRadius: 12,
+                  padding: '12px 14px',
+                  fontSize: 13,
+                  color: 'var(--text-2)',
+                  fontFamily: 'var(--font-mono)',
+                }}
+              />
+              <button
+                type="button"
+                onClick={copyLink}
+                className={copied ? 'btn btn-emerald btn-sm' : 'btn btn-primary btn-sm'}
+                style={{ flexShrink: 0, padding: '0 16px' }}
+              >
+                {copied ? <Check size={14} /> : <Copy size={14} />}
+                {copied ? t('share.copied') : t('share.copy')}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <style>{`
         @media (max-width: 900px) {
